@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\57350\\Desktop\\Hotel\\csharp-webform\\Hotel\\Sistema\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D84189CE-84F0-4CA3-87ED-BF1A6BD21782}|Resorts_UNED.Presentacion\\Resorts_UNED.Presentacion.csproj|c:\\users\\57350\\desktop\\hotel\\csharp-webform\\hotel\\sistema\\resorts_uned.presentacion\\frmcategoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D84189CE-84F0-4CA3-87ED-BF1A6BD21782}|Resorts_UNED.Presentacion\\Resorts_UNED.Presentacion.csproj|solutionrelative:resorts_uned.presentacion\\frmcategoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F7C208F-FD54-4FB1-B663-DAA32B51011F}|Resorts_UNED.Negocio\\Resorts_UNED.Negocio.csproj|c:\\users\\57350\\desktop\\hotel\\csharp-webform\\hotel\\sistema\\resorts_uned.negocio\\ncategoriaarticulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F7C208F-FD54-4FB1-B663-DAA32B51011F}|Resorts_UNED.Negocio\\Resorts_UNED.Negocio.csproj|solutionrelative:resorts_uned.negocio\\ncategoriaarticulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2360C2EE-F5C4-4482-97A5-B221F8DBD8F0}|Resorts-UNED.Datos\\Resorts-UNED.Datos.csproj|c:\\users\\57350\\desktop\\hotel\\csharp-webform\\hotel\\sistema\\resorts-uned.datos\\dcategoriaarticulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2360C2EE-F5C4-4482-97A5-B221F8DBD8F0}|Resorts-UNED.Datos\\Resorts-UNED.Datos.csproj|solutionrelative:resorts-uned.datos\\dcategoriaarticulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1147664E-1398-46DE-9EB0-154587164E25}|Resorts-UNED.Entidades\\Resorts-UNED.Entidades.csproj|c:\\users\\57350\\desktop\\hotel\\csharp-webform\\hotel\\sistema\\resorts-uned.entidades\\categoriaarticulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1147664E-1398-46DE-9EB0-154587164E25}|Resorts-UNED.Entidades\\Resorts-UNED.Entidades.csproj|solutionrelative:resorts-uned.entidades\\categoriaarticulo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "NCategoriaArticulo.cs",
+              "DocumentMoniker": "C:\\Users\\57350\\Desktop\\Hotel\\csharp-webform\\Hotel\\Sistema\\Resorts_UNED.Negocio\\NCategoriaArticulo.cs",
+              "RelativeDocumentMoniker": "Resorts_UNED.Negocio\\NCategoriaArticulo.cs",
+              "ToolTip": "C:\\Users\\57350\\Desktop\\Hotel\\csharp-webform\\Hotel\\Sistema\\Resorts_UNED.Negocio\\NCategoriaArticulo.cs",
+              "RelativeToolTip": "Resorts_UNED.Negocio\\NCategoriaArticulo.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-26T05:21:22.802Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FrmCategoria.cs",
+              "DocumentMoniker": "C:\\Users\\57350\\Desktop\\Hotel\\csharp-webform\\Hotel\\Sistema\\Resorts_UNED.Presentacion\\FrmCategoria.cs",
+              "RelativeDocumentMoniker": "Resorts_UNED.Presentacion\\FrmCategoria.cs",
+              "ToolTip": "C:\\Users\\57350\\Desktop\\Hotel\\csharp-webform\\Hotel\\Sistema\\Resorts_UNED.Presentacion\\FrmCategoria.cs",
+              "RelativeToolTip": "Resorts_UNED.Presentacion\\FrmCategoria.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAAowDQAAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-26T05:21:06.709Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DCategoriaArticulo.cs",
+              "DocumentMoniker": "C:\\Users\\57350\\Desktop\\Hotel\\csharp-webform\\Hotel\\Sistema\\Resorts-UNED.Datos\\DCategoriaArticulo.cs",
+              "RelativeDocumentMoniker": "Resorts-UNED.Datos\\DCategoriaArticulo.cs",
+              "ToolTip": "C:\\Users\\57350\\Desktop\\Hotel\\csharp-webform\\Hotel\\Sistema\\Resorts-UNED.Datos\\DCategoriaArticulo.cs",
+              "RelativeToolTip": "Resorts-UNED.Datos\\DCategoriaArticulo.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAABBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-26T05:20:10.839Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CategoriaArticulo.cs",
+              "DocumentMoniker": "C:\\Users\\57350\\Desktop\\Hotel\\csharp-webform\\Hotel\\Sistema\\Resorts-UNED.Entidades\\CategoriaArticulo.cs",
+              "RelativeDocumentMoniker": "Resorts-UNED.Entidades\\CategoriaArticulo.cs",
+              "ToolTip": "C:\\Users\\57350\\Desktop\\Hotel\\csharp-webform\\Hotel\\Sistema\\Resorts-UNED.Entidades\\CategoriaArticulo.cs",
+              "RelativeToolTip": "Resorts-UNED.Entidades\\CategoriaArticulo.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-26T05:19:02.406Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

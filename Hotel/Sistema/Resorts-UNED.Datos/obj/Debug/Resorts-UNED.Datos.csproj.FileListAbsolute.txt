@@ -1,0 +1,9 @@
+C:\Users\57350\Desktop\Hotel\csharp-webform\Hotel\Sistema\Resorts-UNED.Datos\bin\Debug\Resorts-UNED.Datos.dll
+C:\Users\57350\Desktop\Hotel\csharp-webform\Hotel\Sistema\Resorts-UNED.Datos\bin\Debug\Resorts-UNED.Datos.pdb
+C:\Users\57350\Desktop\Hotel\csharp-webform\Hotel\Sistema\Resorts-UNED.Datos\bin\Debug\Resorts-UNED.Entidades.dll
+C:\Users\57350\Desktop\Hotel\csharp-webform\Hotel\Sistema\Resorts-UNED.Datos\bin\Debug\Resorts-UNED.Entidades.pdb
+C:\Users\57350\Desktop\Hotel\csharp-webform\Hotel\Sistema\Resorts-UNED.Datos\obj\Debug\Resorts-UNED.Datos.csproj.AssemblyReference.cache
+C:\Users\57350\Desktop\Hotel\csharp-webform\Hotel\Sistema\Resorts-UNED.Datos\obj\Debug\Resorts-UNED.Datos.csproj.CoreCompileInputs.cache
+C:\Users\57350\Desktop\Hotel\csharp-webform\Hotel\Sistema\Resorts-UNED.Datos\obj\Debug\Resorts-.BCD60F27.Up2Date
+C:\Users\57350\Desktop\Hotel\csharp-webform\Hotel\Sistema\Resorts-UNED.Datos\obj\Debug\Resorts-UNED.Datos.dll
+C:\Users\57350\Desktop\Hotel\csharp-webform\Hotel\Sistema\Resorts-UNED.Datos\obj\Debug\Resorts-UNED.Datos.pdb

@@ -1,0 +1,68 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\57350\\source\\repos\\codigo\\Parqueadero\\Sistema\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D4373495-4C8D-4CC8-B1E4-2408860ECE46}|Sistema.Datos\\Sistema.Datos.csproj|c:\\users\\57350\\source\\repos\\codigo\\parqueadero\\sistema\\sistema.datos\\dusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4373495-4C8D-4CC8-B1E4-2408860ECE46}|Sistema.Datos\\Sistema.Datos.csproj|solutionrelative:sistema.datos\\dusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37EA1FBB-7028-4272-8178-8AC30024F5E5}|Sistema.Presentacion\\Sistema.Presentacion.csproj|C:\\Users\\57350\\source\\repos\\codigo\\Parqueadero\\Sistema\\Sistema.Presentacion\\frmTipoVehiculo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37EA1FBB-7028-4272-8178-8AC30024F5E5}|Sistema.Presentacion\\Sistema.Presentacion.csproj|solutionrelative:Sistema.Presentacion\\frmTipoVehiculo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37EA1FBB-7028-4272-8178-8AC30024F5E5}|Sistema.Presentacion\\Sistema.Presentacion.csproj|C:\\Users\\57350\\source\\repos\\codigo\\Parqueadero\\Sistema\\Sistema.Presentacion\\frmTipoVehiculo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{37EA1FBB-7028-4272-8178-8AC30024F5E5}|Sistema.Presentacion\\Sistema.Presentacion.csproj|solutionrelative:Sistema.Presentacion\\frmTipoVehiculo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\57350\\source\\repos\\codigo\\Parqueadero\\Sistema\\Sistema.Datos\\DUsuario.cs",
+              "RelativeDocumentMoniker": "Sistema.Datos\\DUsuario.cs",
+              "ToolTip": "C:\\Users\\57350\\source\\repos\\codigo\\Parqueadero\\Sistema\\Sistema.Datos\\DUsuario.cs",
+              "RelativeToolTip": "Sistema.Datos\\DUsuario.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-24T19:22:38.947Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmTipoVehiculo.cs",
+              "DocumentMoniker": "C:\\Users\\57350\\source\\repos\\codigo\\Parqueadero\\Sistema\\Sistema.Presentacion\\frmTipoVehiculo.cs",
+              "RelativeDocumentMoniker": "Sistema.Presentacion\\frmTipoVehiculo.cs",
+              "ToolTip": "C:\\Users\\57350\\source\\repos\\codigo\\Parqueadero\\Sistema\\Sistema.Presentacion\\frmTipoVehiculo.cs",
+              "RelativeToolTip": "Sistema.Presentacion\\frmTipoVehiculo.cs",
+              "ViewState": "AQIAAGcAAAAAAAAAAADgv3IAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-24T19:22:39.363Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frmTipoVehiculo.cs",
+              "DocumentMoniker": "C:\\Users\\57350\\source\\repos\\codigo\\Parqueadero\\Sistema\\Sistema.Presentacion\\frmTipoVehiculo.cs",
+              "RelativeDocumentMoniker": "Sistema.Presentacion\\frmTipoVehiculo.cs",
+              "ToolTip": "C:\\Users\\57350\\source\\repos\\codigo\\Parqueadero\\Sistema\\Sistema.Presentacion\\frmTipoVehiculo.cs",
+              "RelativeToolTip": "Sistema.Presentacion\\frmTipoVehiculo.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-24T19:22:39.371Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
