@@ -42,22 +42,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NArticulo.cs" />
-    <Compile Include="NAsignacionArticuloHotel.cs" />
+    <Compile Include="NArticuloHotel.cs" />
     <Compile Include="NHotel.cs" />
     <Compile Include="NCliente.cs" />
-    <Compile Include="NCategoriaArticulo.cs" />
+    <Compile Include="NCategoria.cs" />
     <Compile Include="NRol.cs" />
     <Compile Include="NUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Resorts-UNED.Datos\Resorts-UNED.Datos.csproj">
-      <Project>{2360c2ee-f5c4-4482-97a5-b221f8dbd8f0}</Project>
-      <Name>Resorts-UNED.Datos</Name>
+    <ProjectReference Include="..\Resorts_UNED.Datos\Resorts_UNED.Datos.csproj">
+      <Project>{771ae3d3-ecb8-4b32-9e85-e00ee9f49ec8}</Project>
+      <Name>Resorts_UNED.Datos</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Resorts-UNED.Entidades\Resorts-UNED.Entidades.csproj">
-      <Project>{1147664e-1398-46de-9eb0-154587164e25}</Project>
-      <Name>Resorts-UNED.Entidades</Name>
+    <ProjectReference Include="..\Resorts_UNED.Entidades\Resorts_UNED.Entidades.csproj">
+      <Project>{a5602c8b-82aa-47d0-83d3-cafafcfbdaee}</Project>
+      <Name>Resorts_UNED.Entidades</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,67 +1,72 @@
-if exists (select * from sysdatabases where name != 'ResortsUned')
-		CREATE DATABASE ResortsUned
-		PRINT 'Creada Exitosamente la base de datos ResortsUned'
-go
+-- Crear la base de datos si no existe
+IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'ResortsUned')
+BEGIN
+    CREATE DATABASE ResortsUned
+    PRINT 'Creada Exitosamente la base de datos ResortsUned'
+END
+GO
 
 -- Usar la base de datos creada
 USE ResortsUned
 GO
 
 -- Crear tabla de relación Rol
-create table Rol (
-	IdRol integer primary key identity,
-	Nombre varchar(30) not null,
-	Descripcion varchar(255) null,
-	Estado bit default(1)
+CREATE TABLE Rol (
+    IdRol INT PRIMARY KEY IDENTITY,
+    Nombre VARCHAR(30) NOT NULL,
+    Descripcion VARCHAR(255) NULL,
+    Estado BIT DEFAULT(1)
 );
 PRINT 'Creada Exitosamente la tabla Rol'
 GO
 
 -- Crear tabla de relación Usuario
-create table Usuario(
-	IdUsuario integer primary key identity,
-	IdRol integer not null,
-	Nombre varchar(100) not null,
-	TipoDocumento varchar(20) null,
-	NumDocumento varchar(20) null,
-	Direccion varchar(70) null,
-	Telefono varchar(20) null,
-	Email varchar(50) not null,
-	Clave varbinary(MAX) not null,
-	Estado bit default(1),	
-	FOREIGN KEY (IdRol) REFERENCES Rol (IdRol),		
+CREATE TABLE Usuario (
+    IdUsuario INT PRIMARY KEY IDENTITY,
+    IdRol INT NOT NULL,
+    Nombre VARCHAR(100) NOT NULL,
+    TipoDocumento VARCHAR(20) NULL,
+    NumDocumento VARCHAR(20) NULL,
+    Direccion VARCHAR(70) NULL,
+    Telefono VARCHAR(20) NULL,
+    Email VARCHAR(50) NOT NULL,
+    Clave VARBINARY(MAX) NOT NULL,
+    Estado BIT DEFAULT(1),    
+    FOREIGN KEY (IdRol) REFERENCES Rol (IdRol)
 );
 PRINT 'Creada Exitosamente la tabla Usuario'
 GO
 
 -- Crear la tabla Hotel
 CREATE TABLE Hotel (
-    IdHotel INT PRIMARY KEY,
+    IdHotel INT PRIMARY KEY IDENTITY,
     Nombre NVARCHAR(100),
     Direccion NVARCHAR(200),
     Estado BIT,
     Telefono NVARCHAR(15),
-	IdUsuarioResponsable INT NULL,
+    IdUsuarioResponsable INT NULL,
     FOREIGN KEY (IdUsuarioResponsable) REFERENCES Usuario(IdUsuario)
 );
 PRINT 'Creada Exitosamente la tabla Hotel'
 GO
 
--- Crear la tabla CategoriaArticulo
-CREATE TABLE CategoriaArticulo (
-    IdCategoria INT PRIMARY KEY,
-    Descripcion NVARCHAR(100),
+-- Crear la tabla Categoria
+CREATE TABLE Categoria (
+    IdCategoria INT PRIMARY KEY IDENTITY,
+    Nombre NVARCHAR(50), -- Nombre de la categoría
+    Descripcion NVARCHAR(100), -- Descripción de la categoría
     Estado BIT
 );
-PRINT 'Creada Exitosamente la tabla CategoriaArticulo'
+PRINT 'Creada Exitosamente la tabla Categoria'
 GO
 
 -- Crear la tabla Articulo
 CREATE TABLE Articulo (
-    IdArticulo INT PRIMARY KEY,
+    IdArticulo INT PRIMARY KEY IDENTITY,
     Nombre NVARCHAR(100),
     Precio INT,
-    IdCategoria INT FOREIGN KEY REFERENCES CategoriaArticulo(IdCategoria)
+    IdCategoria INT,
+    FOREIGN KEY (IdCategoria) REFERENCES Categoria(IdCategoria)
 );
 PRINT 'Creada Exitosamente la tabla Articulo'
 GO
@@ -78,14 +83,16 @@ CREATE TABLE Cliente (
 PRINT 'Creada Exitosamente la tabla Cliente'
 GO
 
--- Crear la tabla AsignacionArticuloHotel
-CREATE TABLE AsignacionArticuloHotel (
-    IdAsignacion INT PRIMARY KEY,
+-- Crear la tabla ArticuloHotel
+CREATE TABLE ArticuloHotel (
+    IdAsignacion INT PRIMARY KEY IDENTITY,
     Fecha DATE,
-    IdHotel INT FOREIGN KEY REFERENCES Hotel(IdHotel),
-    IdArticulo INT FOREIGN KEY REFERENCES Articulo(IdArticulo)
+    IdHotel INT,
+    IdArticulo INT,
+    FOREIGN KEY (IdHotel) REFERENCES Hotel(IdHotel),
+    FOREIGN KEY (IdArticulo) REFERENCES Articulo(IdArticulo)
 );
-PRINT 'Creada Exitosamente la tabla AsignacionArticuloHotel'
+PRINT 'Creada Exitosamente la tabla ArticuloHotel'
 GO
 
 -- Crear tabla de relación Cliente-Hotel
@@ -98,13 +105,3 @@ CREATE TABLE ClienteHotel (
 );
 PRINT 'Creada Exitosamente la tabla ClienteHotel'
 GO
-
-
--- Crear tabla de relación UsuarioHotel
-/*CREATE TABLE UsuarioHotel (
-    IdUsuario INT,
-    IdHotel INT,
-    CONSTRAINT PK_UsuarioHotel PRIMARY KEY (IdUsuario, IdHotel),
-    CONSTRAINT FK_UsuarioHotel_Usuario FOREIGN KEY (IdUsuario) REFERENCES Usuario(idusuario),
-    CONSTRAINT FK_UsuarioHotel_Hotel FOREIGN KEY (IdHotel) REFERENCES Hotel(IdHotel)
-);*/

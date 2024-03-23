@@ -16,25 +16,25 @@ BEGIN
 END;
 
 -- Insertar hoteles
-INSERT INTO Hotel (IdHotel, Nombre, Direccion, Estado, Telefono, IdUsuarioResponsable)
+INSERT INTO Hotel (Nombre, Direccion, Estado, Telefono, IdUsuarioResponsable)
 VALUES 
-    (1, 'Hotel1', 'Dirección Hotel1', 1, '123456789', 1),
-    (2, 'Hotel2', 'Dirección Hotel2', 1, '987654321', 2);
+    ('Hotel1', 'Dirección Hotel1', 1, '123456789', 1),
+    ('Hotel2', 'Dirección Hotel2', 1, '987654321', 2);
 
 -- Insertar categorías de artículos
-INSERT INTO CategoriaArticulo (IdCategoria, Descripcion, Estado)
+INSERT INTO Categoria (Nombre, Descripcion, Estado)
 VALUES 
-    (1, 'Categoría1', 1),
-    (2, 'Categoría2', 1),
-    (3, 'Categoría3', 1);
+    ('Categoría1', 'Se tiene xxx y yyy', 1),
+    ('Categoría2', 'Se tiene aaa y ddd', 1),
+    ('Categoría3', 'Se tiene ccc y fff', 1);
 
 -- Insertar artículos
 DECLARE @j INT = 1;
 WHILE @j <= 30
 BEGIN
-    INSERT INTO Articulo (IdArticulo, Nombre, Precio, IdCategoria)
+    INSERT INTO Articulo (Nombre, Precio, IdCategoria)
     VALUES 
-        (@j, 'Artículo' + CAST(@j AS NVARCHAR(2)), @j * 1000, 1);
+        ('Artículo' + CAST(@j AS NVARCHAR(2)), @j * 1000, 1);
     SET @j = @j + 1;
 END;
 
@@ -52,9 +52,9 @@ END;
 DECLARE @l INT = 1;
 WHILE @l <= 30
 BEGIN
-    INSERT INTO AsignacionArticuloHotel (IdAsignacion, Fecha, IdHotel, IdArticulo)
+    INSERT INTO ArticuloHotel (Fecha, IdHotel, IdArticulo)
     VALUES 
-        (@l, '2024-02-24', CASE WHEN @l <= 15 THEN 1 ELSE 2 END, @l);
+        ('2024-02-24', CASE WHEN @l <= 15 THEN 1 ELSE 2 END, @l);
     SET @l = @l + 1;
 END;
 

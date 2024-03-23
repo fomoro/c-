@@ -1,0 +1,9 @@
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform-main\Hotel\Sistema\Resorts_UNED.Datos\obj\Debug\Resorts_UNED.Datos.csproj.AssemblyReference.cache
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform-main\Hotel\Sistema\Resorts_UNED.Datos\obj\Debug\Resorts_UNED.Datos.csproj.CoreCompileInputs.cache
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform-main\Hotel\Sistema\Resorts_UNED.Datos\bin\Debug\Resorts_UNED.Datos.dll
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform-main\Hotel\Sistema\Resorts_UNED.Datos\bin\Debug\Resorts_UNED.Datos.pdb
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform-main\Hotel\Sistema\Resorts_UNED.Datos\bin\Debug\Resorts_UNED.Entidades.dll
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform-main\Hotel\Sistema\Resorts_UNED.Datos\bin\Debug\Resorts_UNED.Entidades.pdb
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform-main\Hotel\Sistema\Resorts_UNED.Datos\obj\Debug\Resorts_UNED.Datos.csproj.CopyComplete
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform-main\Hotel\Sistema\Resorts_UNED.Datos\obj\Debug\Resorts_UNED.Datos.dll
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform-main\Hotel\Sistema\Resorts_UNED.Datos\obj\Debug\Resorts_UNED.Datos.pdb

@@ -26,7 +26,7 @@ namespace Sistema.Datos
         }
         public SqlConnection CrearConexion()
         {
-            SqlConnection Cadena= new SqlConnection();
+            SqlConnection Cadena = new SqlConnection();
             try
             {
                 Cadena.ConnectionString = "Server=" + this.Servidor + "; Database=" + this.Base + ";";
@@ -39,8 +39,8 @@ namespace Sistema.Datos
                     Cadena.ConnectionString = Cadena.ConnectionString + "User Id=" + this.Usuario + ";Password=" + this.Clave;
                 }
             }
-            catch(Exception ex)
-            {                
+            catch (Exception ex)
+            {
                 Cadena = null;
                 throw ex;
             }

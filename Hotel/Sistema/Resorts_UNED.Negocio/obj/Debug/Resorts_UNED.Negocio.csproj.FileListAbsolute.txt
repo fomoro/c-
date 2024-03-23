@@ -9,3 +9,14 @@ C:\Users\57350\Desktop\Hotel\csharp-webform\Hotel\Sistema\Resorts_UNED.Negocio\o
 C:\Users\57350\Desktop\Hotel\csharp-webform\Hotel\Sistema\Resorts_UNED.Negocio\obj\Debug\Resorts_.C6C2F0BE.Up2Date
 C:\Users\57350\Desktop\Hotel\csharp-webform\Hotel\Sistema\Resorts_UNED.Negocio\obj\Debug\Resorts_UNED.Negocio.dll
 C:\Users\57350\Desktop\Hotel\csharp-webform\Hotel\Sistema\Resorts_UNED.Negocio\obj\Debug\Resorts_UNED.Negocio.pdb
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform-main\Hotel\Sistema\Resorts_UNED.Negocio\obj\Debug\Resorts_UNED.Negocio.csproj.AssemblyReference.cache
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform-main\Hotel\Sistema\Resorts_UNED.Negocio\obj\Debug\Resorts_UNED.Negocio.csproj.CoreCompileInputs.cache
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform-main\Hotel\Sistema\Resorts_UNED.Negocio\obj\Debug\Resorts_UNED.Negocio.dll
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform-main\Hotel\Sistema\Resorts_UNED.Negocio\obj\Debug\Resorts_UNED.Negocio.pdb
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform-main\Hotel\Sistema\Resorts_UNED.Negocio\bin\Debug\Resorts_UNED.Negocio.dll
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform-main\Hotel\Sistema\Resorts_UNED.Negocio\bin\Debug\Resorts_UNED.Negocio.pdb
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform-main\Hotel\Sistema\Resorts_UNED.Negocio\bin\Debug\Resorts_UNED.Datos.dll
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform-main\Hotel\Sistema\Resorts_UNED.Negocio\bin\Debug\Resorts_UNED.Entidades.dll
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform-main\Hotel\Sistema\Resorts_UNED.Negocio\bin\Debug\Resorts_UNED.Datos.pdb
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform-main\Hotel\Sistema\Resorts_UNED.Negocio\bin\Debug\Resorts_UNED.Entidades.pdb
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform-main\Hotel\Sistema\Resorts_UNED.Negocio\obj\Debug\Resorts_UNED.Negocio.csproj.CopyComplete

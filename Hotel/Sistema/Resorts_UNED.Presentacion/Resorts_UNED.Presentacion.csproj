@@ -93,10 +93,6 @@
     <None Include="Resources\cliente_b.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Resorts-UNED.Entidades\Resorts-UNED.Entidades.csproj">
-      <Project>{1147664e-1398-46de-9eb0-154587164e25}</Project>
-      <Name>Resorts-UNED.Entidades</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Resorts_UNED.Negocio\Resorts_UNED.Negocio.csproj">
       <Project>{3f7c208f-fd54-4fb1-b663-daa32b51011f}</Project>
       <Name>Resorts_UNED.Negocio</Name>
