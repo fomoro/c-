@@ -32,75 +32,6 @@
                 }
                 return dtResultado;
             }
-
-            // Método para buscar una categoría de artículo por ID
-            public DataTable BuscarCategoriaPorId(int idCategoria)
-            {
-                DataTable dtResultado = new DataTable("Categoria");
-                try
-                {
-                    using (SqlConnection sqlCon = conexion.CrearConexion())
-                    {
-                        sqlCon.Open();
-                        SqlCommand sqlCmd = new SqlCommand("BuscarCategoriaPorId", sqlCon);
-                        sqlCmd.CommandType = CommandType.StoredProcedure;
-                        sqlCmd.Parameters.AddWithValue("@IdCategoria", idCategoria);
-                        SqlDataAdapter sqlDat = new SqlDataAdapter(sqlCmd);
-                        sqlDat.Fill(dtResultado);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-                return dtResultado;
-            }
-
-            public DataTable BuscarCategoriaPorNombre(string nombre)
-            {
-                DataTable dtResultado = new DataTable("Categoria");
-                try
-                {
-                    using (SqlConnection sqlCon = conexion.CrearConexion())
-                    {
-                        sqlCon.Open();
-                        SqlCommand sqlCmd = new SqlCommand("BuscarCategoriaPorNombre", sqlCon);
-                        sqlCmd.CommandType = CommandType.StoredProcedure;
-                        sqlCmd.Parameters.AddWithValue("@Nombre", nombre);
-                        SqlDataAdapter sqlDat = new SqlDataAdapter(sqlCmd);
-                        sqlDat.Fill(dtResultado);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-                return dtResultado;
-            }
-
-            // Método para buscar una categoría de artículo por descripción
-            public DataTable BuscarCategoriaPorDescripcion(string descripcion)
-            {
-                DataTable dtResultado = new DataTable("Categoria");
-                try
-                {
-                    using (SqlConnection sqlCon = conexion.CrearConexion())
-                    {
-                        sqlCon.Open();
-                        SqlCommand sqlCmd = new SqlCommand("BuscarCategoriaPorDescripcion", sqlCon);
-                        sqlCmd.CommandType = CommandType.StoredProcedure;
-                        sqlCmd.Parameters.AddWithValue("@valor", descripcion);
-                        SqlDataAdapter sqlDat = new SqlDataAdapter(sqlCmd);
-                        sqlDat.Fill(dtResultado);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-                return dtResultado;
-            }
-
             // Método para insertar una nueva categoría de artículo
             public void InsertarCategoria(string nombre, string descripcion, bool estado)
             {
@@ -123,11 +54,9 @@
                 }
             }
 
-            // Método para actualizar una categoría de artículo
             public string ActualizarCategoria(Categoria obj)
             {
                 string Rpta = "";
-                SqlConnection SqlCon = new SqlConnection();
                 try
                 {
                     using (SqlConnection sqlCon = conexion.CrearConexion())
@@ -138,7 +67,6 @@
                         sqlCmd.Parameters.AddWithValue("@IdCategoria", obj.IdCategoria);
                         sqlCmd.Parameters.AddWithValue("@Nombre", obj.Nombre);
                         sqlCmd.Parameters.AddWithValue("@Descripcion", obj.Descripcion);
-                        sqlCmd.Parameters.AddWithValue("@Estado", obj.Estado);
                         sqlCmd.ExecuteNonQuery();
                         Rpta = sqlCmd.ExecuteNonQuery() == 1 ? "OK" : "No se pudo actualizar el registro";
                     }
@@ -148,75 +76,52 @@
                 {
                     Rpta = ex.Message;
                 }
-                finally
-                {
-                    if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
-                }
                 return Rpta;
             }
-
-            // Método para eliminar una categoría de artículo
-            public void EliminarCategoria(int idCategoria)
+            public DataTable BuscarCategoriaPorId(int idCategoria)
             {
+                DataTable dtResultado = new DataTable("Categoria");
                 try
                 {
                     using (SqlConnection sqlCon = conexion.CrearConexion())
                     {
                         sqlCon.Open();
-                        SqlCommand sqlCmd = new SqlCommand("EliminarCategoria", sqlCon);
+                        SqlCommand sqlCmd = new SqlCommand("BuscarCategoriaPorId", sqlCon);
                         sqlCmd.CommandType = CommandType.StoredProcedure;
                         sqlCmd.Parameters.AddWithValue("@IdCategoria", idCategoria);
-                        sqlCmd.ExecuteNonQuery();
+                        SqlDataAdapter sqlDat = new SqlDataAdapter(sqlCmd);
+                        sqlDat.Fill(dtResultado);
                     }
                 }
                 catch (Exception ex)
                 {
                     throw ex;
                 }
+                return dtResultado;
             }
-
-            // Método para desactivar una categoría de artículo
-            public void DesactivarCategoria(int idCategoria)
+            public DataTable BuscarCategoriaPorNombre(string nombre)
             {
+                DataTable dtResultado = new DataTable("Categoria");
                 try
                 {
                     using (SqlConnection sqlCon = conexion.CrearConexion())
                     {
                         sqlCon.Open();
-                        SqlCommand sqlCmd = new SqlCommand("DesactivarCategoria", sqlCon);
+                        SqlCommand sqlCmd = new SqlCommand("BuscarCategoriaPorNombre", sqlCon);
                         sqlCmd.CommandType = CommandType.StoredProcedure;
-                        sqlCmd.Parameters.AddWithValue("@IdCategoria", idCategoria);
-                        sqlCmd.ExecuteNonQuery();
+                        sqlCmd.Parameters.AddWithValue("@Nombre", nombre);
+                        SqlDataAdapter sqlDat = new SqlDataAdapter(sqlCmd);
+                        sqlDat.Fill(dtResultado);
                     }
                 }
                 catch (Exception ex)
                 {
                     throw ex;
                 }
+                return dtResultado;
             }
-
-            // Método para activar una categoría de artículo
-            public void ActivarCategoria(int idCategoria)
-            {
-                try
-                {
-                    using (SqlConnection sqlCon = conexion.CrearConexion())
-                    {
-                        sqlCon.Open();
-                        SqlCommand sqlCmd = new SqlCommand("ActivarCategoria", sqlCon);
-                        sqlCmd.CommandType = CommandType.StoredProcedure;
-                        sqlCmd.Parameters.AddWithValue("@IdCategoria", idCategoria);
-                        sqlCmd.ExecuteNonQuery();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }
-
-
-            public bool ExisteCategoriaConEsteNombre(string nombreCategoria)
+            // Método para verificar si existe una categoría con el mismo nombre pero diferente ID
+            public bool ExisteCategoriaConEsteNombre(string nombreCategoria, int idCategoria)
             {
                 using (SqlConnection conexionSql = Conexion.getInstancia().CrearConexion())
                 {
@@ -225,6 +130,7 @@
                         SqlCommand comando = new SqlCommand("ExisteCategoriaConEsteNombre", conexionSql);
                         comando.CommandType = CommandType.StoredProcedure;
                         comando.Parameters.AddWithValue("@Nombre", nombreCategoria);
+                        comando.Parameters.AddWithValue("@IdCategoria", idCategoria); // Nuevo parámetro
                         SqlParameter parExiste = new SqlParameter("@Existe", SqlDbType.Bit)
                         {
                             Direction = ParameterDirection.Output
@@ -241,6 +147,69 @@
                 }
             }
 
+            // Método para eliminar una categoría de artículo
+            public string EliminarCategoria(int idCategoria)
+            {
+                string Rpta = "";
+                try
+                {
+                    using (SqlConnection sqlCon = conexion.CrearConexion())
+                    {
+                        sqlCon.Open();
+                        SqlCommand sqlCmd = new SqlCommand("categoria_eliminar", sqlCon);
+                        sqlCmd.CommandType = CommandType.StoredProcedure;
+                        sqlCmd.Parameters.AddWithValue("@idcategoria", idCategoria);
+                        Rpta = sqlCmd.ExecuteNonQuery() == 1 ? "OK" : "No se pudo eliminar el registro";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Rpta = ex.Message;
+                }
+                return Rpta;
+            }
+
+            public string DesactivarCategoria(int idCategoria)
+            {
+                string Rpta = "";
+                try
+                {
+                    using (SqlConnection sqlCon = conexion.CrearConexion())
+                    {
+                        sqlCon.Open();
+                        SqlCommand sqlCmd = new SqlCommand("categoria_desactivar", sqlCon);
+                        sqlCmd.CommandType = CommandType.StoredProcedure;
+                        sqlCmd.Parameters.AddWithValue("@idcategoria", idCategoria);
+                        Rpta = sqlCmd.ExecuteNonQuery() == 1 ? "OK" : "No se pudo desactivar el registro";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Rpta = ex.Message;
+                }
+                return Rpta;
+            }
+
+            public string ActivarCategoria(int idCategoria)
+            {
+                string Rpta = "";
+                try
+                {
+                    using (SqlConnection sqlCon = conexion.CrearConexion())
+                    {
+                        sqlCon.Open();
+                        SqlCommand sqlCmd = new SqlCommand("categoria_activar", sqlCon);
+                        sqlCmd.CommandType = CommandType.StoredProcedure;
+                        sqlCmd.Parameters.AddWithValue("@idcategoria", idCategoria);
+                        Rpta = sqlCmd.ExecuteNonQuery() == 1 ? "OK" : "No se pudo activar el registro";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Rpta = ex.Message;
+                }
+                return Rpta;
+            }
 
         }
     }

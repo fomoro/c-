@@ -49,9 +49,12 @@ namespace Resorts_UNED.Presentacion
 
         private void Formato() {
             DgvListado.Columns[0].Visible = false;
-            DgvListado.Columns[1].Visible = false;
-            DgvListado.Columns[2].Width = 200;
-            DgvListado.Columns[3].HeaderText = "Descripción";           
+            DgvListado.Columns[0].Width = 70;
+            DgvListado.Columns[1].Visible = false;            
+            DgvListado.Columns[2].Width = 100;
+            DgvListado.Columns[3].Width = 300;
+            DgvListado.Columns[3].HeaderText = "Descripción";
+            DgvListado.Columns[4].Width = 60;
         }
 
         private void Limpiar()
@@ -72,12 +75,12 @@ namespace Resorts_UNED.Presentacion
         }
         private void MensajeError(string Mensaje)
         {
-            MessageBox.Show(Mensaje, "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(Mensaje, "Sistema de RESORTS", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void MensajeOk(string Mensaje)
         {
-            MessageBox.Show(Mensaje, "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(Mensaje, "Sistema de RESORTS", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void FrmCategoria_Load(object sender, EventArgs e)
@@ -139,8 +142,7 @@ namespace Resorts_UNED.Presentacion
                 BtnInsertar.Visible = false;
                 TxtId.Text = Convert.ToString(DgvListado.CurrentRow.Cells["IdCategoria"].Value);
                 TxtNombre.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Nombre"].Value);
-                TxtDescripcion.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Descripcion"].Value);
-                //TODO: Estado
+                TxtDescripcion.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Descripcion"].Value);                
                 TabGeneral.SelectedIndex = 1;
             }
             catch (Exception)
@@ -162,8 +164,7 @@ namespace Resorts_UNED.Presentacion
                 }
                 else
                 {
-                    Rpta = new NCategoria().ActualizarCategoria(Convert.ToInt32(TxtId.Text),
-                        TxtNombre.Text.Trim(), TxtDescripcion.Text.Trim(), true);
+                    Rpta = new NCategoria().ActualizarCategoria(Convert.ToInt32(TxtId.Text), TxtNombre.Text.Trim(), TxtDescripcion.Text.Trim());
                     if (Rpta.Equals("OK"))
                     {
                         this.MensajeOk("Se actualizó de forma correcta el registro");
@@ -200,9 +201,6 @@ namespace Resorts_UNED.Presentacion
             }
         }
 
-        /*
-
-       
         private void DgvListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == DgvListado.Columns["Seleccionar"].Index)
@@ -228,7 +226,7 @@ namespace Resorts_UNED.Presentacion
                         if (Convert.ToBoolean(row.Cells[0].Value))
                         {
                             Codigo = Convert.ToInt32(row.Cells[1].Value);
-                            Rpta = NCategoria.Eliminar(Codigo);
+                            Rpta = new NCategoria().EliminarCategoria(Codigo);
 
                             if (Rpta.Equals("OK"))
                             {
@@ -265,7 +263,7 @@ namespace Resorts_UNED.Presentacion
                         if (Convert.ToBoolean(row.Cells[0].Value))
                         {
                             Codigo = Convert.ToInt32(row.Cells[1].Value);
-                            Rpta = NCategoria.Activar(Codigo);
+                            Rpta = new NCategoria().ActivarCategoria(Codigo);
 
                             if (Rpta.Equals("OK"))
                             {
@@ -302,7 +300,7 @@ namespace Resorts_UNED.Presentacion
                         if (Convert.ToBoolean(row.Cells[0].Value))
                         {
                             Codigo = Convert.ToInt32(row.Cells[1].Value);
-                            Rpta = NCategoria.Desactivar(Codigo);
+                            Rpta = new NCategoria().DesactivarCategoria(Codigo);
 
                             if (Rpta.Equals("OK"))
                             {
@@ -323,6 +321,6 @@ namespace Resorts_UNED.Presentacion
             }
         }
     
-        */
+       
     }
 }

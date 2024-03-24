@@ -1,10 +1,7 @@
 ﻿namespace Resorts_UNED.Entidades
 {
-    using global::Resorts_UNED.Datos;
     using System;
-    using System.Collections.Generic;
     using System.Data;
-    using System.Data.SqlClient;
 
     namespace Resorts_UNED.Datos
     {
@@ -66,52 +63,33 @@
             }
 
             // Método para actualizar una categoría de artículo
-            public string ActualizarCategoria(int idCategoria, 
-                string nombre, string descripcion, bool estado)
+            public string ActualizarCategoria(int idCategoria, string nombre, string descripcion)
             {
-                // Obtener la categoría actual
-                var dataTable = datosCategoria.BuscarCategoriaPorId(idCategoria);
-
-                // Si no se encontró la categoría, retornar un mensaje de error
-                if (dataTable.Rows.Count == 0)
+                // Verificar si otro registro ya tiene el mismo nombre
+                if (datosCategoria.ExisteCategoriaConEsteNombre(nombre, idCategoria))
                 {
-                    return "La categoría no existe";
+                    return "Ya existe una categoría con este nombre.";
                 }
-
-                // Convertir el DataTable a un objeto Categoria
-                var categoriaActual = new Categoria();
-                categoriaActual.IdCategoria = idCategoria;
-                categoriaActual.Nombre = dataTable.Rows[0]["Nombre"].ToString();
-                categoriaActual.Descripcion = dataTable.Rows[0]["Descripcion"].ToString();
-                categoriaActual.Estado = (bool)dataTable.Rows[0]["Estado"];
-
-                // Si el nombre no ha cambiado, solo actualizar la descripción y el estado
-                if (nombre.Equals(categoriaActual.Nombre))
+                else
                 {
-                    categoriaActual.Descripcion = descripcion;
-                    categoriaActual.Estado = estado;
-                    return datosCategoria.ActualizarCategoria(categoriaActual);
-                }
+                    // Si no hay otra categoría con el mismo nombre, actualizar la categoría
+                    Categoria categoria = new Categoria()
+                    {
+                        IdCategoria = idCategoria,
+                        Nombre = nombre,
+                        Descripcion = descripcion
+                    };
 
-                // Si el nombre ha cambiado, verificar si ya existe una categoría con ese nombre
-                if (datosCategoria.ExisteCategoriaConEsteNombre(nombre))
-                {
-                    return "La categoría ya existe";
+                    return datosCategoria.ActualizarCategoria(categoria);
                 }
-
-                // Si el nombre no existe, actualizar la categoría
-                categoriaActual.Nombre = nombre;
-                categoriaActual.Descripcion = descripcion;
-                categoriaActual.Estado = estado;
-                return datosCategoria.ActualizarCategoria(categoriaActual);
             }
-
+            
             // Método para eliminar una categoría de artículo
-            public void EliminarCategoria(int idCategoria)
+            public string EliminarCategoria(int idCategoria)
             {
                 try
                 {
-                    datosCategoria.EliminarCategoria(idCategoria);
+                    return datosCategoria.EliminarCategoria(idCategoria);
                 }
                 catch (Exception ex)
                 {
@@ -120,11 +98,11 @@
             }
 
             // Método para desactivar una categoría de artículo
-            public void DesactivarCategoria(int idCategoria)
+            public string DesactivarCategoria(int idCategoria)
             {
                 try
                 {
-                    datosCategoria.DesactivarCategoria(idCategoria);
+                    return datosCategoria.DesactivarCategoria(idCategoria);
                 }
                 catch (Exception ex)
                 {
@@ -133,11 +111,11 @@
             }
 
             // Método para activar una categoría de artículo
-            public void ActivarCategoria(int idCategoria)
+            public string ActivarCategoria(int idCategoria)
             {
                 try
                 {
-                    datosCategoria.ActivarCategoria(idCategoria);
+                    return datosCategoria.ActivarCategoria(idCategoria);
                 }
                 catch (Exception ex)
                 {

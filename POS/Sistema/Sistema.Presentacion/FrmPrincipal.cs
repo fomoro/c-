@@ -110,5 +110,12 @@ namespace Sistema.Presentacion
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void ArtículosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmArtículo frm = new FrmArtículo();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }

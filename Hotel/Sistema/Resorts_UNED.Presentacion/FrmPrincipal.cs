@@ -54,17 +54,6 @@ namespace Resorts_UNED.Presentacion
             this.Close();
         }
 
-        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
 
         private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
         {
