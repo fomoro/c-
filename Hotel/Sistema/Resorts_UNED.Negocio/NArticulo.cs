@@ -1,69 +1,115 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Resorts_UNED.Datos;
+using Resorts_UNED.Entidades;
+using System;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Resorts_UNED.Negocio
 {
     public class NArticulo
     {
-        private Datos.DArticulo datosArticulo = new Datos.DArticulo();
+        private readonly DArticulo datos = new DArticulo();
 
-        public DataTable ListarArticulos()
+        public DataTable Listar()
         {
             try
             {
-                return datosArticulo.ListarArticulos();
+                return datos.Listar();
             }
             catch (Exception ex)
             {
-                // Handle exception or log it
-                Console.WriteLine("Error al listar los artículos: " + ex.Message);
+                throw ex;
+            }
+        }
+        public DataTable Buscar(string Valor)
+        {
+            try
+            {
+                return datos.Buscar(Valor);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public string Insertar(Articulo Obj)
+        {
+            try
+            {
+                string Existe = datos.Existe(Obj.Nombre);
+                if (Existe.Equals("1"))
+                {
+                    return "El artículo ya existe";
+                }
+                else
+                {
+                    return datos.Insertar(Obj);
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+        public string Actualizar(Entidades.Articulo Obj)
+        {
+            try
+            {
+                /*                       
+                   if (NombreAnt.Equals(Obj.Nombre))
+                   {
+                       return datos.Actualizar(Obj);
+                   }
+                   else
+                   {
+                       string Existe = datos.Existe(Obj.Nombre);
+                       if (Existe.Equals("1"))
+                       {
+                           return "El artículo ya existe";
+                       }
+                       else
+                       {                            
+                           return datos.Actualizar(Obj);
+                       }
+                   }
+                   */
                 return null;
             }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
         }
-
-        public bool InsertarArticulo(string nombre, int precio, int idCategoria)
+        public string Eliminar(int Id)
         {
             try
             {
-                return datosArticulo.InsertarArticulo(nombre, precio, idCategoria);
+                return datos.Eliminar(Id);
             }
             catch (Exception ex)
             {
-                // Handle exception or log it
-                Console.WriteLine("Error al insertar el artículo: " + ex.Message);
-                return false;
+                return ex.Message;
             }
         }
-
-        public bool ActualizarArticulo(int idArticulo, string nombre, int precio, int idCategoria)
+        public string Activar(int Id)
         {
             try
             {
-                return datosArticulo.ActualizarArticulo(idArticulo, nombre, precio, idCategoria);
+                return datos.Activar(Id);
             }
             catch (Exception ex)
             {
-                // Handle exception or log it
-                Console.WriteLine("Error al actualizar el artículo: " + ex.Message);
-                return false;
+                return ex.Message;
             }
         }
-
-        public bool EliminarArticulo(int idArticulo)
+        public string Desactivar(int Id)
         {
             try
             {
-                return datosArticulo.EliminarArticulo(idArticulo);
+                return datos.Desactivar(Id);
             }
             catch (Exception ex)
             {
-                // Handle exception or log it
-                Console.WriteLine("Error al eliminar el artículo: " + ex.Message);
-                return false;
+                return ex.Message;
             }
         }
     }

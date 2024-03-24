@@ -63,14 +63,18 @@ GO
 -- Crear la tabla Articulo
 CREATE TABLE Articulo (
     IdArticulo INT PRIMARY KEY IDENTITY,
-    Nombre NVARCHAR(100),
-    Precio INT,
     IdCategoria INT,
+    Codigo NVARCHAR(50) null,
+    Nombre NVARCHAR(100) not null unique,
+    Precio_Venta DECIMAL(11,2) not null,
+    Stock INT not null,
+    Descripcion NVARCHAR(255) null,
+    Imagen NVARCHAR(20) null,
+    Estado BIT default(1),
     FOREIGN KEY (IdCategoria) REFERENCES Categoria(IdCategoria)
 );
 PRINT 'Creada Exitosamente la tabla Articulo'
 GO
-
 
 -- Crear la tabla ArticuloHotel
 CREATE TABLE ArticuloHotel (
@@ -84,10 +88,9 @@ CREATE TABLE ArticuloHotel (
 PRINT 'Creada Exitosamente la tabla ArticuloHotel'
 GO
 
-
 -- Crear la tabla Cliente
 CREATE TABLE Cliente (
-    IdCliente INT PRIMARY KEY IDENTITY,
+    Identificacion NVARCHAR(20) PRIMARY KEY,
     Nombre NVARCHAR(100),
     PrimerApellido NVARCHAR(100),
     SegundoApellido NVARCHAR(100),
@@ -101,9 +104,9 @@ GO
 CREATE TABLE Pedido (
     IdPedido INT PRIMARY KEY IDENTITY,
     FechaPedido DATE,
-    IdCliente INT,
+    IdCliente NVARCHAR(20), -- Cambiado a NVARCHAR(20)
     IdArticulo INT,
-    FOREIGN KEY (IdCliente) REFERENCES Cliente(IdCliente),
+    FOREIGN KEY (IdCliente) REFERENCES Cliente(Identificacion), -- Cambiado a Identificacion
     FOREIGN KEY (IdArticulo) REFERENCES Articulo(IdArticulo),    
 );
 PRINT 'Creada Exitosamente la tabla Pedido'

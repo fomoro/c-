@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3F7C208F-FD54-4FB1-B663-DAA32B51011F}</ProjectGuid>
+    <ProjectGuid>{1F212068-7165-4F6F-8020-F608BC4A07BF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Resorts_UNED.Negocio</RootNamespace>
     <AssemblyName>Resorts_UNED.Negocio</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -42,12 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NArticulo.cs" />
-    <Compile Include="NArticuloHotel.cs" />
-    <Compile Include="NHotel.cs" />
-    <Compile Include="NCliente.cs" />
     <Compile Include="NCategoria.cs" />
-    <Compile Include="NRol.cs" />
-    <Compile Include="NUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

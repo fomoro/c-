@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
+using Resorts_UNED.Entidades;
 
 namespace Resorts_UNED.Datos
 {
@@ -12,95 +9,212 @@ namespace Resorts_UNED.Datos
     {
         private Conexion conexion = Conexion.getInstancia();
 
-        public DataTable ListarArticulos()
+        public DataTable Listar()
         {
-            DataTable dtArticulos = new DataTable("Articulos");
+            SqlDataReader Resultado;
+            DataTable Tabla = new DataTable();
+            SqlConnection SqlCon = new SqlConnection();
             try
             {
-                using (SqlConnection cn = conexion.CrearConexion())
-                {
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM Articulo", cn);
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    adapter.Fill(dtArticulos);
-                }
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                SqlCommand Comando = new SqlCommand("articulo_listar", SqlCon);
+                Comando.CommandType = CommandType.StoredProcedure;
+                SqlCon.Open();
+                Resultado = Comando.ExecuteReader();
+                Tabla.Load(Resultado);
+                return Tabla;
             }
             catch (Exception ex)
             {
-                // Handle exception
-                Console.WriteLine("Error al listar los artículos: " + ex.Message);
+                throw ex;
             }
-            return dtArticulos;
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
         }
-
-        public bool InsertarArticulo(string nombre, int precio, int idCategoria)
+        public DataTable Buscar(string Valor)
         {
+            SqlDataReader Resultado;
+            DataTable Tabla = new DataTable();
+            SqlConnection SqlCon = new SqlConnection();
             try
             {
-                using (SqlConnection cn = conexion.CrearConexion())
-                {
-                    SqlCommand cmd = new SqlCommand("INSERT INTO Articulo (Nombre, Precio, IdCategoria) VALUES (@Nombre, @Precio, @IdCategoria)", cn);
-                    cmd.Parameters.AddWithValue("@Nombre", nombre);
-                    cmd.Parameters.AddWithValue("@Precio", precio);
-                    cmd.Parameters.AddWithValue("@IdCategoria", idCategoria);
-
-                    cn.Open();
-                    int filasAfectadas = cmd.ExecuteNonQuery();
-                    return filasAfectadas > 0;
-                }
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                SqlCommand Comando = new SqlCommand("articulo_buscar", SqlCon);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.Add("@valor", SqlDbType.VarChar).Value = Valor;
+                SqlCon.Open();
+                Resultado = Comando.ExecuteReader();
+                Tabla.Load(Resultado);
+                return Tabla;
             }
             catch (Exception ex)
             {
-                // Handle exception
-                Console.WriteLine("Error al insertar el artículo: " + ex.Message);
-                return false;
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
             }
         }
-
-        public bool ActualizarArticulo(int idArticulo, string nombre, int precio, int idCategoria)
+        public string Existe(string Valor)
         {
+            string Rpta = "";
+            SqlConnection SqlCon = new SqlConnection();
             try
             {
-                using (SqlConnection cn = conexion.CrearConexion())
-                {
-                    SqlCommand cmd = new SqlCommand("UPDATE Articulo SET Nombre = @Nombre, Precio = @Precio, IdCategoria = @IdCategoria WHERE IdArticulo = @IdArticulo", cn);
-                    cmd.Parameters.AddWithValue("@IdArticulo", idArticulo);
-                    cmd.Parameters.AddWithValue("@Nombre", nombre);
-                    cmd.Parameters.AddWithValue("@Precio", precio);
-                    cmd.Parameters.AddWithValue("@IdCategoria", idCategoria);
-
-                    cn.Open();
-                    int filasAfectadas = cmd.ExecuteNonQuery();
-                    return filasAfectadas > 0;
-                }
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                SqlCommand Comando = new SqlCommand("articulo_existe", SqlCon);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.Add("@valor", SqlDbType.VarChar).Value = Valor;
+                SqlParameter ParExiste = new SqlParameter();
+                ParExiste.ParameterName = "@existe";
+                ParExiste.SqlDbType = SqlDbType.Int;
+                ParExiste.Direction = ParameterDirection.Output;
+                Comando.Parameters.Add(ParExiste);
+                SqlCon.Open();
+                Comando.ExecuteNonQuery();
+                Rpta = Convert.ToString(ParExiste.Value);
             }
             catch (Exception ex)
             {
-                // Handle exception
-                Console.WriteLine("Error al actualizar el artículo: " + ex.Message);
-                return false;
+                Rpta = ex.Message;
             }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return Rpta;
         }
-
-        public bool EliminarArticulo(int idArticulo)
+        public string Insertar(Articulo Obj)
         {
+            string Rpta = "";
+            SqlConnection SqlCon = new SqlConnection();
             try
             {
-                using (SqlConnection cn = conexion.CrearConexion())
-                {
-                    SqlCommand cmd = new SqlCommand("DELETE FROM Articulo WHERE IdArticulo = @IdArticulo", cn);
-                    cmd.Parameters.AddWithValue("@IdArticulo", idArticulo);
-
-                    cn.Open();
-                    int filasAfectadas = cmd.ExecuteNonQuery();
-                    return filasAfectadas > 0;
-                }
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                SqlCommand Comando = new SqlCommand("articulo_insertar", SqlCon);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.Add("@idcategoria", SqlDbType.Int).Value = Obj.IdCategoria;
+                Comando.Parameters.Add("@codigo", SqlDbType.VarChar).Value = Obj.Codigo;
+                Comando.Parameters.Add("@nombre", SqlDbType.VarChar).Value = Obj.Nombre;
+                Comando.Parameters.Add("@precio_venta", SqlDbType.Decimal).Value = Obj.PrecioVenta;
+                Comando.Parameters.Add("@stock", SqlDbType.Int).Value = Obj.Stock;
+                Comando.Parameters.Add("@descripcion", SqlDbType.VarChar).Value = Obj.Descripcion;
+                Comando.Parameters.Add("@imagen", SqlDbType.VarChar).Value = Obj.Imagen;
+                SqlCon.Open();
+                Rpta = Comando.ExecuteNonQuery() == 1 ? "OK" : "No se pudo ingresar el registro";
             }
             catch (Exception ex)
             {
-                // Handle exception
-                Console.WriteLine("Error al eliminar el artículo: " + ex.Message);
-                return false;
+                Rpta = ex.Message;
             }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return Rpta;
         }
+        public string Actualizar(Articulo Obj)
+        {
+            string Rpta = "";
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                SqlCommand Comando = new SqlCommand("articulo_actualizar", SqlCon);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.Add("@idarticulo", SqlDbType.Int).Value = Obj.IdArticulo;
+                Comando.Parameters.Add("@idcategoria", SqlDbType.Int).Value = Obj.IdCategoria;
+                Comando.Parameters.Add("@codigo", SqlDbType.VarChar).Value = Obj.Codigo;
+                Comando.Parameters.Add("@nombre", SqlDbType.VarChar).Value = Obj.Nombre;
+                Comando.Parameters.Add("@precio_venta", SqlDbType.Decimal).Value = Obj.PrecioVenta;
+                Comando.Parameters.Add("@stock", SqlDbType.Int).Value = Obj.Stock;
+                Comando.Parameters.Add("@descripcion", SqlDbType.VarChar).Value = Obj.Descripcion;
+                Comando.Parameters.Add("@imagen", SqlDbType.VarChar).Value = Obj.Imagen;
+                SqlCon.Open();
+                Rpta = Comando.ExecuteNonQuery() == 1 ? "OK" : "No se pudo actualizar el registro";
+            }
+            catch (Exception ex)
+            {
+                Rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return Rpta;
+        }
+        public string Eliminar(int Id)
+        {
+            string Rpta = "";
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                SqlCommand Comando = new SqlCommand("articulo_eliminar", SqlCon);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.Add("@idarticulo", SqlDbType.Int).Value = Id;
+                SqlCon.Open();
+                Rpta = Comando.ExecuteNonQuery() == 1 ? "OK" : "No se pudo eliminar el registro";
+            }
+            catch (Exception ex)
+            {
+                Rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return Rpta;
+        }
+        public string Activar(int Id)
+        {
+            string Rpta = "";
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                SqlCommand Comando = new SqlCommand("articulo_activar", SqlCon);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.Add("@idarticulo", SqlDbType.Int).Value = Id;
+                SqlCon.Open();
+                Rpta = Comando.ExecuteNonQuery() == 1 ? "OK" : "No se pudo activar el registro";
+            }
+            catch (Exception ex)
+            {
+                Rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return Rpta;
+        }
+        public string Desactivar(int Id)
+        {
+            string Rpta = "";
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                SqlCommand Comando = new SqlCommand("articulo_desactivar", SqlCon);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.Add("@idarticulo", SqlDbType.Int).Value = Id;
+                SqlCon.Open();
+                Rpta = Comando.ExecuteNonQuery() == 1 ? "OK" : "No se pudo desactivar el registro";
+            }
+            catch (Exception ex)
+            {
+                Rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return Rpta;
+        }
+
     }
 }

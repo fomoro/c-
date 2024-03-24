@@ -1,5 +1,5 @@
 -- Procedimiento para listar todas las categorías
-CREATE PROCEDURE ListarCategorias
+CREATE PROCEDURE Categorias_Listar
 AS
 BEGIN
     -- Selecciona información de todas las categorías ordenadas por nombre
@@ -9,8 +9,9 @@ BEGIN
 END;
 GO
 
+-------------------------------------------------------------------------------------
 -- Procedimiento para buscar una categoría por su Id
-CREATE PROCEDURE BuscarCategoriaPorId
+CREATE PROCEDURE CategoriaBuscarPorId
     @IdCategoria INT
 AS
 BEGIN
@@ -21,8 +22,9 @@ BEGIN
 END;
 GO
 
+-------------------------------------------------------------------------------------
 -- Procedimiento para buscar categorías por su nombre
-CREATE PROCEDURE BuscarCategoriaPorNombre
+CREATE PROCEDURE CategoriaBuscarPorNombre
     @Nombre NVARCHAR(50)
 AS
 BEGIN
@@ -34,8 +36,9 @@ BEGIN
 END;
 GO
 
+-------------------------------------------------------------------------------------
 -- Procedimiento para insertar una nueva categoría
-CREATE PROCEDURE InsertarCategoria
+CREATE PROCEDURE CategoriaInsertar
     @Nombre NVARCHAR(50),
     @Descripcion NVARCHAR(100),
     @Estado BIT
@@ -47,8 +50,9 @@ BEGIN
 END;
 GO
 
+-------------------------------------------------------------------------------------
 -- Procedimiento para actualizar información de una categoría existente
-CREATE PROCEDURE ActualizarCategoria
+CREATE PROCEDURE CategoriaActualizar
     @IdCategoria INT,
     @Nombre NVARCHAR(50),
     @Descripcion NVARCHAR(100)    
@@ -62,8 +66,9 @@ BEGIN
 END;
 GO
 
+-------------------------------------------------------------------------------------
 -- Procedimiento para verificar si existe una categoría con un nombre dado
-CREATE PROCEDURE ExisteCategoriaConEsteNombre
+CREATE PROCEDURE CategoriaExisteConEsteNombre
     @Nombre NVARCHAR(50),
     @IdCategoria INT,
     @Existe BIT OUTPUT
@@ -77,9 +82,9 @@ BEGIN
 END;
 GO
 
-
+-------------------------------------------------------------------------------------
 -- Procedimiento para eliminar una categoría
-CREATE PROCEDURE categoria_eliminar
+CREATE PROCEDURE Categoria_eliminar
     @idcategoria INT
 AS
 BEGIN
@@ -89,8 +94,9 @@ BEGIN
 END;
 GO
 
+-------------------------------------------------------------------------------------
 -- Procedimiento para desactivar una categoría
-CREATE PROCEDURE categoria_desactivar
+CREATE PROCEDURE Categoria_desactivar
     @idcategoria INT
 AS
 BEGIN
@@ -101,8 +107,9 @@ BEGIN
 END;
 GO
 
+-------------------------------------------------------------------------------------
 -- Procedimiento para activar una categoría
-CREATE PROCEDURE categoria_activar
+CREATE PROCEDURE Categoria_activar
     @idcategoria INT
 AS
 BEGIN
@@ -111,4 +118,14 @@ BEGIN
     SET estado = 1
     WHERE idcategoria = @idcategoria;
 END;
+GO
+
+-------------------------------------------------------------------------------------
+CREATE PROCEDURE Categoria_Activa
+AS
+BEGIN
+    SELECT c.IdCategoria, c.Nombre
+    FROM categoria c
+    WHERE c.Estado = 1;
+END
 GO

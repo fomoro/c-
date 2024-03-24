@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.34031.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resorts_UNED.Negocio", "Resorts_UNED.Negocio\Resorts_UNED.Negocio.csproj", "{3F7C208F-FD54-4FB1-B663-DAA32B51011F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resorts_UNED.Presentacion", "Resorts_UNED.Presentacion\Resorts_UNED.Presentacion.csproj", "{D84189CE-84F0-4CA3-87ED-BF1A6BD21782}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resorts_UNED.Datos", "Resorts_UNED.Datos\Resorts_UNED.Datos.csproj", "{771AE3D3-ECB8-4B32-9E85-E00EE9F49EC8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resorts_UNED.Entidades", "Resorts_UNED.Entidades\Resorts_UNED.Entidades.csproj", "{A5602C8B-82AA-47D0-83D3-CAFAFCFBDAEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resorts_UNED.Negocio", "Resorts_UNED.Negocio\Resorts_UNED.Negocio.csproj", "{1F212068-7165-4F6F-8020-F608BC4A07BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3F7C208F-FD54-4FB1-B663-DAA32B51011F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3F7C208F-FD54-4FB1-B663-DAA32B51011F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3F7C208F-FD54-4FB1-B663-DAA32B51011F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3F7C208F-FD54-4FB1-B663-DAA32B51011F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D84189CE-84F0-4CA3-87ED-BF1A6BD21782}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D84189CE-84F0-4CA3-87ED-BF1A6BD21782}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D84189CE-84F0-4CA3-87ED-BF1A6BD21782}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{A5602C8B-82AA-47D0-83D3-CAFAFCFBDAEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5602C8B-82AA-47D0-83D3-CAFAFCFBDAEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5602C8B-82AA-47D0-83D3-CAFAFCFBDAEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F212068-7165-4F6F-8020-F608BC4A07BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F212068-7165-4F6F-8020-F608BC4A07BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F212068-7165-4F6F-8020-F608BC4A07BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F212068-7165-4F6F-8020-F608BC4A07BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

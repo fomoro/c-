@@ -1,12 +1,5 @@
-﻿using Resorts_UNED.Entidades.Resorts_UNED.Datos;
+﻿using Resorts_UNED.Negocio;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Resorts_UNED.Presentacion
@@ -22,7 +15,7 @@ namespace Resorts_UNED.Presentacion
         {
             try
             {
-                DgvListado.DataSource = new NCategoria().ListarCategorias();
+                DgvListado.DataSource = new NCategoria().Listar();
                 this.Formato();
                 this.Limpiar();
                 LblTotal.Text = "Total Registros: " + Convert.ToString(DgvListado.Rows.Count);
@@ -37,7 +30,7 @@ namespace Resorts_UNED.Presentacion
         {
             try
             {
-                DgvListado.DataSource = new NCategoria().BuscarCategoriaPorNombre(TxtBuscar.Text);
+                DgvListado.DataSource = new NCategoria().BuscarPorNombre(TxtBuscar.Text);
                 this.Formato();
                 LblTotal.Text = "Total Registros: " + Convert.ToString(DgvListado.Rows.Count);
             }
@@ -164,7 +157,7 @@ namespace Resorts_UNED.Presentacion
                 }
                 else
                 {
-                    Rpta = new NCategoria().ActualizarCategoria(Convert.ToInt32(TxtId.Text), TxtNombre.Text.Trim(), TxtDescripcion.Text.Trim());
+                    Rpta = new NCategoria().Actualizar(Convert.ToInt32(TxtId.Text), TxtNombre.Text.Trim(), TxtDescripcion.Text.Trim());
                     if (Rpta.Equals("OK"))
                     {
                         this.MensajeOk("Se actualizó de forma correcta el registro");
@@ -226,7 +219,7 @@ namespace Resorts_UNED.Presentacion
                         if (Convert.ToBoolean(row.Cells[0].Value))
                         {
                             Codigo = Convert.ToInt32(row.Cells[1].Value);
-                            Rpta = new NCategoria().EliminarCategoria(Codigo);
+                            Rpta = new NCategoria().Eliminar(Codigo);
 
                             if (Rpta.Equals("OK"))
                             {
@@ -263,7 +256,7 @@ namespace Resorts_UNED.Presentacion
                         if (Convert.ToBoolean(row.Cells[0].Value))
                         {
                             Codigo = Convert.ToInt32(row.Cells[1].Value);
-                            Rpta = new NCategoria().ActivarCategoria(Codigo);
+                            Rpta = new NCategoria().Activar(Codigo);
 
                             if (Rpta.Equals("OK"))
                             {
@@ -300,7 +293,7 @@ namespace Resorts_UNED.Presentacion
                         if (Convert.ToBoolean(row.Cells[0].Value))
                         {
                             Codigo = Convert.ToInt32(row.Cells[1].Value);
-                            Rpta = new NCategoria().DesactivarCategoria(Codigo);
+                            Rpta = new NCategoria().Desactivar(Codigo);
 
                             if (Rpta.Equals("OK"))
                             {
