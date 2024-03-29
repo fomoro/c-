@@ -1,0 +1,11 @@
+-- Eliminar los registros de la tabla ArticuloHotel
+DELETE FROM ArticuloHotel;
+
+-- Luego, eliminar los registros de la tabla Articulo
+DELETE FROM Articulo;
+
+-- Reiniciar el contador de IdArticulo
+DBCC CHECKIDENT ('Articulo', RESEED, 0);
+
+-- Mensaje de confirmación
+PRINT 'Borrados todos los datos de la tabla ArticuloHotel y Articulo, y reiniciado el contador IdArticulo';

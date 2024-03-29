@@ -10,32 +10,6 @@ GO
 USE ResortsUned
 GO
 
--- Crear tabla de relación Rol
-CREATE TABLE Rol (
-    IdRol INT PRIMARY KEY IDENTITY,
-    Nombre VARCHAR(30) NOT NULL,
-    Descripcion VARCHAR(255) NULL,
-    Estado BIT DEFAULT(1)
-);
-PRINT 'Creada Exitosamente la tabla Rol'
-GO
-
--- Crear tabla de relación Usuario
-CREATE TABLE Usuario (
-    IdUsuario INT PRIMARY KEY IDENTITY,
-    IdRol INT NOT NULL,
-    Nombre VARCHAR(100) NOT NULL,
-    TipoDocumento VARCHAR(20) NULL,
-    NumDocumento VARCHAR(20) NULL,
-    Direccion VARCHAR(70) NULL,
-    Telefono VARCHAR(20) NULL,
-    Email VARCHAR(50) NOT NULL,
-    Clave VARBINARY(MAX) NOT NULL,
-    Estado BIT DEFAULT(1),    
-    FOREIGN KEY (IdRol) REFERENCES Rol (IdRol)
-);
-PRINT 'Creada Exitosamente la tabla Usuario'
-GO
 
 -- Crear la tabla Hotel
 CREATE TABLE Hotel (
@@ -44,8 +18,6 @@ CREATE TABLE Hotel (
     Direccion NVARCHAR(200),
     Estado BIT,
     Telefono NVARCHAR(15),
-    IdUsuario INT NULL,
-    FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario)
 );
 PRINT 'Creada Exitosamente la tabla Hotel'
 GO

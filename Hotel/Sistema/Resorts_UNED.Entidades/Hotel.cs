@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace Resorts_UNED.Entidades
         public string Direccion { get; set; }
         public bool Estado { get; set; }
         public string Telefono { get; set; }
-        public int? IdUsuarioResponsable { get; set; } // Nullable
+        public DataTable Detalles { get; set; }
+        
     }
 }

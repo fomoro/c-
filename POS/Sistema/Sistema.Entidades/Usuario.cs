@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Resorts_UNED.Entidades
+﻿namespace Sistema.Entidades
 {
     public class Usuario
     {
@@ -17,7 +11,6 @@ namespace Resorts_UNED.Entidades
         public string Telefono { get; set; }
         public string Email { get; set; }
         public string Clave { get; set; }
-        //public byte[] Clave { get; set; }
         public bool Estado { get; set; }
 
     }

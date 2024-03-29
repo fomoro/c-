@@ -45,11 +45,9 @@
     <Compile Include="ArticuloHotel.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="Cliente.cs" />
-    <Compile Include="ClienteHotel.cs" />
     <Compile Include="Hotel.cs" />
+    <Compile Include="Ingreso.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rol.cs" />
-    <Compile Include="Usuario.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

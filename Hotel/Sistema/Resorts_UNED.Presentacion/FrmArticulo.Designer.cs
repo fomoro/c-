@@ -30,9 +30,9 @@ namespace Resorts_UNED.Presentacion
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ErrorIcono = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.BtnBuscar = new System.Windows.Forms.Button();
@@ -54,29 +54,29 @@ namespace Resorts_UNED.Presentacion
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.TxtDescripcion = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.CboCategoria = new System.Windows.Forms.ComboBox();
-            this.LblCategoria = new System.Windows.Forms.Label();
-            this.TabGeneral = new System.Windows.Forms.TabControl();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.LblImagen = new System.Windows.Forms.Label();
-            this.TxtImagen = new System.Windows.Forms.TextBox();
-            this.BtnCargarImagen = new System.Windows.Forms.Button();
-            this.PicImagen = new System.Windows.Forms.PictureBox();
             this.TxtStock = new System.Windows.Forms.TextBox();
             this.TxtPrecioVenta = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.PanelCodigo = new System.Windows.Forms.Panel();
             this.BtnGuardarCodigo = new System.Windows.Forms.Button();
             this.BtnGenerar = new System.Windows.Forms.Button();
             this.TxtCodigo = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.PanelCodigo = new System.Windows.Forms.Panel();
+            this.PicImagen = new System.Windows.Forms.PictureBox();
+            this.BtnCargarImagen = new System.Windows.Forms.Button();
+            this.TxtImagen = new System.Windows.Forms.TextBox();
+            this.LblImagen = new System.Windows.Forms.Label();
+            this.CboCategoria = new System.Windows.Forms.ComboBox();
+            this.LblCategoria = new System.Windows.Forms.Label();
+            this.TabGeneral = new System.Windows.Forms.TabControl();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).BeginInit();
             this.tabPage2.SuspendLayout();
-            this.TabGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicImagen)).BeginInit();
+            this.TabGeneral.SuspendLayout();
             this.SuspendLayout();
             // 
             // ErrorIcono
@@ -129,6 +129,7 @@ namespace Resorts_UNED.Presentacion
             this.BtnEliminar.TabIndex = 8;
             this.BtnEliminar.Text = "Eliminar";
             this.BtnEliminar.UseVisualStyleBackColor = true;
+            this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
             // 
             // BtnDesactivar
             // 
@@ -138,6 +139,7 @@ namespace Resorts_UNED.Presentacion
             this.BtnDesactivar.TabIndex = 7;
             this.BtnDesactivar.Text = "Desactivar";
             this.BtnDesactivar.UseVisualStyleBackColor = true;
+            this.BtnDesactivar.Click += new System.EventHandler(this.BtnDesactivar_Click);
             // 
             // BtnActivar
             // 
@@ -147,6 +149,7 @@ namespace Resorts_UNED.Presentacion
             this.BtnActivar.TabIndex = 6;
             this.BtnActivar.Text = "Activar";
             this.BtnActivar.UseVisualStyleBackColor = true;
+            this.BtnActivar.Click += new System.EventHandler(this.BtnActivar_Click);
             // 
             // ChkSeleccionar
             // 
@@ -157,6 +160,7 @@ namespace Resorts_UNED.Presentacion
             this.ChkSeleccionar.TabIndex = 5;
             this.ChkSeleccionar.Text = "Seleccionar";
             this.ChkSeleccionar.UseVisualStyleBackColor = true;
+            this.ChkSeleccionar.CheckedChanged += new System.EventHandler(this.ChkSeleccionar_CheckedChanged);
             // 
             // LblTotal
             // 
@@ -173,41 +177,43 @@ namespace Resorts_UNED.Presentacion
             this.DgvListado.AllowUserToAddRows = false;
             this.DgvListado.AllowUserToDeleteRows = false;
             this.DgvListado.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvListado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvListado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.DgvListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar});
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DgvListado.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvListado.DefaultCellStyle = dataGridViewCellStyle14;
             this.DgvListado.Location = new System.Drawing.Point(37, 80);
             this.DgvListado.Margin = new System.Windows.Forms.Padding(4);
             this.DgvListado.Name = "DgvListado";
             this.DgvListado.ReadOnly = true;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvListado.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvListado.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.DgvListado.RowHeadersWidth = 51;
             this.DgvListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListado.Size = new System.Drawing.Size(1488, 327);
             this.DgvListado.TabIndex = 0;
+            this.DgvListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellContentClick);
+            this.DgvListado.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellDoubleClick);
             // 
             // Seleccionar
             // 
@@ -225,6 +231,7 @@ namespace Resorts_UNED.Presentacion
             this.BtnActualizar.TabIndex = 10;
             this.BtnActualizar.Text = "Actualizar";
             this.BtnActualizar.UseVisualStyleBackColor = true;
+            this.BtnActualizar.Click += new System.EventHandler(this.BtnActualizar_Click);
             // 
             // label3
             // 
@@ -273,6 +280,7 @@ namespace Resorts_UNED.Presentacion
             this.BtnCancelar.TabIndex = 6;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = true;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // TxtId
             // 
@@ -332,79 +340,6 @@ namespace Resorts_UNED.Presentacion
             this.tabPage2.Text = "Mantenimiento";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // CboCategoria
-            // 
-            this.CboCategoria.FormattingEnabled = true;
-            this.CboCategoria.Location = new System.Drawing.Point(219, 62);
-            this.CboCategoria.Name = "CboCategoria";
-            this.CboCategoria.Size = new System.Drawing.Size(435, 24);
-            this.CboCategoria.TabIndex = 12;
-            // 
-            // LblCategoria
-            // 
-            this.LblCategoria.AutoSize = true;
-            this.LblCategoria.Location = new System.Drawing.Point(54, 62);
-            this.LblCategoria.Name = "LblCategoria";
-            this.LblCategoria.Size = new System.Drawing.Size(88, 17);
-            this.LblCategoria.TabIndex = 11;
-            this.LblCategoria.Text = "Categoria (*)";
-            // 
-            // TabGeneral
-            // 
-            this.TabGeneral.Controls.Add(this.tabPage1);
-            this.TabGeneral.Controls.Add(this.tabPage2);
-            this.TabGeneral.Location = new System.Drawing.Point(21, 53);
-            this.TabGeneral.Margin = new System.Windows.Forms.Padding(4);
-            this.TabGeneral.Name = "TabGeneral";
-            this.TabGeneral.SelectedIndex = 0;
-            this.TabGeneral.Size = new System.Drawing.Size(1559, 558);
-            this.TabGeneral.TabIndex = 2;
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1639, 25);
-            this.toolStrip1.TabIndex = 3;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // LblImagen
-            // 
-            this.LblImagen.AutoSize = true;
-            this.LblImagen.Location = new System.Drawing.Point(687, 29);
-            this.LblImagen.Name = "LblImagen";
-            this.LblImagen.Size = new System.Drawing.Size(54, 17);
-            this.LblImagen.TabIndex = 13;
-            this.LblImagen.Text = "Imagen";
-            // 
-            // TxtImagen
-            // 
-            this.TxtImagen.Enabled = false;
-            this.TxtImagen.Location = new System.Drawing.Point(763, 26);
-            this.TxtImagen.Name = "TxtImagen";
-            this.TxtImagen.Size = new System.Drawing.Size(232, 22);
-            this.TxtImagen.TabIndex = 14;
-            // 
-            // BtnCargarImagen
-            // 
-            this.BtnCargarImagen.Location = new System.Drawing.Point(1015, 22);
-            this.BtnCargarImagen.Name = "BtnCargarImagen";
-            this.BtnCargarImagen.Size = new System.Drawing.Size(86, 30);
-            this.BtnCargarImagen.TabIndex = 15;
-            this.BtnCargarImagen.Text = "Cargar";
-            this.BtnCargarImagen.UseVisualStyleBackColor = true;
-            this.BtnCargarImagen.Click += new System.EventHandler(this.BtnCargarImagen_Click);
-            // 
-            // PicImagen
-            // 
-            this.PicImagen.Location = new System.Drawing.Point(763, 74);
-            this.PicImagen.Name = "PicImagen";
-            this.PicImagen.Size = new System.Drawing.Size(340, 257);
-            this.PicImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PicImagen.TabIndex = 16;
-            this.PicImagen.TabStop = false;
-            // 
             // TxtStock
             // 
             this.TxtStock.Location = new System.Drawing.Point(222, 197);
@@ -436,6 +371,13 @@ namespace Resorts_UNED.Presentacion
             this.label7.Size = new System.Drawing.Size(108, 17);
             this.label7.TabIndex = 29;
             this.label7.Text = "Precio Venta (*)";
+            // 
+            // PanelCodigo
+            // 
+            this.PanelCodigo.Location = new System.Drawing.Point(228, 408);
+            this.PanelCodigo.Name = "PanelCodigo";
+            this.PanelCodigo.Size = new System.Drawing.Size(420, 91);
+            this.PanelCodigo.TabIndex = 28;
             // 
             // BtnGuardarCodigo
             // 
@@ -474,12 +416,78 @@ namespace Resorts_UNED.Presentacion
             this.label6.TabIndex = 24;
             this.label6.Text = "Código de barras";
             // 
-            // PanelCodigo
+            // PicImagen
             // 
-            this.PanelCodigo.Location = new System.Drawing.Point(228, 408);
-            this.PanelCodigo.Name = "PanelCodigo";
-            this.PanelCodigo.Size = new System.Drawing.Size(420, 91);
-            this.PanelCodigo.TabIndex = 28;
+            this.PicImagen.Location = new System.Drawing.Point(763, 74);
+            this.PicImagen.Name = "PicImagen";
+            this.PicImagen.Size = new System.Drawing.Size(340, 257);
+            this.PicImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicImagen.TabIndex = 16;
+            this.PicImagen.TabStop = false;
+            // 
+            // BtnCargarImagen
+            // 
+            this.BtnCargarImagen.Location = new System.Drawing.Point(1015, 22);
+            this.BtnCargarImagen.Name = "BtnCargarImagen";
+            this.BtnCargarImagen.Size = new System.Drawing.Size(86, 30);
+            this.BtnCargarImagen.TabIndex = 15;
+            this.BtnCargarImagen.Text = "Cargar";
+            this.BtnCargarImagen.UseVisualStyleBackColor = true;
+            this.BtnCargarImagen.Click += new System.EventHandler(this.BtnCargarImagen_Click);
+            // 
+            // TxtImagen
+            // 
+            this.TxtImagen.Enabled = false;
+            this.TxtImagen.Location = new System.Drawing.Point(763, 26);
+            this.TxtImagen.Name = "TxtImagen";
+            this.TxtImagen.Size = new System.Drawing.Size(232, 22);
+            this.TxtImagen.TabIndex = 14;
+            // 
+            // LblImagen
+            // 
+            this.LblImagen.AutoSize = true;
+            this.LblImagen.Location = new System.Drawing.Point(687, 29);
+            this.LblImagen.Name = "LblImagen";
+            this.LblImagen.Size = new System.Drawing.Size(54, 17);
+            this.LblImagen.TabIndex = 13;
+            this.LblImagen.Text = "Imagen";
+            // 
+            // CboCategoria
+            // 
+            this.CboCategoria.FormattingEnabled = true;
+            this.CboCategoria.Location = new System.Drawing.Point(219, 62);
+            this.CboCategoria.Name = "CboCategoria";
+            this.CboCategoria.Size = new System.Drawing.Size(435, 24);
+            this.CboCategoria.TabIndex = 12;
+            // 
+            // LblCategoria
+            // 
+            this.LblCategoria.AutoSize = true;
+            this.LblCategoria.Location = new System.Drawing.Point(54, 62);
+            this.LblCategoria.Name = "LblCategoria";
+            this.LblCategoria.Size = new System.Drawing.Size(88, 17);
+            this.LblCategoria.TabIndex = 11;
+            this.LblCategoria.Text = "Categoria (*)";
+            // 
+            // TabGeneral
+            // 
+            this.TabGeneral.Controls.Add(this.tabPage1);
+            this.TabGeneral.Controls.Add(this.tabPage2);
+            this.TabGeneral.Location = new System.Drawing.Point(21, 53);
+            this.TabGeneral.Margin = new System.Windows.Forms.Padding(4);
+            this.TabGeneral.Name = "TabGeneral";
+            this.TabGeneral.SelectedIndex = 0;
+            this.TabGeneral.Size = new System.Drawing.Size(1559, 558);
+            this.TabGeneral.TabIndex = 2;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1639, 25);
+            this.toolStrip1.TabIndex = 3;
+            this.toolStrip1.Text = "toolStrip1";
             // 
             // FrmArticulo
             // 
@@ -498,8 +506,8 @@ namespace Resorts_UNED.Presentacion
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.TabGeneral.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PicImagen)).EndInit();
+            this.TabGeneral.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

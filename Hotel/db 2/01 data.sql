@@ -1,3 +1,15 @@
+
+-- Insertar Hoteles
+INSERT INTO Hotel (Nombre, Direccion, Estado, Telefono) VALUES
+('Hotel Sol', 'Calle Mayor, 12', 1, '912345678'),
+('Hotel Luna', 'Calle del Sol, 23', 1, '987654321'),
+('Hotel Mar', 'Avenida del Mar, 45', 1, '912345678'),
+('Hotel Tierra', 'Calle de la Tierra, 67', 1, '987654321'),
+('Hotel Aire', 'Avenida del Aire, 89', 1, '912345678');
+
+PRINT 'Hoteles insertados correctamente.';
+
+----------------------------------------------------------------------------------------------------
 -- Insertar Categorías
 INSERT INTO Categoria (Nombre, Descripcion, Estado) VALUES
 ('Alimentos', 'Productos alimenticios', 1),
@@ -7,10 +19,10 @@ INSERT INTO Categoria (Nombre, Descripcion, Estado) VALUES
 ('Entretenimiento', 'Juegos, libros y otros productos de entretenimiento', 1),
 ('Tecnología', 'Productos electrónicos y accesorios', 1),
 ('Ropa', 'Prendas de vestir y calzado', 1);
+
 PRINT 'Categorías insertadas correctamente.';
 
-------------------------------------------------------------------------------------------
-
+----------------------------------------------------------------------------------------------------
 -- Insertar Artículos
 DECLARE @i INT, @j INT
 SET @i = 1
@@ -27,36 +39,33 @@ BEGIN
 END
 PRINT 'Artículos insertados correctamente.';
 
-------------------------------------------------------------------------------------------
-
--- Insertar Hoteles
-INSERT INTO Hotel (Nombre, Direccion, Estado, Telefono) VALUES
-('Hotel Sol', 'Calle Mayor, 12', 1, '912345678'),
-('Hotel Luna', 'Calle del Sol, 23', 1, '987654321'),
-('Hotel Mar', 'Avenida del Mar, 45', 1, '912345678'),
-('Hotel Tierra', 'Calle de la Tierra, 67', 1, '987654321'),
-('Hotel Aire', 'Avenida del Aire, 89', 1, '912345678');
-PRINT 'Hoteles insertados correctamente.';
-
-------------------------------------------------------------------------------------------
-
+----------------------------------------------------------------------------------------------------
 -- Asignar todos los artículos a todos los hoteles
-DECLARE @idHotel INT, @idArticulo INT
-SET @idHotel = 1
-WHILE @idHotel <= 5
+DECLARE @i INT, @j INT, @idHotel INT
+
+SET @i = 1
+
+WHILE @i <= 5
 BEGIN
-	SET @idArticulo = 1
-	WHILE @idArticulo <= 105
+	SET @idHotel = @i
+
+	SET @j = 1
+
+	WHILE @j <= 70
 	BEGIN
 		INSERT INTO ArticuloHotel (FechaAsignacion, IdHotel, IdArticulo) VALUES
-		(GETDATE(), @idHotel, @idArticulo)
-		SET @idArticulo += 1
-	END
-	SET @idHotel += 1
-END
-PRINT 'Artículos asignados a los hoteles correctamente.';
+		(GETDATE(), @idHotel, @j)
 
-------------------------------------------------------------------------------------------
+		SET @j += 1
+	END
+
+	SET @i += 1
+END
+
+PRINT 'Artículos asignados a los hoteles correctamente.'
+
+
+----------------------------------------------------------------------------------------------------
 
 -- Insertar Clientes
 DECLARE @idCliente INT
@@ -80,9 +89,11 @@ BEGIN
 END
 
 PRINT 'Clientes insertados correctamente.';
+
 ------------------------------------------------------------------------------------------
 
 -- Insertar pedidos
+
 DECLARE @idClientePedido INT, @idArticuloPedido INT
 SET @idClientePedido = 1
 WHILE @idClientePedido <= 20 -- Cambiado de 100 a 20 para coincidir con la cantidad de clientes insertados
@@ -90,11 +101,10 @@ BEGIN
 	SET @idArticuloPedido = 1
 	WHILE @idArticuloPedido <= 105
 	BEGIN
-		IF (RAND() > 0.5)
-		BEGIN
-			INSERT INTO Pedido (FechaPedido, IdCliente, IdArticulo) VALUES
-			(GETDATE(), 'ID' + CAST(@idClientePedido AS NVARCHAR(10)), @idArticuloPedido)
-		END
+		DECLARE @randomArticulo INT
+		SET @randomArticulo = (SELECT TOP 1 IdArticulo FROM Articulo ORDER BY NEWID())
+		INSERT INTO Pedido (FechaPedido, IdCliente, IdArticulo) VALUES
+		(GETDATE(), 'ID' + CAST(@idClientePedido AS NVARCHAR(10)), @randomArticulo)
 		SET @idArticuloPedido += 1
 	END
 	SET @idClientePedido += 1

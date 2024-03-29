@@ -47,8 +47,6 @@
     <Compile Include="DCategoria.cs" />
     <Compile Include="DCliente.cs" />
     <Compile Include="DHotel.cs" />
-    <Compile Include="DRol.cs" />
-    <Compile Include="DUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

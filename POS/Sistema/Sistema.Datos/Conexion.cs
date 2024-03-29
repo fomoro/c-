@@ -18,10 +18,10 @@ namespace Sistema.Datos
 
         private Conexion()
         {
-            this.Base = "dbsistema";
-            this.Servidor = "DESKTOP-Q9A25HI\\SQLEXPRESS";
+            this.Base = "dbPosWF";
+            this.Servidor = "MEDTI02-14";
             this.Usuario = "sa";
-            this.Clave = "jucardi7";
+            this.Clave = "Colombia2023*";
             this.Seguridad = true;
         }
         public SqlConnection CrearConexion()

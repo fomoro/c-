@@ -120,12 +120,3 @@ BEGIN
 END;
 GO
 
--------------------------------------------------------------------------------------
-CREATE PROCEDURE Categoria_Activa
-AS
-BEGIN
-    SELECT c.IdCategoria, c.Nombre
-    FROM categoria c
-    WHERE c.Estado = 1;
-END
-GO

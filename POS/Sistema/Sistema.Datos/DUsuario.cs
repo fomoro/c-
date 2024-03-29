@@ -1,10 +1,9 @@
-﻿using Resorts_UNED.Entidades;
-using System;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using Sistema.Entidades;
 
-
-namespace Resorts_UNED.Datos
+namespace Sistema.Datos
 {
     public class DUsuario
     {
@@ -59,7 +58,7 @@ namespace Resorts_UNED.Datos
             }
         }
 
-        public DataTable Login(string Email, string Clave)
+        public DataTable Login(string Email,string Clave)
         {
             SqlDataReader Resultado;
             DataTable Tabla = new DataTable();

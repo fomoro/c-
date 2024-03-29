@@ -1,122 +1,167 @@
-﻿
-namespace Resorts_UNED.Entidades
+﻿using Resorts_UNED.Entidades;
+using System;
+using System.Data;
+using System.Data.SqlClient;
+
+namespace Resorts_UNED.Datos
 {
-    using global::Resorts_UNED.Datos;
-    using System;
-    using System.Collections.Generic;
-    using System.Data;
-    using System.Data.SqlClient;
-
-    namespace Resorts_UNED.Datos
+    public class DCliente
     {
-        public class DCliente
+        private Conexion conexion;
+        public DCliente()
         {
-            private Conexion conexion;
-
-            public DCliente()
+            conexion = Conexion.getInstancia();
+        }
+        public DataTable Listar()
+        {
+            SqlDataReader Resultado;
+            DataTable Tabla = new DataTable();
+            SqlConnection SqlCon = new SqlConnection();
+            try
             {
-                conexion = Conexion.getInstancia();
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                SqlCommand Comando = new SqlCommand("Clientes", SqlCon);
+                Comando.CommandType = CommandType.StoredProcedure;
+                SqlCon.Open();
+                Resultado = Comando.ExecuteReader();
+                Tabla.Load(Resultado);
+                return Tabla;
             }
-
-            public DataTable ObtenerClientes()
+            catch (Exception ex)
             {
-                DataTable dtClientes = new DataTable();
-                try
-                {
-                    using (SqlConnection con = conexion.CrearConexion())
-                    {
-                        con.Open();
-                        string query = "SELECT * FROM Cliente";
-                        SqlCommand cmd = new SqlCommand(query, con);
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                        adapter.Fill(dtClientes);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // Handle exception
-                    Console.WriteLine("Error al obtener clientes: " + ex.Message);
-                }
-                return dtClientes;
+                throw ex;
             }
-
-            public bool InsertarCliente(Cliente cliente)
+            finally
             {
-                try
-                {
-                    using (SqlConnection con = conexion.CrearConexion())
-                    {
-                        con.Open();
-                        string query = "INSERT INTO Cliente (Identificacion, Nombre, Apellido1, Apellido2, FechaNacimiento, Genero) VALUES (@Identificacion, @Nombre, @Apellido1, @Apellido2, @FechaNacimiento, @Genero)";
-                        SqlCommand cmd = new SqlCommand(query, con);
-                        cmd.Parameters.AddWithValue("@Identificacion", cliente.Identificacion);
-                        cmd.Parameters.AddWithValue("@Nombre", cliente.Nombre);
-                        cmd.Parameters.AddWithValue("@Apellido1", cliente.Apellido1);
-                        cmd.Parameters.AddWithValue("@Apellido2", cliente.Apellido2);
-                        cmd.Parameters.AddWithValue("@FechaNacimiento", cliente.FechaNacimiento);
-                        cmd.Parameters.AddWithValue("@Genero", cliente.Genero);
-                        cmd.ExecuteNonQuery();
-                        return true;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // Handle exception
-                    Console.WriteLine("Error al insertar cliente: " + ex.Message);
-                    return false;
-                }
-            }
-
-            public bool ActualizarCliente(Cliente cliente)
-            {
-                try
-                {
-                    using (SqlConnection con = conexion.CrearConexion())
-                    {
-                        con.Open();
-                        string query = "UPDATE Cliente SET Nombre = @Nombre, Apellido1 = @Apellido1, Apellido2 = @Apellido2, FechaNacimiento = @FechaNacimiento, Genero = @Genero WHERE Identificacion = @Identificacion";
-                        SqlCommand cmd = new SqlCommand(query, con);
-                        cmd.Parameters.AddWithValue("@Nombre", cliente.Nombre);
-                        cmd.Parameters.AddWithValue("@Apellido1", cliente.Apellido1);
-                        cmd.Parameters.AddWithValue("@Apellido2", cliente.Apellido2);
-                        cmd.Parameters.AddWithValue("@FechaNacimiento", cliente.FechaNacimiento);
-                        cmd.Parameters.AddWithValue("@Genero", cliente.Genero);
-                        cmd.Parameters.AddWithValue("@Identificacion", cliente.Identificacion);
-                        cmd.ExecuteNonQuery();
-                        return true;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // Handle exception
-                    Console.WriteLine("Error al actualizar cliente: " + ex.Message);
-                    return false;
-                }
-            }
-
-            public bool EliminarCliente(string identificacion)
-            {
-                try
-                {
-                    using (SqlConnection con = conexion.CrearConexion())
-                    {
-                        con.Open();
-                        string query = "DELETE FROM Cliente WHERE Identificacion = @Identificacion";
-                        SqlCommand cmd = new SqlCommand(query, con);
-                        cmd.Parameters.AddWithValue("@Identificacion", identificacion);
-                        cmd.ExecuteNonQuery();
-                        return true;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // Handle exception
-                    Console.WriteLine("Error al eliminar cliente: " + ex.Message);
-                    return false;
-                }
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
             }
         }
-
+        public DataTable Buscar(string Valor)
+        {
+            SqlDataReader Resultado;
+            DataTable Tabla = new DataTable();
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                SqlCommand Comando = new SqlCommand("ClientesPorNombre", SqlCon);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.AddWithValue("@Nombre", Valor);
+                SqlCon.Open();
+                Resultado = Comando.ExecuteReader();
+                Tabla.Load(Resultado);
+                return Tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }
+        public string Existe(string Valor)
+        {
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                SqlCommand Comando = new SqlCommand("Cliente_Existe", SqlCon);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.AddWithValue("@Identificacion", Valor);
+                SqlParameter ExisteParam = new SqlParameter("@Existe", SqlDbType.Bit);
+                ExisteParam.Direction = ParameterDirection.Output;
+                Comando.Parameters.Add(ExisteParam);
+                SqlCon.Open();
+                Comando.ExecuteNonQuery();
+                return Convert.ToString(ExisteParam.Value);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }
+        public string Insertar(Cliente Obj)
+        {
+            string Rpta = "";
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                SqlCommand Comando = new SqlCommand("Cliente_Insertar", SqlCon);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.AddWithValue("@Identificacion", Obj.Nombre);
+                Comando.Parameters.AddWithValue("@Nombre", Obj.Nombre);
+                Comando.Parameters.AddWithValue("@PrimerApellido", Obj.PrimerApellido);
+                Comando.Parameters.AddWithValue("@SegundoApellido", Obj.SegundoApellido);
+                Comando.Parameters.AddWithValue("@FechaNacimiento", Obj.FechaNacimiento);
+                Comando.Parameters.AddWithValue("@Genero", Obj.Genero);
+                SqlCon.Open();
+                Comando.ExecuteNonQuery();
+                Rpta = "OK";
+            }
+            catch (Exception ex)
+            {
+                Rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return Rpta;
+        }
+        public string Actualizar(Cliente Obj)
+        {
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                SqlCommand Comando = new SqlCommand("Hotel_Actualizar", SqlCon);
+                Comando.CommandType = CommandType.StoredProcedure;
+                //Comando.Parameters.AddWithValue("@IdHotel", Obj.IdHotel);
+                Comando.Parameters.AddWithValue("@Nombre", Obj.Nombre);
+                //Comando.Parameters.AddWithValue("@Direccion", Obj.Direccion);
+                //Comando.Parameters.AddWithValue("@Estado", Obj.Estado);
+                //Comando.Parameters.AddWithValue("@Telefono", Obj.Telefono);
+                SqlCon.Open();
+                Comando.ExecuteNonQuery();
+                return "Hotel actualizado correctamente.";
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }
+        public string Eliminar(int Id)
+        {
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                SqlCommand Comando = new SqlCommand("Hotel_Eliminar", SqlCon);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.AddWithValue("@IdHotel", Id);
+                SqlCon.Open();
+                Comando.ExecuteNonQuery();
+                return "Hotel eliminado correctamente.";
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }        
     }
-
 }

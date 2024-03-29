@@ -50,35 +50,44 @@ namespace Resorts_UNED.Negocio
                 return ex.Message;
             }
         }
-        public string Actualizar(Entidades.Articulo Obj)
+        public string Actualizar(int Id, int IdCategoria, string Codigo, string NombreAnt, string Nombre, decimal PrecioVenta, int Stock, string Descripcion, string Imagen)
         {
-            try
+            Articulo Obj = new Articulo();
+
+            if (NombreAnt.Equals(Nombre))
             {
-                /*                       
-                   if (NombreAnt.Equals(Obj.Nombre))
-                   {
-                       return datos.Actualizar(Obj);
-                   }
-                   else
-                   {
-                       string Existe = datos.Existe(Obj.Nombre);
-                       if (Existe.Equals("1"))
-                       {
-                           return "El artículo ya existe";
-                       }
-                       else
-                       {                            
-                           return datos.Actualizar(Obj);
-                       }
-                   }
-                   */
-                return null;
+                Obj.IdArticulo = Id;
+                Obj.IdCategoria = IdCategoria;
+                Obj.Codigo = Codigo;
+                Obj.Nombre = Nombre;
+                Obj.PrecioVenta = PrecioVenta;
+                Obj.Stock = Stock;
+                Obj.Descripcion = Descripcion;
+                Obj.Imagen = Imagen;
+                return datos.Actualizar(Obj);
             }
-            catch (Exception ex)
+            else
             {
-                return ex.Message;
+                string Existe = datos.Existe(Nombre);
+                if (Existe.Equals("1"))
+                {
+                    return "El artículo ya existe";
+                }
+                else
+                {
+                    Obj.IdArticulo = Id;
+                    Obj.IdCategoria = IdCategoria;
+                    Obj.Codigo = Codigo;
+                    Obj.Nombre = Nombre;
+                    Obj.PrecioVenta = PrecioVenta;
+                    Obj.Stock = Stock;
+                    Obj.Descripcion = Descripcion;
+                    Obj.Imagen = Imagen;
+                    return datos.Actualizar(Obj);
+                }
             }
         }
+
         public string Eliminar(int Id)
         {
             try
