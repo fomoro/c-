@@ -17,7 +17,7 @@ namespace Resorts_UNED.Datos
             try
             {
                 SqlCon = Conexion.getInstancia().CrearConexion();
-                SqlCommand Comando = new SqlCommand("articulo_listar", SqlCon);
+                SqlCommand Comando = new SqlCommand("Articulo_listar", SqlCon);
                 Comando.CommandType = CommandType.StoredProcedure;
                 SqlCon.Open();
                 Resultado = Comando.ExecuteReader();

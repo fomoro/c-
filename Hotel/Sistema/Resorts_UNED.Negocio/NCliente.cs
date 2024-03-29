@@ -50,45 +50,20 @@ namespace Resorts_UNED.Negocio
                 return ex.Message;
             }
         }
-        public string Actualizar(int Id, int IdCategoria, string Codigo, string NombreAnt, string Nombre, decimal PrecioVenta, int Stock, string Descripcion, string Imagen)
+        public string Actualizar(Cliente Obj)
         {
-            Cliente Obj = new Cliente();
-
-            if (NombreAnt.Equals(Nombre))
+            string respuesta = datos.Existe_ConEsteNombre(Obj.Identificacion, Obj.Nombre);
+            if (respuesta.Equals("True"))
             {
-                /*Obj.IdArticulo = Id;
-                Obj.IdCategoria = IdCategoria;
-                Obj.Codigo = Codigo;
-                Obj.Nombre = Nombre;
-                Obj.PrecioVenta = PrecioVenta;
-                Obj.Stock = Stock;
-                Obj.Descripcion = Descripcion;
-                Obj.Imagen = Imagen;*/
-                return datos.Actualizar(Obj);
+                return "Ya existe un cliente con este id.";
             }
             else
             {
-                string Existe = datos.Existe(Nombre);
-                if (Existe.Equals("1"))
-                {
-                    return "El artículo ya existe";
-                }
-                else
-                {
-                    /*Obj.IdArticulo = Id;
-                    Obj.IdCategoria = IdCategoria;
-                    Obj.Codigo = Codigo;
-                    Obj.Nombre = Nombre;
-                    Obj.PrecioVenta = PrecioVenta;
-                    Obj.Stock = Stock;
-                    Obj.Descripcion = Descripcion;
-                    Obj.Imagen = Imagen;*/
-                    return datos.Actualizar(Obj);
-                }
+                // Si no hay otro cliente con el mismo Id, actualizar el cliente
+                return datos.Actualizar(Obj);
             }
-        }
-
-        public string Eliminar(int Id)
+        }        
+        public string Eliminar(string Id)
         {
             try
             {

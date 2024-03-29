@@ -70,3 +70,18 @@ BEGIN
     DELETE FROM Cliente WHERE Identificacion = @Identificacion;
 END;
 GO
+
+
+-- Procedimiento para verificar si existe una categoría con un nombre dado
+Create PROCEDURE [dbo].[Cliente_ConEsteNombre]    
+    @Id NVARCHAR(50), 
+	@Nombre NVARCHAR(50),
+    @Existe BIT OUTPUT
+AS
+BEGIN
+    -- Verifica si existe alguna categoría con el nombre especificado y diferente ID
+    IF EXISTS (SELECT 1 FROM Cliente WHERE Nombre = @Nombre AND Identificacion != @Id)
+        SET @Existe = 1;
+    ELSE
+        SET @Existe = 0;
+END;

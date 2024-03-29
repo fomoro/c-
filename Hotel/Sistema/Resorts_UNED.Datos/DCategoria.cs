@@ -37,7 +37,7 @@ namespace Resorts_UNED.Datos
                 using (SqlConnection sqlCon = conexion.CrearConexion())
                 {
                     sqlCon.Open();
-                    SqlCommand sqlCmd = new SqlCommand("Categoria_Activa", sqlCon);
+                    SqlCommand sqlCmd = new SqlCommand("Categorias_Activas", sqlCon);
                     sqlCmd.CommandType = CommandType.StoredProcedure;
                     SqlDataAdapter sqlDat = new SqlDataAdapter(sqlCmd);
                     sqlDat.Fill(dtResultado);

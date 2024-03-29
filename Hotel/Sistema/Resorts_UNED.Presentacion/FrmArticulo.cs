@@ -203,6 +203,11 @@ namespace Resorts_UNED.Presentacion
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Limpiar();
+            TabGeneral.SelectedIndex = 0;
+        }
         private void DgvListado_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -278,12 +283,7 @@ namespace Resorts_UNED.Presentacion
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
-        }
-        private void BtnCancelar_Click(object sender, EventArgs e)
-        {
-            this.Limpiar();
-            TabGeneral.SelectedIndex = 0;
-        }
+        }        
         private void DgvListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == DgvListado.Columns["Seleccionar"].Index)

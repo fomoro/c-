@@ -87,7 +87,6 @@ namespace Resorts_UNED.Negocio
                 }
             }
         }
-
         public string Eliminar(int Id)
         {
             try

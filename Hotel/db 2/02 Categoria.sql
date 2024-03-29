@@ -10,6 +10,18 @@ END;
 GO
 
 -------------------------------------------------------------------------------------
+-- Procedimiento para listar todas las categorías
+CREATE PROCEDURE Categorias_Activas
+AS
+BEGIN
+    -- Selecciona información de todas las categorías ordenadas por nombre
+    SELECT IdCategoria, Nombre, Descripcion, Estado
+    FROM Categoria Where Estado = 1
+    ORDER BY Nombre;	
+END;
+GO
+
+-------------------------------------------------------------------------------------
 -- Procedimiento para buscar una categoría por su Id
 CREATE PROCEDURE CategoriaBuscarPorId
     @IdCategoria INT

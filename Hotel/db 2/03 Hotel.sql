@@ -91,3 +91,16 @@ END;
 GO
 
 
+-- Procedimiento para verificar si existe un Hotel con un nombre dado
+Create PROCEDURE [dbo].[Hotel_ConEsteNombre]    
+    @Id NVARCHAR(50), 
+	@Nombre NVARCHAR(50),
+    @Existe BIT OUTPUT
+AS
+BEGIN
+    -- Verifica si existe alguna categoría con el nombre especificado y diferente ID
+    IF EXISTS (SELECT 1 FROM Hotel WHERE Nombre = @Nombre AND IdHotel != @Id)
+        SET @Existe = 1;
+    ELSE
+        SET @Existe = 0;
+END;

@@ -30,9 +30,9 @@ namespace Resorts_UNED.Presentacion
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabGeneral = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.BtnBuscar = new System.Windows.Forms.Button();
@@ -43,6 +43,15 @@ namespace Resorts_UNED.Presentacion
             this.DgvListado = new System.Windows.Forms.DataGridView();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.DtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
+            this.TxtIdentificacion = new System.Windows.Forms.Label();
+            this.CboGenero = new System.Windows.Forms.ComboBox();
+            this.LblGenero = new System.Windows.Forms.Label();
+            this.LblFechaNacimiento = new System.Windows.Forms.Label();
+            this.LblSegundoApellido = new System.Windows.Forms.Label();
+            this.TxtSegundoApellido = new System.Windows.Forms.TextBox();
+            this.LblPrimerApellido = new System.Windows.Forms.Label();
+            this.TxtPrimerApellido = new System.Windows.Forms.TextBox();
             this.BtnActualizar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.BtnInsertar = new System.Windows.Forms.Button();
@@ -52,15 +61,6 @@ namespace Resorts_UNED.Presentacion
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.ErrorIcono = new System.Windows.Forms.ErrorProvider(this.components);
-            this.LblPrimerApellido = new System.Windows.Forms.Label();
-            this.TxtPrimerApellido = new System.Windows.Forms.TextBox();
-            this.LblFechaNacimiento = new System.Windows.Forms.Label();
-            this.LblSegundoApellido = new System.Windows.Forms.Label();
-            this.TxtSegundoApellido = new System.Windows.Forms.TextBox();
-            this.LblGenero = new System.Windows.Forms.Label();
-            this.CboGenero = new System.Windows.Forms.ComboBox();
-            this.TxtIdentificacion = new System.Windows.Forms.Label();
-            this.DtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.TabGeneral.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).BeginInit();
@@ -123,6 +123,7 @@ namespace Resorts_UNED.Presentacion
             this.BtnEliminar.TabIndex = 4;
             this.BtnEliminar.Text = "Eliminar";
             this.BtnEliminar.UseVisualStyleBackColor = true;
+            this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
             // 
             // ChkSeleccionar
             // 
@@ -133,6 +134,7 @@ namespace Resorts_UNED.Presentacion
             this.ChkSeleccionar.TabIndex = 3;
             this.ChkSeleccionar.Text = "Seleccionar";
             this.ChkSeleccionar.UseVisualStyleBackColor = true;
+            this.ChkSeleccionar.CheckedChanged += new System.EventHandler(this.ChkSeleccionar_CheckedChanged);
             // 
             // LblTotal
             // 
@@ -149,41 +151,43 @@ namespace Resorts_UNED.Presentacion
             this.DgvListado.AllowUserToAddRows = false;
             this.DgvListado.AllowUserToDeleteRows = false;
             this.DgvListado.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvListado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvListado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.DgvListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar});
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DgvListado.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvListado.DefaultCellStyle = dataGridViewCellStyle8;
             this.DgvListado.Location = new System.Drawing.Point(37, 80);
             this.DgvListado.Margin = new System.Windows.Forms.Padding(4);
             this.DgvListado.Name = "DgvListado";
             this.DgvListado.ReadOnly = true;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvListado.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvListado.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.DgvListado.RowHeadersWidth = 51;
             this.DgvListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListado.Size = new System.Drawing.Size(905, 327);
             this.DgvListado.TabIndex = 0;
+            this.DgvListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellContentClick);
+            this.DgvListado.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellDoubleClick);
             // 
             // Seleccionar
             // 
@@ -220,6 +224,84 @@ namespace Resorts_UNED.Presentacion
             this.tabPage2.Text = "Mantenimiento";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // DtpFechaNacimiento
+            // 
+            this.DtpFechaNacimiento.Location = new System.Drawing.Point(218, 189);
+            this.DtpFechaNacimiento.Name = "DtpFechaNacimiento";
+            this.DtpFechaNacimiento.Size = new System.Drawing.Size(436, 22);
+            this.DtpFechaNacimiento.TabIndex = 10;
+            // 
+            // TxtIdentificacion
+            // 
+            this.TxtIdentificacion.AutoSize = true;
+            this.TxtIdentificacion.Location = new System.Drawing.Point(56, 27);
+            this.TxtIdentificacion.Name = "TxtIdentificacion";
+            this.TxtIdentificacion.Size = new System.Drawing.Size(109, 17);
+            this.TxtIdentificacion.TabIndex = 15;
+            this.TxtIdentificacion.Text = "Identificacion (*)";
+            // 
+            // CboGenero
+            // 
+            this.CboGenero.FormattingEnabled = true;
+            this.CboGenero.ItemHeight = 16;
+            this.CboGenero.Items.AddRange(new object[] {
+            "F",
+            "M"});
+            this.CboGenero.Location = new System.Drawing.Point(218, 227);
+            this.CboGenero.Name = "CboGenero";
+            this.CboGenero.Size = new System.Drawing.Size(436, 24);
+            this.CboGenero.TabIndex = 11;
+            // 
+            // LblGenero
+            // 
+            this.LblGenero.AutoSize = true;
+            this.LblGenero.Location = new System.Drawing.Point(54, 228);
+            this.LblGenero.Name = "LblGenero";
+            this.LblGenero.Size = new System.Drawing.Size(56, 17);
+            this.LblGenero.TabIndex = 20;
+            this.LblGenero.Text = "Genero";
+            // 
+            // LblFechaNacimiento
+            // 
+            this.LblFechaNacimiento.AutoSize = true;
+            this.LblFechaNacimiento.Location = new System.Drawing.Point(55, 185);
+            this.LblFechaNacimiento.Name = "LblFechaNacimiento";
+            this.LblFechaNacimiento.Size = new System.Drawing.Size(121, 17);
+            this.LblFechaNacimiento.TabIndex = 19;
+            this.LblFechaNacimiento.Text = "Fecha Nacimiento";
+            // 
+            // LblSegundoApellido
+            // 
+            this.LblSegundoApellido.AutoSize = true;
+            this.LblSegundoApellido.Location = new System.Drawing.Point(55, 146);
+            this.LblSegundoApellido.Name = "LblSegundoApellido";
+            this.LblSegundoApellido.Size = new System.Drawing.Size(119, 17);
+            this.LblSegundoApellido.TabIndex = 18;
+            this.LblSegundoApellido.Text = "Segundo Apellido";
+            // 
+            // TxtSegundoApellido
+            // 
+            this.TxtSegundoApellido.Location = new System.Drawing.Point(219, 146);
+            this.TxtSegundoApellido.Name = "TxtSegundoApellido";
+            this.TxtSegundoApellido.Size = new System.Drawing.Size(435, 22);
+            this.TxtSegundoApellido.TabIndex = 9;
+            // 
+            // LblPrimerApellido
+            // 
+            this.LblPrimerApellido.AutoSize = true;
+            this.LblPrimerApellido.Location = new System.Drawing.Point(55, 104);
+            this.LblPrimerApellido.Name = "LblPrimerApellido";
+            this.LblPrimerApellido.Size = new System.Drawing.Size(122, 17);
+            this.LblPrimerApellido.TabIndex = 17;
+            this.LblPrimerApellido.Text = "Primer Apellido (*)";
+            // 
+            // TxtPrimerApellido
+            // 
+            this.TxtPrimerApellido.Location = new System.Drawing.Point(219, 104);
+            this.TxtPrimerApellido.Name = "TxtPrimerApellido";
+            this.TxtPrimerApellido.Size = new System.Drawing.Size(435, 22);
+            this.TxtPrimerApellido.TabIndex = 8;
+            // 
             // BtnActualizar
             // 
             this.BtnActualizar.Location = new System.Drawing.Point(709, 108);
@@ -228,6 +310,7 @@ namespace Resorts_UNED.Presentacion
             this.BtnActualizar.TabIndex = 13;
             this.BtnActualizar.Text = "Actualizar";
             this.BtnActualizar.UseVisualStyleBackColor = true;
+            this.BtnActualizar.Click += new System.EventHandler(this.BtnActualizar_Click);
             // 
             // label3
             // 
@@ -295,84 +378,6 @@ namespace Resorts_UNED.Presentacion
             // ErrorIcono
             // 
             this.ErrorIcono.ContainerControl = this;
-            // 
-            // LblPrimerApellido
-            // 
-            this.LblPrimerApellido.AutoSize = true;
-            this.LblPrimerApellido.Location = new System.Drawing.Point(55, 104);
-            this.LblPrimerApellido.Name = "LblPrimerApellido";
-            this.LblPrimerApellido.Size = new System.Drawing.Size(153, 21);
-            this.LblPrimerApellido.TabIndex = 17;
-            this.LblPrimerApellido.Text = "Primer Apellido (*)";
-            // 
-            // TxtPrimerApellido
-            // 
-            this.TxtPrimerApellido.Location = new System.Drawing.Point(219, 104);
-            this.TxtPrimerApellido.Name = "TxtPrimerApellido";
-            this.TxtPrimerApellido.Size = new System.Drawing.Size(435, 22);
-            this.TxtPrimerApellido.TabIndex = 8;
-            // 
-            // LblFechaNacimiento
-            // 
-            this.LblFechaNacimiento.AutoSize = true;
-            this.LblFechaNacimiento.Location = new System.Drawing.Point(55, 185);
-            this.LblFechaNacimiento.Name = "LblFechaNacimiento";
-            this.LblFechaNacimiento.Size = new System.Drawing.Size(151, 21);
-            this.LblFechaNacimiento.TabIndex = 19;
-            this.LblFechaNacimiento.Text = "Fecha Nacimiento";
-            // 
-            // LblSegundoApellido
-            // 
-            this.LblSegundoApellido.AutoSize = true;
-            this.LblSegundoApellido.Location = new System.Drawing.Point(55, 146);
-            this.LblSegundoApellido.Name = "LblSegundoApellido";
-            this.LblSegundoApellido.Size = new System.Drawing.Size(149, 21);
-            this.LblSegundoApellido.TabIndex = 18;
-            this.LblSegundoApellido.Text = "Segundo Apellido";
-            // 
-            // TxtSegundoApellido
-            // 
-            this.TxtSegundoApellido.Location = new System.Drawing.Point(219, 146);
-            this.TxtSegundoApellido.Name = "TxtSegundoApellido";
-            this.TxtSegundoApellido.Size = new System.Drawing.Size(435, 22);
-            this.TxtSegundoApellido.TabIndex = 9;
-            // 
-            // LblGenero
-            // 
-            this.LblGenero.AutoSize = true;
-            this.LblGenero.Location = new System.Drawing.Point(54, 228);
-            this.LblGenero.Name = "LblGenero";
-            this.LblGenero.Size = new System.Drawing.Size(70, 21);
-            this.LblGenero.TabIndex = 20;
-            this.LblGenero.Text = "Genero";
-            // 
-            // CboGenero
-            // 
-            this.CboGenero.FormattingEnabled = true;
-            this.CboGenero.ItemHeight = 16;
-            this.CboGenero.Items.AddRange(new object[] {
-            "F",
-            "M"});
-            this.CboGenero.Location = new System.Drawing.Point(218, 227);
-            this.CboGenero.Name = "CboGenero";
-            this.CboGenero.Size = new System.Drawing.Size(436, 24);
-            this.CboGenero.TabIndex = 11;
-            // 
-            // TxtIdentificacion
-            // 
-            this.TxtIdentificacion.AutoSize = true;
-            this.TxtIdentificacion.Location = new System.Drawing.Point(56, 27);
-            this.TxtIdentificacion.Name = "TxtIdentificacion";
-            this.TxtIdentificacion.Size = new System.Drawing.Size(109, 17);
-            this.TxtIdentificacion.TabIndex = 15;
-            this.TxtIdentificacion.Text = "Identificacion (*)";
-            // 
-            // DtpFechaNacimiento
-            // 
-            this.DtpFechaNacimiento.Location = new System.Drawing.Point(218, 189);
-            this.DtpFechaNacimiento.Name = "DtpFechaNacimiento";
-            this.DtpFechaNacimiento.Size = new System.Drawing.Size(436, 22);
-            this.DtpFechaNacimiento.TabIndex = 10;
             // 
             // FrmCliente
             // 

@@ -88,6 +88,32 @@ namespace Resorts_UNED.Datos
                 if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
             }
         }
+        public string Existe_ConEsteNombre(int Id, string nombre)
+        {
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                SqlCommand Comando = new SqlCommand("Hotel_ConEsteNombre", SqlCon);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.AddWithValue("@Id", Id);
+                Comando.Parameters.AddWithValue("@Nombre", nombre);
+                SqlParameter ExisteParam = new SqlParameter("@Existe", SqlDbType.Bit);
+                ExisteParam.Direction = ParameterDirection.Output;
+                Comando.Parameters.Add(ExisteParam);
+                SqlCon.Open();
+                Comando.ExecuteNonQuery();
+                return Convert.ToString(ExisteParam.Value);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }
         public string Insertar(Hotel Obj)
         {
             string Rpta = "";
@@ -118,95 +144,89 @@ namespace Resorts_UNED.Datos
         }        
         public string Actualizar(Hotel Obj)
         {
-            SqlConnection SqlCon = new SqlConnection();
+            string Rpta = "";
             try
             {
-                SqlCon = Conexion.getInstancia().CrearConexion();
-                SqlCommand Comando = new SqlCommand("Hotel_Actualizar", SqlCon);
-                Comando.CommandType = CommandType.StoredProcedure;
-                Comando.Parameters.AddWithValue("@IdHotel", Obj.IdHotel);
-                Comando.Parameters.AddWithValue("@Nombre", Obj.Nombre);
-                Comando.Parameters.AddWithValue("@Direccion", Obj.Direccion);
-                Comando.Parameters.AddWithValue("@Estado", Obj.Estado);
-                Comando.Parameters.AddWithValue("@Telefono", Obj.Telefono);
-                SqlCon.Open();
-                Comando.ExecuteNonQuery();
-                return "Hotel actualizado correctamente.";
+                using (SqlConnection sqlCon = conexion.CrearConexion())
+                {
+                    sqlCon.Open();
+                    SqlCommand sqlCmd = new SqlCommand("Hotel_Actualizar", sqlCon);
+                    sqlCmd.CommandType = CommandType.StoredProcedure;
+                    sqlCmd.Parameters.AddWithValue("@IdHotel", Obj.IdHotel);
+                    sqlCmd.Parameters.AddWithValue("@Nombre", Obj.Nombre);
+                    sqlCmd.Parameters.AddWithValue("@Direccion", Obj.Direccion);
+                    sqlCmd.Parameters.AddWithValue("@Estado", Obj.Estado);
+                    sqlCmd.Parameters.AddWithValue("@Telefono", Obj.Telefono);
+                    sqlCmd.ExecuteNonQuery();
+                    Rpta = sqlCmd.ExecuteNonQuery() == 1 ? "OK" : "No se pudo actualizar el registro";
+                }
+
             }
             catch (Exception ex)
             {
-                throw ex;
+                Rpta = ex.Message;
             }
-            finally
-            {
-                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
-            }
+            return Rpta;                        
         }
         public string Eliminar(int Id)
         {
-            SqlConnection SqlCon = new SqlConnection();
+            string Rpta = "";
             try
             {
-                SqlCon = Conexion.getInstancia().CrearConexion();
-                SqlCommand Comando = new SqlCommand("Hotel_Eliminar", SqlCon);
-                Comando.CommandType = CommandType.StoredProcedure;
-                Comando.Parameters.AddWithValue("@IdHotel", Id);
-                SqlCon.Open();
-                Comando.ExecuteNonQuery();
-                return "Hotel eliminado correctamente.";
+                using (SqlConnection sqlCon = conexion.CrearConexion())
+                {
+                    sqlCon.Open();
+                    SqlCommand sqlCmd = new SqlCommand("Hotel_eliminar", sqlCon);
+                    sqlCmd.CommandType = CommandType.StoredProcedure;
+                    sqlCmd.Parameters.AddWithValue("@IdHotel", Id);
+                    Rpta = sqlCmd.ExecuteNonQuery() == 1 ? "OK" : "No se pudo eliminar el registro";
+                }
             }
             catch (Exception ex)
             {
-                throw ex;
+                Rpta = ex.Message;
             }
-            finally
-            {
-                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
-            }
-        }
-        public string Activar(int Id)
+            return Rpta;
+        }   
+        public string Desactivar(int id)
         {
-            SqlConnection SqlCon = new SqlConnection();
+            string Rpta = "";
             try
             {
-                SqlCon = Conexion.getInstancia().CrearConexion();
-                SqlCommand Comando = new SqlCommand("Hotel_Activar", SqlCon);
-                Comando.CommandType = CommandType.StoredProcedure;
-                Comando.Parameters.AddWithValue("@IdHotel", Id);
-                SqlCon.Open();
-                Comando.ExecuteNonQuery();
-                return "Hotel activado correctamente.";
+                using (SqlConnection sqlCon = conexion.CrearConexion())
+                {
+                    sqlCon.Open();
+                    SqlCommand sqlCmd = new SqlCommand("Hotel_Desactivar", sqlCon);
+                    sqlCmd.CommandType = CommandType.StoredProcedure;
+                    sqlCmd.Parameters.AddWithValue("@IdHotel", id);
+                    Rpta = sqlCmd.ExecuteNonQuery() == 1 ? "OK" : "No se pudo desactivar el registro";
+                }
             }
             catch (Exception ex)
             {
-                throw ex;
+                Rpta = ex.Message;
             }
-            finally
-            {
-                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
-            }
+            return Rpta;
         }
-        public string Desactivar(int Id)
+        public string Activar(int id)
         {
-            SqlConnection SqlCon = new SqlConnection();
+            string Rpta = "";
             try
             {
-                SqlCon = Conexion.getInstancia().CrearConexion();
-                SqlCommand Comando = new SqlCommand("Hotel_Desactivar", SqlCon);
-                Comando.CommandType = CommandType.StoredProcedure;
-                Comando.Parameters.AddWithValue("@IdHotel", Id);
-                SqlCon.Open();
-                Comando.ExecuteNonQuery();
-                return "Hotel desactivado correctamente.";
+                using (SqlConnection sqlCon = conexion.CrearConexion())
+                {
+                    sqlCon.Open();
+                    SqlCommand sqlCmd = new SqlCommand("Hotel_Activar", sqlCon);
+                    sqlCmd.CommandType = CommandType.StoredProcedure;
+                    sqlCmd.Parameters.AddWithValue("@IdHotel", id);
+                    Rpta = sqlCmd.ExecuteNonQuery() == 1 ? "OK" : "No se pudo activar el registro";
+                }
             }
             catch (Exception ex)
             {
-                throw ex;
+                Rpta = ex.Message;
             }
-            finally
-            {
-                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
-            }
+            return Rpta;
         }
     }
 }

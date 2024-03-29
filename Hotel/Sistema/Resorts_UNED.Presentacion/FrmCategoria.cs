@@ -106,6 +106,7 @@ namespace Resorts_UNED.Presentacion
                         this.MensajeOk("Se insertó de forma correcta el registro");
                         this.Limpiar();
                         this.Listar();
+                        TabGeneral.SelectedIndex = 0;
                     }
                     else
                     {
@@ -163,6 +164,7 @@ namespace Resorts_UNED.Presentacion
                         this.MensajeOk("Se actualizó de forma correcta el registro");
                         this.Limpiar();
                         this.Listar();
+                        TabGeneral.SelectedIndex = 0;
                     }
                     else
                     {
