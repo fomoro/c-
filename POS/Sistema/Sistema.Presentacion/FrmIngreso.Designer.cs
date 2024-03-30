@@ -549,16 +549,16 @@
             this.PanelMostrar.Controls.Add(this.label12);
             this.PanelMostrar.Controls.Add(this.BtnCerrarDetalle);
             this.PanelMostrar.Controls.Add(this.DgvMostrarDetalle);
-            this.PanelMostrar.Location = new System.Drawing.Point(388, 228);
+            this.PanelMostrar.Location = new System.Drawing.Point(278, 228);
             this.PanelMostrar.Name = "PanelMostrar";
-            this.PanelMostrar.Size = new System.Drawing.Size(904, 428);
+            this.PanelMostrar.Size = new System.Drawing.Size(1014, 428);
             this.PanelMostrar.TabIndex = 7;
             this.PanelMostrar.Visible = false;
             // 
             // TxtTotalD
             // 
             this.TxtTotalD.Enabled = false;
-            this.TxtTotalD.Location = new System.Drawing.Point(771, 403);
+            this.TxtTotalD.Location = new System.Drawing.Point(888, 403);
             this.TxtTotalD.Name = "TxtTotalD";
             this.TxtTotalD.Size = new System.Drawing.Size(113, 22);
             this.TxtTotalD.TabIndex = 7;
@@ -566,7 +566,7 @@
             // TxtTotalImpuestoD
             // 
             this.TxtTotalImpuestoD.Enabled = false;
-            this.TxtTotalImpuestoD.Location = new System.Drawing.Point(771, 376);
+            this.TxtTotalImpuestoD.Location = new System.Drawing.Point(888, 376);
             this.TxtTotalImpuestoD.Name = "TxtTotalImpuestoD";
             this.TxtTotalImpuestoD.Size = new System.Drawing.Size(113, 22);
             this.TxtTotalImpuestoD.TabIndex = 6;
@@ -574,7 +574,7 @@
             // TxtSubtotalD
             // 
             this.TxtSubtotalD.Enabled = false;
-            this.TxtSubtotalD.Location = new System.Drawing.Point(771, 347);
+            this.TxtSubtotalD.Location = new System.Drawing.Point(888, 347);
             this.TxtSubtotalD.Name = "TxtSubtotalD";
             this.TxtSubtotalD.Size = new System.Drawing.Size(113, 22);
             this.TxtSubtotalD.TabIndex = 5;
@@ -582,7 +582,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(664, 403);
+            this.label14.Location = new System.Drawing.Point(781, 403);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(40, 17);
             this.label14.TabIndex = 4;
@@ -591,7 +591,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(664, 379);
+            this.label13.Location = new System.Drawing.Point(781, 379);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(101, 17);
             this.label13.TabIndex = 3;
@@ -600,7 +600,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(664, 352);
+            this.label12.Location = new System.Drawing.Point(781, 352);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(60, 17);
             this.label12.TabIndex = 2;
@@ -610,7 +610,7 @@
             // 
             this.BtnCerrarDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCerrarDetalle.ForeColor = System.Drawing.Color.Red;
-            this.BtnCerrarDetalle.Location = new System.Drawing.Point(831, 3);
+            this.BtnCerrarDetalle.Location = new System.Drawing.Point(948, 3);
             this.BtnCerrarDetalle.Name = "BtnCerrarDetalle";
             this.BtnCerrarDetalle.Size = new System.Drawing.Size(53, 39);
             this.BtnCerrarDetalle.TabIndex = 1;
@@ -623,12 +623,12 @@
             this.DgvMostrarDetalle.AllowUserToAddRows = false;
             this.DgvMostrarDetalle.AllowUserToDeleteRows = false;
             this.DgvMostrarDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvMostrarDetalle.Location = new System.Drawing.Point(20, 48);
+            this.DgvMostrarDetalle.Location = new System.Drawing.Point(27, 48);
             this.DgvMostrarDetalle.Name = "DgvMostrarDetalle";
             this.DgvMostrarDetalle.ReadOnly = true;
             this.DgvMostrarDetalle.RowTemplate.Height = 24;
             this.DgvMostrarDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvMostrarDetalle.Size = new System.Drawing.Size(864, 289);
+            this.DgvMostrarDetalle.Size = new System.Drawing.Size(974, 289);
             this.DgvMostrarDetalle.TabIndex = 0;
             // 
             // BtnAnular

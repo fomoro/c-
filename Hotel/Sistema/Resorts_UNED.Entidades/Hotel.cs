@@ -14,7 +14,6 @@ namespace Resorts_UNED.Entidades
         public string Direccion { get; set; }
         public bool Estado { get; set; }
         public string Telefono { get; set; }
-        public DataTable Detalles { get; set; }
         
     }
 }

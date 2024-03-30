@@ -240,7 +240,7 @@ namespace Sistema.Presentacion
         {
             try
             {
-                DgvArticulos.DataSource = NArticulo.Buscar(TxtBuscarArticulo.Text.Trim());
+                DgvArticulos.DataSource = NArticulo.BuscarVenta(TxtBuscarArticulo.Text.Trim());
                 this.FormatoArticulos();
                 LblTotalArticulos.Text = "Total Registros: " + Convert.ToString(DgvArticulos.Rows.Count);
             }

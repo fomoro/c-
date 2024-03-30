@@ -42,9 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NCliente.cs" />
+    <Compile Include="NIngreso.cs" />
     <Compile Include="NHotel.cs" />
     <Compile Include="NArticulo.cs" />
     <Compile Include="NCategoria.cs" />
+    <Compile Include="NVenta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

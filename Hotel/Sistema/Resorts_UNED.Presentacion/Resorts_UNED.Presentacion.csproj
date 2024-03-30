@@ -94,6 +94,12 @@
     <Compile Include="FrmArticulo.Designer.cs">
       <DependentUpon>FrmArticulo.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmArticulosHotel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmArticulosHotel.Designer.cs">
+      <DependentUpon>FrmArticulosHotel.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,12 @@
     <Compile Include="FrmHotel.Designer.cs">
       <DependentUpon>FrmHotel.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPedidosClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPedidosClientes.Designer.cs">
+      <DependentUpon>FrmPedidosClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +136,9 @@
     <EmbeddedResource Include="FrmArticulo.resx">
       <DependentUpon>FrmArticulo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmArticulosHotel.resx">
+      <DependentUpon>FrmArticulosHotel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCategoria.resx">
       <DependentUpon>FrmCategoria.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmHotel.resx">
       <DependentUpon>FrmHotel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPedidosClientes.resx">
+      <DependentUpon>FrmPedidosClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
