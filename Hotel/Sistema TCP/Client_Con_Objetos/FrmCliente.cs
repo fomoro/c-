@@ -20,6 +20,7 @@ namespace Client_Con_Objetos
             client = new SimpleTcpClient();
             client.StringEncoder = Encoding.UTF8;
             client.DelimiterDataReceived += Client_DataReceived;
+            BtnDesconectar.Enabled = false;
         }
     
         private void BtnConnect_Click(object sender, EventArgs e)
@@ -60,6 +61,7 @@ namespace Client_Con_Objetos
 
                     isConnected = true;
                     BtnConnect.Enabled = false;
+                    BtnDesconectar.Enabled = true;
                 }
                 catch (Exception ex)
                 {
@@ -97,13 +99,14 @@ namespace Client_Con_Objetos
             }
         }
 
-        private void BtnDisconnect_Click(object sender, EventArgs e)
+        private void BtnDesconectar_Click(object sender, EventArgs e)
         {
             if (isConnected)
             {
                 client.Disconnect();
                 isConnected = false;
                 BtnConnect.Enabled = true;
+                BtnDesconectar.Enabled = false;
                 articulos.Clear();
                 DgvArticulos.DataSource = null;
             }
@@ -112,5 +115,6 @@ namespace Client_Con_Objetos
                 MessageBox.Show("El cliente ya está desconectado del servidor.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
     }
 }

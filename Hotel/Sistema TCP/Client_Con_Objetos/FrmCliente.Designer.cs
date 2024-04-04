@@ -40,6 +40,7 @@ namespace Client_Con_Objetos
             this.LblIdCliente = new System.Windows.Forms.Label();
             this.TxtIdCliente = new System.Windows.Forms.TextBox();
             this.DgvArticulos = new System.Windows.Forms.DataGridView();
+            this.BtnDesconectar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvArticulos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +56,7 @@ namespace Client_Con_Objetos
             // 
             this.BtnConnect.Location = new System.Drawing.Point(554, 24);
             this.BtnConnect.Name = "BtnConnect";
-            this.BtnConnect.Size = new System.Drawing.Size(75, 36);
+            this.BtnConnect.Size = new System.Drawing.Size(105, 36);
             this.BtnConnect.TabIndex = 59;
             this.BtnConnect.Text = "Connect";
             this.BtnConnect.UseVisualStyleBackColor = true;
@@ -137,11 +138,22 @@ namespace Client_Con_Objetos
             this.DgvArticulos.Size = new System.Drawing.Size(684, 150);
             this.DgvArticulos.TabIndex = 69;
             // 
+            // BtnDesconectar
+            // 
+            this.BtnDesconectar.Location = new System.Drawing.Point(554, 71);
+            this.BtnDesconectar.Name = "BtnDesconectar";
+            this.BtnDesconectar.Size = new System.Drawing.Size(105, 36);
+            this.BtnDesconectar.TabIndex = 70;
+            this.BtnDesconectar.Text = "Desconectar";
+            this.BtnDesconectar.UseVisualStyleBackColor = true;
+            this.BtnDesconectar.Click += new System.EventHandler(this.BtnDesconectar_Click);
+            // 
             // FrmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(765, 564);
+            this.Controls.Add(this.BtnDesconectar);
             this.Controls.Add(this.DgvArticulos);
             this.Controls.Add(this.TxtIdCliente);
             this.Controls.Add(this.LblIdCliente);
@@ -174,5 +186,6 @@ namespace Client_Con_Objetos
         private System.Windows.Forms.Label LblIdCliente;
         private System.Windows.Forms.TextBox TxtIdCliente;
         private System.Windows.Forms.DataGridView DgvArticulos;
+        private System.Windows.Forms.Button BtnDesconectar;
     }
 }
