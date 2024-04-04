@@ -6,42 +6,55 @@ namespace Server_Con_Objetos
 {
     public class Data
     {
-        public List<Cliente> Clientes { get; set; }
+        private List<Cliente> _clientes;
 
         public Data()
         {
-            Clientes = new List<Cliente>();
-            
+            _clientes = new List<Cliente>();
+            PoblarClientes();
+        }
+
+        public IReadOnlyList<Cliente> Clientes => _clientes;
+
+        public Cliente ObtenerClientePorId(string id)
+        {
+            return _clientes.FirstOrDefault(c => c.Id == id);
+        }
+
+        public List<Articulo> ObtenerArticulosPorClienteId(string clienteId)
+        {
+            Cliente cliente = ObtenerClientePorId(clienteId);
+            return cliente?.Articulos ?? new List<Articulo>();
+        }
+
+        private void PoblarClientes()
+        {
             for (int i = 1; i <= 10; i++)
             {
                 Cliente cliente = new Cliente
                 {
                     Id = $"C{i}",
+                    Clave = $"C{i}",
                     Nombre = $"Nombre{i}",
                     Apellido = $"Apellido{i}",
-                    FechaNacimiento = DateTime.Now.AddYears(-20).AddDays(i) 
+                    FechaNacimiento = DateTime.Now.AddYears(-20).AddDays(i)
                 };
 
                 for (int j = 1; j <= 2; j++)
                 {
                     Articulo articulo = new Articulo
                     {
-                        IdArticulo = i * 10 + j, 
+                        IdArticulo = i * 10 + j,
                         Nombre = $"Artículo{i * 10 + j}",
-                        PrecioVenta = 10.50m * j, 
+                        PrecioVenta = 10.50m * j,
                         Descripcion = $"Descripción del artículo {i * 10 + j}"
                     };
 
-                    cliente.Articulos.Add(articulo); 
+                    cliente.Articulos.Add(articulo);
                 }
 
-                Clientes.Add(cliente); 
+                _clientes.Add(cliente);
             }
-        }
-
-        public bool ClienteExiste(Cliente cliente)
-        {
-            return Clientes.Any(c => c.Id == cliente.Id);
         }
     }
 }

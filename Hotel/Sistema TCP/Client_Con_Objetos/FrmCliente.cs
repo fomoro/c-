@@ -2,63 +2,64 @@
 using System;
 using System.Text;
 using System.Windows.Forms;
-using System.Net; // Añadido para la validación de la dirección IP
+using System.Net;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Client_Con_Objetos
 {
     public partial class FrmCliente : Form
     {
+        private SimpleTcpClient client;
+        private bool isConnected = false;
+        private List<Articulo> articulos = new List<Articulo>();
+
         public FrmCliente()
         {
             InitializeComponent();
-        }
-
-        private SimpleTcpClient client;
-        private bool isConnected = false; // Bandera para rastrear el estado de la conexión
-
-        private void FrmCliente_Load(object sender, EventArgs e)
-        {
             client = new SimpleTcpClient();
             client.StringEncoder = Encoding.UTF8;
             client.DelimiterDataReceived += Client_DataReceived;
         }
-
+    
         private void BtnConnect_Click(object sender, EventArgs e)
         {
-            if (!isConnected) // Prevenir intentos de conexión redundantes
+            if (!isConnected)
             {
                 try
                 {
-                    // Validar el formato de la dirección IP
                     if (!IPAddress.TryParse(TxtHost.Text, out IPAddress ip))
                     {
-                        MessageBox.Show("Formato de dirección IP no válido. Introduzca una dirección IP válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Formato de dirección IP no válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
-                    // Validar el número de puerto (dentro del rango válido)
                     int port = Convert.ToInt32(TxtPort.Text);
                     if (port < 0 || port > 65535)
                     {
-                        MessageBox.Show("Número de puerto no válido. Introduzca un número de puerto válido (0-65535).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Número de puerto no válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    if (string.IsNullOrEmpty(TxtIdCliente.Text))
+                    {
+                        MessageBox.Show("Introduzca un ID de cliente válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
                     Cliente cliente = new Cliente
                     {
                         Id = TxtIdCliente.Text,
-                        Nombre = TxtNombreCliente.Text,
-                        Apellido = TxtApellidoCliente.Text,
+                        Clave = TxtClave.Text,
                         FechaNacimiento = DateTime.Now
                     };
 
-                    string mensaje = Newtonsoft.Json.JsonConvert.SerializeObject(cliente);
+                    string mensaje = JsonConvert.SerializeObject(cliente);
                     client.Connect(TxtHost.Text, port);
                     client.WriteLineAndGetReply(mensaje, TimeSpan.FromSeconds(2));
 
-                    isConnected = true; // Actualizar el estado de la conexión
+                    isConnected = true;
                     BtnConnect.Enabled = false;
-                    BtnSend.Enabled = true;
                 }
                 catch (Exception ex)
                 {
@@ -71,34 +72,45 @@ namespace Client_Con_Objetos
             }
         }
 
-        private void BtnSend_Click(object sender, EventArgs e)
-        {
-            if (client != null)
-            {
-                Cliente cliente = new Cliente
-                {
-                    Id = TxtIdCliente.Text,
-                    Nombre = TxtNombreCliente.Text,
-                    Apellido = TxtApellidoCliente.Text,
-                    FechaNacimiento = DateTime.Now
-                };
-
-                string mensaje = Newtonsoft.Json.JsonConvert.SerializeObject(cliente) + Environment.NewLine + TxtMessage.Text;
-                client.WriteLineAndGetReply(mensaje, TimeSpan.FromSeconds(2));
-            }
-            else
-            {
-                MessageBox.Show("Cliente no conectado al servidor.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void Client_DataReceived(object sender, SimpleTCP.Message e)
         {
             TxtStatus.Invoke((MethodInvoker)delegate ()
             {
-                string mensaje = e.MessageString.Trim();
-                TxtStatus.AppendText("Mensaje recibido del servidor: " + mensaje + Environment.NewLine);
+                ProcessMessage(e);
             });
+        }
+
+        private void ProcessMessage(SimpleTCP.Message e)
+        {
+            string mensaje = e.MessageString.Trim();
+            TxtStatus.AppendText("Mensaje recibido del servidor: " + mensaje + Environment.NewLine);
+
+            if (e.MessageString.StartsWith("ARTICULOS"))
+            {
+                string articulosJson = e.MessageString.Substring("ARTICULOS".Length);
+                List<Articulo> articulosList = JsonConvert.DeserializeObject<List<Articulo>>(articulosJson);
+
+                articulos.Clear();
+                articulos.AddRange(articulosList);
+                DgvArticulos.AutoGenerateColumns = true;
+                DgvArticulos.DataSource = articulos;
+            }
+        }
+
+        private void BtnDisconnect_Click(object sender, EventArgs e)
+        {
+            if (isConnected)
+            {
+                client.Disconnect();
+                isConnected = false;
+                BtnConnect.Enabled = true;
+                articulos.Clear();
+                DgvArticulos.DataSource = null;
+            }
+            else
+            {
+                MessageBox.Show("El cliente ya está desconectado del servidor.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

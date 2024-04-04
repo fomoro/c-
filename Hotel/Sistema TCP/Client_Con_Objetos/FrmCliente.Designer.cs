@@ -30,47 +30,26 @@ namespace Client_Con_Objetos
         private void InitializeComponent()
         {
             this.TxtStatus = new System.Windows.Forms.TextBox();
-            this.BtnSend = new System.Windows.Forms.Button();
-            this.TxtMessage = new System.Windows.Forms.TextBox();
             this.BtnConnect = new System.Windows.Forms.Button();
             this.TxtPort = new System.Windows.Forms.TextBox();
             this.TxtHost = new System.Windows.Forms.TextBox();
             this.LblPort = new System.Windows.Forms.Label();
             this.LblHost = new System.Windows.Forms.Label();
-            this.TxtApellidoCliente = new System.Windows.Forms.TextBox();
-            this.TxtNombreCliente = new System.Windows.Forms.TextBox();
-            this.LblNombreCliente = new System.Windows.Forms.Label();
-            this.LblApellidoCliente = new System.Windows.Forms.Label();
+            this.TxtClave = new System.Windows.Forms.TextBox();
+            this.LblClave = new System.Windows.Forms.Label();
             this.LblIdCliente = new System.Windows.Forms.Label();
             this.TxtIdCliente = new System.Windows.Forms.TextBox();
+            this.DgvArticulos = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvArticulos)).BeginInit();
             this.SuspendLayout();
             // 
             // TxtStatus
             // 
-            this.TxtStatus.Location = new System.Drawing.Point(12, 269);
+            this.TxtStatus.Location = new System.Drawing.Point(12, 161);
             this.TxtStatus.Multiline = true;
             this.TxtStatus.Name = "TxtStatus";
-            this.TxtStatus.Size = new System.Drawing.Size(522, 169);
+            this.TxtStatus.Size = new System.Drawing.Size(684, 169);
             this.TxtStatus.TabIndex = 62;
-            // 
-            // BtnSend
-            // 
-            this.BtnSend.Enabled = false;
-            this.BtnSend.Location = new System.Drawing.Point(554, 178);
-            this.BtnSend.Name = "BtnSend";
-            this.BtnSend.Size = new System.Drawing.Size(75, 36);
-            this.BtnSend.TabIndex = 61;
-            this.BtnSend.Text = "Send";
-            this.BtnSend.UseVisualStyleBackColor = true;
-            this.BtnSend.Click += new System.EventHandler(this.BtnSend_Click);
-            // 
-            // TxtMessage
-            // 
-            this.TxtMessage.Location = new System.Drawing.Point(12, 178);
-            this.TxtMessage.Multiline = true;
-            this.TxtMessage.Name = "TxtMessage";
-            this.TxtMessage.Size = new System.Drawing.Size(522, 62);
-            this.TxtMessage.TabIndex = 60;
             // 
             // BtnConnect
             // 
@@ -84,7 +63,7 @@ namespace Client_Con_Objetos
             // 
             // TxtPort
             // 
-            this.TxtPort.Location = new System.Drawing.Point(382, 31);
+            this.TxtPort.Location = new System.Drawing.Point(382, 23);
             this.TxtPort.Name = "TxtPort";
             this.TxtPort.Size = new System.Drawing.Size(152, 22);
             this.TxtPort.TabIndex = 58;
@@ -101,7 +80,7 @@ namespace Client_Con_Objetos
             // LblPort
             // 
             this.LblPort.AutoSize = true;
-            this.LblPort.Location = new System.Drawing.Point(312, 34);
+            this.LblPort.Location = new System.Drawing.Point(303, 28);
             this.LblPort.Name = "LblPort";
             this.LblPort.Size = new System.Drawing.Size(34, 17);
             this.LblPort.TabIndex = 56;
@@ -116,42 +95,26 @@ namespace Client_Con_Objetos
             this.LblHost.TabIndex = 55;
             this.LblHost.Text = "Host";
             // 
-            // TxtApellidoCliente
+            // TxtClave
             // 
-            this.TxtApellidoCliente.Location = new System.Drawing.Point(382, 104);
-            this.TxtApellidoCliente.Name = "TxtApellidoCliente";
-            this.TxtApellidoCliente.Size = new System.Drawing.Size(152, 22);
-            this.TxtApellidoCliente.TabIndex = 64;
+            this.TxtClave.Location = new System.Drawing.Point(382, 66);
+            this.TxtClave.Name = "TxtClave";
+            this.TxtClave.Size = new System.Drawing.Size(152, 22);
+            this.TxtClave.TabIndex = 63;
             // 
-            // TxtNombreCliente
+            // LblClave
             // 
-            this.TxtNombreCliente.Location = new System.Drawing.Point(110, 104);
-            this.TxtNombreCliente.Name = "TxtNombreCliente";
-            this.TxtNombreCliente.Size = new System.Drawing.Size(152, 22);
-            this.TxtNombreCliente.TabIndex = 63;
-            // 
-            // LblNombreCliente
-            // 
-            this.LblNombreCliente.AutoSize = true;
-            this.LblNombreCliente.Location = new System.Drawing.Point(20, 109);
-            this.LblNombreCliente.Name = "LblNombreCliente";
-            this.LblNombreCliente.Size = new System.Drawing.Size(58, 17);
-            this.LblNombreCliente.TabIndex = 65;
-            this.LblNombreCliente.Text = "Nombre";
-            // 
-            // LblApellidoCliente
-            // 
-            this.LblApellidoCliente.AutoSize = true;
-            this.LblApellidoCliente.Location = new System.Drawing.Point(312, 109);
-            this.LblApellidoCliente.Name = "LblApellidoCliente";
-            this.LblApellidoCliente.Size = new System.Drawing.Size(58, 17);
-            this.LblApellidoCliente.TabIndex = 66;
-            this.LblApellidoCliente.Text = "Apellido";
+            this.LblClave.AutoSize = true;
+            this.LblClave.Location = new System.Drawing.Point(303, 71);
+            this.LblClave.Name = "LblClave";
+            this.LblClave.Size = new System.Drawing.Size(43, 17);
+            this.LblClave.TabIndex = 65;
+            this.LblClave.Text = "Clave";
             // 
             // LblIdCliente
             // 
             this.LblIdCliente.AutoSize = true;
-            this.LblIdCliente.Location = new System.Drawing.Point(20, 72);
+            this.LblIdCliente.Location = new System.Drawing.Point(20, 71);
             this.LblIdCliente.Name = "LblIdCliente";
             this.LblIdCliente.Size = new System.Drawing.Size(19, 17);
             this.LblIdCliente.TabIndex = 67;
@@ -159,25 +122,32 @@ namespace Client_Con_Objetos
             // 
             // TxtIdCliente
             // 
-            this.TxtIdCliente.Location = new System.Drawing.Point(110, 68);
+            this.TxtIdCliente.Location = new System.Drawing.Point(110, 66);
             this.TxtIdCliente.Name = "TxtIdCliente";
             this.TxtIdCliente.Size = new System.Drawing.Size(152, 22);
             this.TxtIdCliente.TabIndex = 68;
+            // 
+            // DgvArticulos
+            // 
+            this.DgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvArticulos.Location = new System.Drawing.Point(12, 353);
+            this.DgvArticulos.Name = "DgvArticulos";
+            this.DgvArticulos.RowHeadersWidth = 51;
+            this.DgvArticulos.RowTemplate.Height = 24;
+            this.DgvArticulos.Size = new System.Drawing.Size(684, 150);
+            this.DgvArticulos.TabIndex = 69;
             // 
             // FrmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(652, 450);
+            this.ClientSize = new System.Drawing.Size(765, 564);
+            this.Controls.Add(this.DgvArticulos);
             this.Controls.Add(this.TxtIdCliente);
             this.Controls.Add(this.LblIdCliente);
-            this.Controls.Add(this.LblApellidoCliente);
-            this.Controls.Add(this.LblNombreCliente);
-            this.Controls.Add(this.TxtApellidoCliente);
-            this.Controls.Add(this.TxtNombreCliente);
+            this.Controls.Add(this.LblClave);
+            this.Controls.Add(this.TxtClave);
             this.Controls.Add(this.TxtStatus);
-            this.Controls.Add(this.BtnSend);
-            this.Controls.Add(this.TxtMessage);
             this.Controls.Add(this.BtnConnect);
             this.Controls.Add(this.TxtPort);
             this.Controls.Add(this.TxtHost);
@@ -185,7 +155,7 @@ namespace Client_Con_Objetos
             this.Controls.Add(this.LblHost);
             this.Name = "FrmCliente";
             this.Text = "FrmCliente";
-            this.Load += new System.EventHandler(this.FrmCliente_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.DgvArticulos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,18 +164,15 @@ namespace Client_Con_Objetos
         #endregion
 
         private System.Windows.Forms.TextBox TxtStatus;
-        private System.Windows.Forms.Button BtnSend;
-        private System.Windows.Forms.TextBox TxtMessage;
         private System.Windows.Forms.Button BtnConnect;
         private System.Windows.Forms.TextBox TxtPort;
         private System.Windows.Forms.TextBox TxtHost;
         private System.Windows.Forms.Label LblPort;
         private System.Windows.Forms.Label LblHost;
-        private System.Windows.Forms.TextBox TxtApellidoCliente;
-        private System.Windows.Forms.TextBox TxtNombreCliente;
-        private System.Windows.Forms.Label LblNombreCliente;
-        private System.Windows.Forms.Label LblApellidoCliente;
+        private System.Windows.Forms.TextBox TxtClave;
+        private System.Windows.Forms.Label LblClave;
         private System.Windows.Forms.Label LblIdCliente;
         private System.Windows.Forms.TextBox TxtIdCliente;
+        private System.Windows.Forms.DataGridView DgvArticulos;
     }
 }

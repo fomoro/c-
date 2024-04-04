@@ -9,6 +9,7 @@ namespace Client_Con_Objetos
     public class Cliente
     {
         public string Id { get; set; }
+        public string Clave { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public DateTime FechaNacimiento { get; set; }

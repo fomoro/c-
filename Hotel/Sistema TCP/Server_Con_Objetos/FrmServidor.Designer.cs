@@ -46,7 +46,7 @@ namespace Server_Con_Objetos
             this.TxtStatus.Location = new System.Drawing.Point(12, 76);
             this.TxtStatus.Multiline = true;
             this.TxtStatus.Name = "TxtStatus";
-            this.TxtStatus.Size = new System.Drawing.Size(709, 127);
+            this.TxtStatus.Size = new System.Drawing.Size(786, 127);
             this.TxtStatus.TabIndex = 48;
             // 
             // BtnStart
@@ -110,7 +110,7 @@ namespace Server_Con_Objetos
             this.DgvClientes.Name = "DgvClientes";
             this.DgvClientes.RowHeadersWidth = 51;
             this.DgvClientes.RowTemplate.Height = 24;
-            this.DgvClientes.Size = new System.Drawing.Size(709, 150);
+            this.DgvClientes.Size = new System.Drawing.Size(786, 150);
             this.DgvClientes.TabIndex = 49;
             // 
             // LblClientes
@@ -118,7 +118,7 @@ namespace Server_Con_Objetos
             this.LblClientes.AutoSize = true;
             this.LblClientes.Location = new System.Drawing.Point(12, 226);
             this.LblClientes.Name = "LblClientes";
-            this.LblClientes.Size = new System.Drawing.Size(73, 21);
+            this.LblClientes.Size = new System.Drawing.Size(58, 17);
             this.LblClientes.TabIndex = 50;
             this.LblClientes.Text = "Clientes";
             // 
@@ -126,7 +126,7 @@ namespace Server_Con_Objetos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(755, 450);
+            this.ClientSize = new System.Drawing.Size(832, 450);
             this.Controls.Add(this.LblClientes);
             this.Controls.Add(this.DgvClientes);
             this.Controls.Add(this.TxtStatus);
