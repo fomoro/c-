@@ -3,8 +3,7 @@ CREATE PROCEDURE Articulo_listar
 AS
 BEGIN
     SELECT a.idarticulo AS ID, a.idcategoria, c.nombre AS Categoria,
-    a.codigo AS Codigo, a.nombre AS Nombre, a.precio_venta AS Precio_Venta,
-    a.stock AS Stock, a.descripcion AS Descripcion, a.imagen AS Imagen,
+    a.nombre AS Nombre, a.precio_venta AS Precio_Venta, a.descripcion AS Descripcion, a.imagen AS Imagen,
     a.estado AS Estado
     FROM articulo a
     INNER JOIN categoria c ON a.idcategoria = c.idcategoria
@@ -18,8 +17,7 @@ CREATE PROCEDURE Articulo_buscar
 AS
 BEGIN
     SELECT a.idarticulo AS ID, a.idcategoria, c.nombre AS Categoria,
-    a.codigo AS Codigo, a.nombre AS Nombre, a.precio_venta AS Precio_Venta,
-    a.stock AS Stock, a.descripcion AS Descripcion, a.imagen AS Imagen,
+    a.nombre AS Nombre, a.precio_venta AS Precio_Venta, a.descripcion AS Descripcion, a.imagen AS Imagen,
     a.estado AS Estado
     FROM articulo a
     INNER JOIN categoria c ON a.idcategoria = c.idcategoria
@@ -31,16 +29,14 @@ GO
 -- Procedimiento Insertar
 CREATE PROCEDURE Articulo_insertar
 @idcategoria INTEGER,
-@codigo VARCHAR(50),
 @nombre VARCHAR(100),
 @precio_venta DECIMAL(11,2),
-@stock INTEGER,
 @descripcion VARCHAR(255),
 @imagen VARCHAR(20)
 AS
 BEGIN
-    INSERT INTO Articulo (idcategoria, codigo, nombre, precio_venta, stock, descripcion, imagen)
-    VALUES (@idcategoria, @codigo, @nombre, @precio_venta, @stock, @descripcion, @imagen);
+    INSERT INTO Articulo (idcategoria, nombre, precio_venta, descripcion, imagen)
+    VALUES (@idcategoria, @nombre, @precio_venta, @descripcion, @imagen);
 END
 GO
 
@@ -48,20 +44,16 @@ GO
 CREATE PROCEDURE Articulo_actualizar
 @idarticulo INTEGER,
 @idcategoria INTEGER,
-@codigo VARCHAR(50),
 @nombre VARCHAR(100),
 @precio_venta DECIMAL(11,2),
-@stock INTEGER,
 @descripcion VARCHAR(255),
 @imagen VARCHAR(20)
 AS
 BEGIN
     UPDATE articulo
     SET idcategoria = @idcategoria,
-        codigo = @codigo,
         nombre = @nombre,
-        precio_venta = @precio_venta,
-        stock = @stock,
+        precio_venta = @precio_venta,        
         descripcion = @descripcion,
         imagen = @imagen
     WHERE idarticulo = @idarticulo;
@@ -110,5 +102,49 @@ BEGIN
         SET @existe = 1;
     ELSE
         SET @existe = 0;
+END
+GO
+
+-- Procedimiento ArticulosObtenerConCategoria
+CREATE PROCEDURE Articulos_ObtenerConCategoria
+AS
+BEGIN
+    DECLARE @valor VARCHAR(50); -- Declare @valor variable
+    SELECT a.IdArticulo AS Id, c.Nombre AS Categoria,
+           a.Nombre AS Nombre,
+           a.Precio_Venta AS 'Precio Unidad'
+    FROM Categoria c
+    INNER JOIN Articulo a ON c.IdCategoria = a.IdCategoria;
+END;
+GO
+
+-- Procedimiento Articulo_BuscarConCategoria
+CREATE PROCEDURE Articulo_BuscarConCategoria
+@valor VARCHAR(50)
+AS
+BEGIN
+    SELECT a.IdArticulo AS Id, c.Nombre AS Categoria,
+           a.Nombre AS Nombre,
+           a.Precio_Venta AS 'Precio Unidad'
+    FROM Categoria c
+    INNER JOIN Articulo a ON c.IdCategoria = a.IdCategoria
+    WHERE a.nombre LIKE '%' + @valor + '%' OR a.descripcion LIKE '%' + @valor + '%'
+    ORDER BY a.nombre ASC;
+END
+GO
+
+-- Procedimiento Articulos_ObtenerPorHotel
+CREATE PROCEDURE Articulos_ObtenerPorHotel
+@valor VARCHAR(50)
+AS
+BEGIN
+    SELECT a.IdArticulo AS Id, c.Nombre AS Categoria,
+           a.Nombre AS Nombre,
+           a.Precio_Venta AS 'Precio Unidad'
+    FROM Categoria c
+    INNER JOIN Articulo a ON c.IdCategoria = a.IdCategoria
+	INNER JOIN ArticuloHotel ah ON a.IdArticulo = ah.IdArticulo
+    WHERE ah.IdHotel = @valor 
+    ORDER BY a.nombre ASC;
 END
 GO

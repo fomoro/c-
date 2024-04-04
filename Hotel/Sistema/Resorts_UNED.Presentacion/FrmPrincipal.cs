@@ -121,14 +121,14 @@ namespace Resorts_UNED.Presentacion
             frm.Show();
         }
 
-        private void articulosAHotelesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ingresosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmArticulosHotel frm = new FrmArticulosHotel();
             frm.MdiParent = this;
             frm.Show();
         }
 
-        private void pedidosClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmPedidosClientes frm = new FrmPedidosClientes();
             frm.MdiParent = this;

@@ -74,5 +74,11 @@ namespace Resorts_UNED.Negocio
                 return ex.Message;
             }
         }
+
+        public static DataTable Login(string Email, string Clave)
+        {
+            DCliente Datos = new DCliente();
+            return Datos.Login(Email, Clave);
+        }
     }
 }

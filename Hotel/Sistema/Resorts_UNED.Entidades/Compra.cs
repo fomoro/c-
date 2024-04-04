@@ -3,7 +3,7 @@ using System.Data;
 
 namespace Resorts_UNED.Entidades
 {
-    public class Ingreso
+    public class Compra
     {
         public int IdHotel { get; set; }
         public string Nombre { get; set; }

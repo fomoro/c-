@@ -10,7 +10,6 @@ GO
 USE ResortsUned
 GO
 
-
 -- Crear la tabla Hotel
 CREATE TABLE Hotel (
     IdHotel INT PRIMARY KEY IDENTITY,
@@ -26,7 +25,7 @@ GO
 CREATE TABLE Categoria (
     IdCategoria INT PRIMARY KEY IDENTITY,
     Nombre NVARCHAR(50) not null unique,
-    Descripcion NVARCHAR(100) null, -- Descripción de la categoría
+    Descripcion NVARCHAR(100) null, 
     Estado BIT default(1)
 );
 PRINT 'Creada Exitosamente la tabla Categoria'
@@ -36,10 +35,8 @@ GO
 CREATE TABLE Articulo (
     IdArticulo INT PRIMARY KEY IDENTITY,
     IdCategoria INT,
-    Codigo NVARCHAR(50) null,
     Nombre NVARCHAR(100) not null unique,
-    Precio_Venta DECIMAL(11,2) not null,
-    Stock INT not null,
+    Precio_Venta DECIMAL(11,2) not null,    
     Descripcion NVARCHAR(255) null,
     Imagen NVARCHAR(20) null,
     Estado BIT default(1),
@@ -50,10 +47,10 @@ GO
 
 -- Crear la tabla ArticuloHotel
 CREATE TABLE ArticuloHotel (
-    IdAsignacion INT PRIMARY KEY IDENTITY,
-    FechaAsignacion DATE,
+    IdAsignacion INT PRIMARY KEY IDENTITY,    
     IdHotel INT,
-    IdArticulo INT,
+    IdArticulo INT,		
+	FechaAsignacion DATE,
     FOREIGN KEY (IdHotel) REFERENCES Hotel(IdHotel),
     FOREIGN KEY (IdArticulo) REFERENCES Articulo(IdArticulo)
 );
@@ -75,10 +72,10 @@ GO
 -- Crear la tabla Pedido
 CREATE TABLE Pedido (
     IdPedido INT PRIMARY KEY IDENTITY,
-    FechaPedido DATE,
-    IdCliente NVARCHAR(20), -- Cambiado a NVARCHAR(20)
-    IdArticulo INT,
-    FOREIGN KEY (IdCliente) REFERENCES Cliente(Identificacion), -- Cambiado a Identificacion
+	IdCliente NVARCHAR(20),
+	IdArticulo INT,
+    FechaPedido DATE,        
+    FOREIGN KEY (IdCliente) REFERENCES Cliente(Identificacion), 
     FOREIGN KEY (IdArticulo) REFERENCES Articulo(IdArticulo),    
 );
 PRINT 'Creada Exitosamente la tabla Pedido'

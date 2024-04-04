@@ -4,3 +4,9 @@ C:\ProyectoCS\Sistema\Sistema.Entidades\obj\Debug\Sistema.Entidades.csprojAssemb
 C:\ProyectoCS\Sistema\Sistema.Entidades\obj\Debug\Sistema.Entidades.csproj.CoreCompileInputs.cache
 C:\ProyectoCS\Sistema\Sistema.Entidades\obj\Debug\Sistema.Entidades.dll
 C:\ProyectoCS\Sistema\Sistema.Entidades\obj\Debug\Sistema.Entidades.pdb
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform\POS\Sistema\Sistema.Entidades\bin\Debug\Sistema.Entidades.dll
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform\POS\Sistema\Sistema.Entidades\bin\Debug\Sistema.Entidades.pdb
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform\POS\Sistema\Sistema.Entidades\obj\Debug\Sistema.Entidades.csproj.AssemblyReference.cache
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform\POS\Sistema\Sistema.Entidades\obj\Debug\Sistema.Entidades.csproj.CoreCompileInputs.cache
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform\POS\Sistema\Sistema.Entidades\obj\Debug\Sistema.Entidades.dll
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform\POS\Sistema\Sistema.Entidades\obj\Debug\Sistema.Entidades.pdb

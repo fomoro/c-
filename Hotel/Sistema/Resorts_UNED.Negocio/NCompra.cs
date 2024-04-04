@@ -5,9 +5,9 @@ using System.Data;
 
 namespace Resorts_UNED.Negocio
 {
-    public class NIngreso
+    public class NCompra
     {
-        private readonly DIngreso datos = new DIngreso();
+        private readonly DCompra datos = new DCompra();
 
         public DataTable Listar()
         {

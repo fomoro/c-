@@ -20,11 +20,45 @@ namespace Resorts_UNED.Negocio
                 throw ex;
             }
         }
+        public DataTable ObtenerConCategoria()
+        {
+            try
+            {
+                return datos.ObtenerConCategoria();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public DataTable ObtenerPorHotel(string Valor)
+        {
+            try
+            {
+                return datos.ObtenerPorHotel(Valor);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public DataTable Buscar(string Valor)
         {
             try
             {
                 return datos.Buscar(Valor);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public DataTable BuscarConCategoria(string Valor)
+        {
+            try
+            {
+                var result = datos.BuscarConCategoria(Valor);
+                return result;
             }
             catch (Exception ex)
             {

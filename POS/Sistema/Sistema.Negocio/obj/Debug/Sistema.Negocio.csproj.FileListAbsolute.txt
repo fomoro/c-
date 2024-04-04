@@ -9,3 +9,14 @@ C:\ProyectoCS\Sistema\Sistema.Negocio\obj\Debug\Sistema.Negocio.csproj.CoreCompi
 C:\ProyectoCS\Sistema\Sistema.Negocio\obj\Debug\Sistema.Negocio.csproj.CopyComplete
 C:\ProyectoCS\Sistema\Sistema.Negocio\obj\Debug\Sistema.Negocio.dll
 C:\ProyectoCS\Sistema\Sistema.Negocio\obj\Debug\Sistema.Negocio.pdb
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform\POS\Sistema\Sistema.Negocio\bin\Debug\Sistema.Negocio.dll
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform\POS\Sistema\Sistema.Negocio\bin\Debug\Sistema.Negocio.pdb
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform\POS\Sistema\Sistema.Negocio\bin\Debug\Sistema.Datos.dll
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform\POS\Sistema\Sistema.Negocio\bin\Debug\Sistema.Entidades.dll
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform\POS\Sistema\Sistema.Negocio\bin\Debug\Sistema.Datos.pdb
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform\POS\Sistema\Sistema.Negocio\bin\Debug\Sistema.Entidades.pdb
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform\POS\Sistema\Sistema.Negocio\obj\Debug\Sistema.Negocio.csproj.AssemblyReference.cache
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform\POS\Sistema\Sistema.Negocio\obj\Debug\Sistema.Negocio.csproj.CoreCompileInputs.cache
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform\POS\Sistema\Sistema.Negocio\obj\Debug\Sistema.Negocio.csproj.CopyComplete
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform\POS\Sistema\Sistema.Negocio\obj\Debug\Sistema.Negocio.dll
+C:\Users\jonathan.moreno\Desktop\Sistemas\csharp-webform\POS\Sistema\Sistema.Negocio\obj\Debug\Sistema.Negocio.pdb

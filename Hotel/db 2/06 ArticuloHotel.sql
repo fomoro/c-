@@ -1,5 +1,5 @@
 -- InsertArticuloHotel
-CREATE PROCEDURE InsertArticuloHotel
+CREATE PROCEDURE ArticuloHotel_Insertar
     @Fecha DATE,
     @IdHotel INT,
     @IdArticulo INT
@@ -11,7 +11,7 @@ END;
 GO
 
 -- UpdateArticuloHotel
-CREATE PROCEDURE UpdateArticuloHotel
+CREATE PROCEDURE ArticuloHotel_Actualizar
     @IdAsignacion INT,
     @Fecha DATE,
     @IdHotel INT,
@@ -27,7 +27,7 @@ END;
 GO
 
 -- DeleteArticuloHotel
-CREATE PROCEDURE DeleteArticuloHotel
+CREATE PROCEDURE ArticuloHotel_Eliminar
     @IdAsignacion INT
 AS
 BEGIN
@@ -37,7 +37,7 @@ END;
 GO
 
 -- GetArticuloHotelById
-CREATE PROCEDURE GetArticuloHotelById
+CREATE PROCEDURE ArticuloHotel_ObtenerPorId
     @IdAsignacion INT
 AS
 BEGIN
@@ -48,7 +48,7 @@ END;
 GO
 
 -- GetArticuloHotelByHotelId
-CREATE PROCEDURE GetArticuloHotelByHotelId
+CREATE PROCEDURE ArticuloHotel_ObtenerPorIdDeHotel
     @IdHotel INT
 AS
 BEGIN

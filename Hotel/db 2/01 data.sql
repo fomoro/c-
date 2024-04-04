@@ -31,39 +31,13 @@ BEGIN
 	SET @j = 1
 	WHILE @j <= 10
 	BEGIN
-		INSERT INTO Articulo (Nombre, Precio_Venta, IdCategoria, Stock, Estado) VALUES
-		(CONCAT('Producto ', @i, '-', @j), RAND() * 100, @i, 100, 1) 
+		INSERT INTO Articulo (Nombre, Precio_Venta, IdCategoria, Estado) VALUES
+		(CONCAT('Producto ', @i, '-', @j), RAND() * 100, @i, 1) 
 		SET @j += 1
 	END
 	SET @i += 1
 END
 PRINT 'Artículos insertados correctamente.';
-
-----------------------------------------------------------------------------------------------------
--- Asignar todos los artículos a todos los hoteles
-DECLARE @i INT, @j INT, @idHotel INT
-
-SET @i = 1
-
-WHILE @i <= 5
-BEGIN
-	SET @idHotel = @i
-
-	SET @j = 1
-
-	WHILE @j <= 70
-	BEGIN
-		INSERT INTO ArticuloHotel (FechaAsignacion, IdHotel, IdArticulo) VALUES
-		(GETDATE(), @idHotel, @j)
-
-		SET @j += 1
-	END
-
-	SET @i += 1
-END
-
-PRINT 'Artículos asignados a los hoteles correctamente.'
-
 
 ----------------------------------------------------------------------------------------------------
 
@@ -110,3 +84,72 @@ BEGIN
 	SET @idClientePedido += 1
 END
 PRINT 'Pedidos insertados correctamente.';
+
+----------------------------------------------------------------------------------------------------
+-- Insertar artículos aleatorios en cada hotel
+DECLARE @HotelId INT
+DECLARE @ArticuloId INT
+DECLARE @Contador INT
+
+-- Cursor para recorrer cada hotel
+DECLARE hotel_cursor CURSOR FOR
+SELECT IdHotel FROM Hotel
+
+OPEN hotel_cursor
+FETCH NEXT FROM hotel_cursor INTO @HotelId
+
+WHILE @@FETCH_STATUS = 0
+BEGIN
+    SET @Contador = 0
+    WHILE @Contador < 3
+    BEGIN
+        SELECT TOP 1 @ArticuloId = IdArticulo
+        FROM Articulo
+        ORDER BY NEWID()
+
+        INSERT INTO ArticuloHotel (IdHotel, IdArticulo, FechaAsignacion)
+        VALUES (@HotelId, @ArticuloId, GETDATE())
+
+        SET @Contador = @Contador + 1
+    END
+
+    FETCH NEXT FROM hotel_cursor INTO @HotelId
+END
+
+CLOSE hotel_cursor
+DEALLOCATE hotel_cursor
+
+----------------------------------------------------------------------------------------------------
+-- Insertar artículos aleatorios para cada cliente
+DECLARE @ClienteId NVARCHAR(20)
+SET @Contador = 0
+
+-- Cursor para recorrer cada cliente
+DECLARE cliente_cursor CURSOR FOR
+SELECT Identificacion FROM Cliente
+
+OPEN cliente_cursor
+FETCH NEXT FROM cliente_cursor INTO @ClienteId
+
+WHILE @@FETCH_STATUS = 0
+BEGIN
+    SET @Contador = 0
+    WHILE @Contador < 3
+    BEGIN
+        SELECT TOP 1 @ArticuloId = IdArticulo
+        FROM Articulo
+        ORDER BY NEWID()
+
+        INSERT INTO Pedido (IdCliente, IdArticulo, FechaPedido)
+        VALUES (@ClienteId, @ArticuloId, GETDATE())
+
+        SET @Contador = @Contador + 1
+    END
+
+    FETCH NEXT FROM cliente_cursor INTO @ClienteId
+END
+
+CLOSE cliente_cursor
+DEALLOCATE cliente_cursor
+
+PRINT 'Artículos asignados a hoteles y clientes correctamente.';

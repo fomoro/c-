@@ -5,11 +5,11 @@ using System.Data.SqlClient;
 
 namespace Resorts_UNED.Datos
 {
-    public class DIngreso
+    public class DCompra
     {
         private readonly Conexion conexion;
 
-        public DIngreso()
+        public DCompra()
         {
             conexion = Conexion.getInstancia();
         }
