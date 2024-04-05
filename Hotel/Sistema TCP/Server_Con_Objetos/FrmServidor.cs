@@ -16,9 +16,8 @@ namespace Server_Con_Objetos
 
         public FrmServidor()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
-
         private void FrmServidor_Load(object sender, EventArgs e)
         {
             DgvClientes.AutoGenerateColumns = true;
@@ -30,36 +29,30 @@ namespace Server_Con_Objetos
             server.DelimiterDataReceived += Server_DataReceived;
             server.ClientConnected += Server_ClientConnected;
         }
-
         private void Server_ClientConnected(object sender, TcpClient e)
         {
-            TxtStatus.Invoke((MethodInvoker)delegate ()
-            {
-                TxtStatus.AppendText("Cliente conectado exitosamente." + Environment.NewLine);
-            });
-        }
-
+            UpdateStatus("Cliente conectado exitosamente.");
+        }        
         private void Server_DataReceived(object sender, SimpleTCP.Message e)
         {
-            TxtStatus.Invoke((MethodInvoker)delegate ()
-            {
-                ProcessMessage(e);
-            });
+            ProcessMessage(e);
         }
-
+  
         private void ProcessMessage(SimpleTCP.Message e)
         {
             string message = e.MessageString.Trim();
 
             try
             {
-                Cliente receivedClient = JsonConvert.DeserializeObject<Cliente>(message);
-                Cliente foundClient = data.ObtenerClientePorId(receivedClient.Id);
+                Login receivedClient = JsonConvert.DeserializeObject<Login>(message);                
+                UpdateStatus($"Datos Recibidos: Id: {receivedClient.Id} clave : {receivedClient.Clave}" );
+                e.ReplyLine($"Datos enviados por el servidor: Se conecto bien");
 
+                Cliente foundClient = data.ObtenerClienteConArticulos(receivedClient.Id);
                 if (foundClient != null)
                 {
                     SendClientDetails(e, foundClient);
-                    SendClientArticles(e, foundClient);
+                    SendArticles(e); 
                 }
                 else
                 {
@@ -72,51 +65,64 @@ namespace Server_Con_Objetos
             }
         }
         private void SendClientDetails(SimpleTCP.Message e, Cliente cliente)
+        {            
+            string clienteJson = JsonConvert.SerializeObject(cliente);
+            e.ReplyLine("Cliente" + clienteJson);
+        }        
+        private void SendArticles(SimpleTCP.Message e)
         {
-            string details = $"Cliente: {cliente.Nombre} {cliente.Apellido}, ID: {cliente.Id}, Fecha de nacimiento: {cliente.FechaNacimiento}";
-            e.ReplyLine(details + Environment.NewLine);
-            TxtStatus.AppendText(details + Environment.NewLine);
-            e.ReplyLine($"Datos del cliente recibidos: {cliente.Nombre} {cliente.Apellido}, ID: {cliente.Id}");
-        }
-        private void SendClientArticles(SimpleTCP.Message e, Cliente cliente)
-        {
-            List<Articulo> articulos = data.ObtenerArticulosPorClienteId(cliente.Id);
+            List<Articulo> articulos = data.ObtenerProductos();
             string articlesJson = JsonConvert.SerializeObject(articulos);
-            e.ReplyLine("ARTICULOS" + articlesJson);
+            e.ReplyLine("Articulos" + articlesJson);
         }
-
         private void BtnStart_Click(object sender, EventArgs e)
         {
             try
             {
-                IPAddress ip = IPAddress.Parse(TxtHost.Text);
-                server.Start(ip, Convert.ToInt32(TxtPort.Text));
+                StartServer();
             }
-            catch (FormatException ex)
+            catch (FormatException)
             {
-                MessageBox.Show("Formato de dirección IP no válido. Introduzca una dirección IP válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                ShowError("Formato de dirección IP no válido. Introduzca una dirección IP válida.");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al iniciar el servidor: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                ShowError("Error al iniciar el servidor: " + ex.Message);
             }
-
-            TxtStatus.AppendText("Servidor iniciado." + Environment.NewLine);
         }
-
+        private void StartServer()
+        {
+            var ip = IPAddress.Parse(TxtHost.Text);
+            server.Start(ip, Convert.ToInt32(TxtPort.Text));
+            UpdateStatus("Servidor iniciado.");
+        }
         private void BtnStop_Click(object sender, EventArgs e)
         {
             if (server != null && server.IsStarted)
             {
                 server.Stop();
-                TxtStatus.AppendText("Servidor detenido." + Environment.NewLine);
+                UpdateStatus("Servidor detenido.");
             }
             else
             {
-                MessageBox.Show("El servidor no está funcionando.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ShowInfo("El servidor no está funcionando.");
             }
         }
+        private void UpdateStatus(string message)
+        {
+            TxtStatus.Invoke((MethodInvoker)delegate ()
+            {
+                TxtStatus.AppendText(message + Environment.NewLine);
+            });
+        }
+        private void ShowError(string message)
+        {
+            MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        private void ShowInfo(string message)
+        {
+            MessageBox.Show(message, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+       
     }
 }

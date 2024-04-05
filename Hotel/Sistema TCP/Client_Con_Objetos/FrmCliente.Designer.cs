@@ -41,20 +41,23 @@ namespace Client_Con_Objetos
             this.TxtIdCliente = new System.Windows.Forms.TextBox();
             this.DgvArticulos = new System.Windows.Forms.DataGridView();
             this.BtnDesconectar = new System.Windows.Forms.Button();
+            this.CboArticulos = new System.Windows.Forms.ComboBox();
+            this.BtnAgregar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvArticulos)).BeginInit();
             this.SuspendLayout();
             // 
             // TxtStatus
             // 
-            this.TxtStatus.Location = new System.Drawing.Point(12, 161);
+            this.TxtStatus.Location = new System.Drawing.Point(12, 113);
             this.TxtStatus.Multiline = true;
             this.TxtStatus.Name = "TxtStatus";
-            this.TxtStatus.Size = new System.Drawing.Size(684, 169);
+            this.TxtStatus.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.TxtStatus.Size = new System.Drawing.Size(686, 172);
             this.TxtStatus.TabIndex = 62;
             // 
             // BtnConnect
             // 
-            this.BtnConnect.Location = new System.Drawing.Point(554, 24);
+            this.BtnConnect.Location = new System.Drawing.Point(593, 24);
             this.BtnConnect.Name = "BtnConnect";
             this.BtnConnect.Size = new System.Drawing.Size(105, 36);
             this.BtnConnect.TabIndex = 59;
@@ -64,7 +67,7 @@ namespace Client_Con_Objetos
             // 
             // TxtPort
             // 
-            this.TxtPort.Location = new System.Drawing.Point(382, 23);
+            this.TxtPort.Location = new System.Drawing.Point(421, 23);
             this.TxtPort.Name = "TxtPort";
             this.TxtPort.Size = new System.Drawing.Size(152, 22);
             this.TxtPort.TabIndex = 58;
@@ -81,7 +84,7 @@ namespace Client_Con_Objetos
             // LblPort
             // 
             this.LblPort.AutoSize = true;
-            this.LblPort.Location = new System.Drawing.Point(303, 28);
+            this.LblPort.Location = new System.Drawing.Point(342, 28);
             this.LblPort.Name = "LblPort";
             this.LblPort.Size = new System.Drawing.Size(34, 17);
             this.LblPort.TabIndex = 56;
@@ -98,7 +101,7 @@ namespace Client_Con_Objetos
             // 
             // TxtClave
             // 
-            this.TxtClave.Location = new System.Drawing.Point(382, 66);
+            this.TxtClave.Location = new System.Drawing.Point(421, 66);
             this.TxtClave.Name = "TxtClave";
             this.TxtClave.Size = new System.Drawing.Size(152, 22);
             this.TxtClave.TabIndex = 63;
@@ -106,7 +109,7 @@ namespace Client_Con_Objetos
             // LblClave
             // 
             this.LblClave.AutoSize = true;
-            this.LblClave.Location = new System.Drawing.Point(303, 71);
+            this.LblClave.Location = new System.Drawing.Point(342, 71);
             this.LblClave.Name = "LblClave";
             this.LblClave.Size = new System.Drawing.Size(43, 17);
             this.LblClave.TabIndex = 65;
@@ -131,16 +134,16 @@ namespace Client_Con_Objetos
             // DgvArticulos
             // 
             this.DgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvArticulos.Location = new System.Drawing.Point(12, 353);
+            this.DgvArticulos.Location = new System.Drawing.Point(12, 371);
             this.DgvArticulos.Name = "DgvArticulos";
             this.DgvArticulos.RowHeadersWidth = 51;
             this.DgvArticulos.RowTemplate.Height = 24;
-            this.DgvArticulos.Size = new System.Drawing.Size(684, 150);
+            this.DgvArticulos.Size = new System.Drawing.Size(686, 164);
             this.DgvArticulos.TabIndex = 69;
             // 
             // BtnDesconectar
             // 
-            this.BtnDesconectar.Location = new System.Drawing.Point(554, 71);
+            this.BtnDesconectar.Location = new System.Drawing.Point(593, 71);
             this.BtnDesconectar.Name = "BtnDesconectar";
             this.BtnDesconectar.Size = new System.Drawing.Size(105, 36);
             this.BtnDesconectar.TabIndex = 70;
@@ -148,11 +151,31 @@ namespace Client_Con_Objetos
             this.BtnDesconectar.UseVisualStyleBackColor = true;
             this.BtnDesconectar.Click += new System.EventHandler(this.BtnDesconectar_Click);
             // 
+            // CboArticulos
+            // 
+            this.CboArticulos.FormattingEnabled = true;
+            this.CboArticulos.Location = new System.Drawing.Point(394, 317);
+            this.CboArticulos.Name = "CboArticulos";
+            this.CboArticulos.Size = new System.Drawing.Size(179, 24);
+            this.CboArticulos.TabIndex = 71;
+            // 
+            // BtnAgregar
+            // 
+            this.BtnAgregar.Location = new System.Drawing.Point(593, 310);
+            this.BtnAgregar.Name = "BtnAgregar";
+            this.BtnAgregar.Size = new System.Drawing.Size(105, 36);
+            this.BtnAgregar.TabIndex = 72;
+            this.BtnAgregar.Text = "Agregar";
+            this.BtnAgregar.UseVisualStyleBackColor = true;
+            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
+            // 
             // FrmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(765, 564);
+            this.ClientSize = new System.Drawing.Size(731, 564);
+            this.Controls.Add(this.BtnAgregar);
+            this.Controls.Add(this.CboArticulos);
             this.Controls.Add(this.BtnDesconectar);
             this.Controls.Add(this.DgvArticulos);
             this.Controls.Add(this.TxtIdCliente);
@@ -187,5 +210,7 @@ namespace Client_Con_Objetos
         private System.Windows.Forms.TextBox TxtIdCliente;
         private System.Windows.Forms.DataGridView DgvArticulos;
         private System.Windows.Forms.Button BtnDesconectar;
+        private System.Windows.Forms.ComboBox CboArticulos;
+        private System.Windows.Forms.Button BtnAgregar;
     }
 }
