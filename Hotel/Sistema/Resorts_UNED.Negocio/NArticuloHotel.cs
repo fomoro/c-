@@ -7,43 +7,19 @@ namespace Resorts_UNED.Negocio
 {
     public class NArticuloHotel
     {
-        private DArticuloHotel datosArticuloHotel;
+        private readonly DArticuloHotel _datosArticuloHotel;
 
         public NArticuloHotel()
         {
-            this.datosArticuloHotel = new DArticuloHotel();
+            _datosArticuloHotel = new DArticuloHotel();
         }
 
-        public void ActualizarDetalle(DataTable originalData, DataTable newData, int idHotel)
+        public void ActualizarDetalle(DataTable datosOriginales, DataTable nuevosDatos, int idHotel)
         {
             try
             {
-                // Eliminar las asignaciones que ya no están presentes en newData
-                foreach (DataRow row in originalData.Rows)
-                {
-                    int idAsignacion = Convert.ToInt32(row["IdAsignacion"]);
-                    if (!DataRowExists(newData, idAsignacion))
-                    {
-                        datosArticuloHotel.EliminarAsignacion(idAsignacion);
-                    }
-                }
-
-                // Agregar nuevas asignaciones que están en newData pero no en originalData
-                foreach (DataRow row in newData.Rows)
-                {
-                    // Verificar si la fila no está marcada como eliminada
-                    if (!row.RowState.Equals(DataRowState.Deleted))
-                    {
-                        int idAsignacion = Convert.ToInt32(row["IdAsignacion"]);
-                        if (!DataRowExists(originalData, idAsignacion))
-                        {
-                            int idArticulo = Convert.ToInt32(row["Id"]);
-                            DateTime fecha = DateTime.Now;
-                            //DateTime fecha = Convert.ToDateTime(row["FechaAsignacion"]);
-                            datosArticuloHotel.InsertarAsignacion(idHotel, idArticulo, fecha);
-                        }
-                    }
-                }
+                EliminarAsignacionesFaltantes(datosOriginales, nuevosDatos);
+                AgregarNuevasAsignaciones(datosOriginales, nuevosDatos, idHotel);
             }
             catch (Exception ex)
             {
@@ -52,19 +28,33 @@ namespace Resorts_UNED.Negocio
             }
         }
 
+        private void EliminarAsignacionesFaltantes(DataTable datosOriginales, DataTable nuevosDatos)
+        {
+            foreach (DataRow row in datosOriginales.Rows)
+            {
+                if (!DataRowExists(nuevosDatos, Convert.ToInt32(row["IdAsignacion"])))
+                {
+                    _datosArticuloHotel.EliminarAsignacion(Convert.ToInt32(row["IdAsignacion"]));
+                }
+            }
+        }
+
+        private void AgregarNuevasAsignaciones(DataTable datosOriginales, DataTable nuevosDatos, int idHotel)
+        {
+            foreach (DataRow row in nuevosDatos.Rows)
+            {
+                if (row.RowState != DataRowState.Deleted && !DataRowExists(datosOriginales, Convert.ToInt32(row["IdAsignacion"])))
+                {
+                    _datosArticuloHotel.InsertarAsignacion(idHotel, Convert.ToInt32(row["Id"]), DateTime.Now);
+                }
+            }
+        }
 
         private bool DataRowExists(DataTable dataTable, int idAsignacion)
         {
-            foreach (DataRow row in dataTable.Rows)
-            {
-                // Verificar si la fila actual tiene el mismo ID que el proporcionado y si su estado es DataRowState.Deleted
-                if (row.RowState != DataRowState.Deleted && Convert.ToInt32(row["IdAsignacion"]) == idAsignacion)
-                {
-                    return true;
-                }
-            }
-            return false;
+            return dataTable.AsEnumerable()
+                             .Any(row => row.RowState != DataRowState.Deleted &&
+                                         Convert.ToInt32(row["IdAsignacion"]) == idAsignacion);
         }
-
     }
 }

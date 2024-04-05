@@ -112,17 +112,17 @@
     <Compile Include="FrmCliente.Designer.cs">
       <DependentUpon>FrmCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmConeccionClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConeccionClientes.Designer.cs">
+      <DependentUpon>FrmConeccionClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmHotel.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmHotel.Designer.cs">
       <DependentUpon>FrmHotel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmPedidosClientes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmPedidosClientes.Designer.cs">
-      <DependentUpon>FrmPedidosClientes.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
@@ -144,11 +144,11 @@
     <EmbeddedResource Include="FrmCliente.resx">
       <DependentUpon>FrmCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmConeccionClientes.resx">
+      <DependentUpon>FrmConeccionClientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmHotel.resx">
       <DependentUpon>FrmHotel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmPedidosClientes.resx">
-      <DependentUpon>FrmPedidosClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
