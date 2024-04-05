@@ -555,8 +555,7 @@ namespace Resorts_UNED.Presentacion
             this.ClientSize = new System.Drawing.Size(1408, 750);
             this.Controls.Add(this.TabGeneral);
             this.Name = "FrmPedidosClientes";
-            this.Text = "FrmPedidosClientes";
-            this.Load += new System.EventHandler(this.FrmPedidosClientes_Load);
+            this.Text = "FrmPedidosClientes";            
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDetalle)).EndInit();

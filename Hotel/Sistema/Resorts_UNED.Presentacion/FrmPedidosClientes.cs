@@ -11,7 +11,7 @@ namespace Resorts_UNED.Presentacion
 {
     public partial class FrmPedidosClientes : Form
     {
-        private DataTable DtDetalle = new DataTable();
+        /*private DataTable DtDetalle = new DataTable();
         public FrmPedidosClientes()
         {
             InitializeComponent();

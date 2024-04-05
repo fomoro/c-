@@ -38,7 +38,7 @@ namespace Resorts_UNED.Presentacion
         {
             try
             {
-                DgvListado.DataSource = new NCompra().Listar();
+                DgvListado.DataSource = new NHotel().Listar();
                 FormatDataGridView();
                 ClearFields();
                 UpdateTotalLabel();
@@ -71,7 +71,7 @@ namespace Resorts_UNED.Presentacion
         {
             try
             {
-                DgvListado.DataSource = new NCompra().Buscar(searchText);
+                DgvListado.DataSource = new NHotel().Buscar(searchText);
                 FormatDataGridView();
                 UpdateTotalLabel();
             }

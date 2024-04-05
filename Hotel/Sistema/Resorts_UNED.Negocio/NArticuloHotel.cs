@@ -31,13 +31,17 @@ namespace Resorts_UNED.Negocio
                 // Agregar nuevas asignaciones que están en newData pero no en originalData
                 foreach (DataRow row in newData.Rows)
                 {
-                    int idAsignacion = Convert.ToInt32(row["IdAsignacion"]);
-                    if (!DataRowExists(originalData, idAsignacion))
+                    // Verificar si la fila no está marcada como eliminada
+                    if (!row.RowState.Equals(DataRowState.Deleted))
                     {
-                        int idArticulo = Convert.ToInt32(row["Id"]);
-                        DateTime fecha = DateTime.Now;
-                        //DateTime fecha = Convert.ToDateTime(row["FechaAsignacion"]);
-                        datosArticuloHotel.InsertarAsignacion(idHotel, idArticulo, fecha);
+                        int idAsignacion = Convert.ToInt32(row["IdAsignacion"]);
+                        if (!DataRowExists(originalData, idAsignacion))
+                        {
+                            int idArticulo = Convert.ToInt32(row["Id"]);
+                            DateTime fecha = DateTime.Now;
+                            //DateTime fecha = Convert.ToDateTime(row["FechaAsignacion"]);
+                            datosArticuloHotel.InsertarAsignacion(idHotel, idArticulo, fecha);
+                        }
                     }
                 }
             }
@@ -48,9 +52,19 @@ namespace Resorts_UNED.Negocio
             }
         }
 
+
         private bool DataRowExists(DataTable dataTable, int idAsignacion)
         {
-            return dataTable.AsEnumerable().Any(row => Convert.ToInt32(row["IdAsignacion"]) == idAsignacion);
+            foreach (DataRow row in dataTable.Rows)
+            {
+                // Verificar si la fila actual tiene el mismo ID que el proporcionado y si su estado es DataRowState.Deleted
+                if (row.RowState != DataRowState.Deleted && Convert.ToInt32(row["IdAsignacion"]) == idAsignacion)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
+
     }
 }

@@ -43,11 +43,9 @@
   <ItemGroup>
     <Compile Include="NArticuloHotel.cs" />
     <Compile Include="NCliente.cs" />
-    <Compile Include="NCompra.cs" />
     <Compile Include="NHotel.cs" />
     <Compile Include="NArticulo.cs" />
     <Compile Include="NCategoria.cs" />
-    <Compile Include="NVenta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
