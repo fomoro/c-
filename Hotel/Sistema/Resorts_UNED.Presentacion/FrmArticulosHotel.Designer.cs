@@ -47,10 +47,10 @@ namespace Resorts_UNED.Presentacion
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.DgvDetalle = new System.Windows.Forms.DataGridView();
+            this.DgvArticuloHotel = new System.Windows.Forms.DataGridView();
             this.BtnVerArticulos = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.TxtId = new System.Windows.Forms.TextBox();
+            this.TxtIdHotel = new System.Windows.Forms.TextBox();
             this.TxtTelefono = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.TxtDireccion = new System.Windows.Forms.TextBox();
@@ -67,7 +67,7 @@ namespace Resorts_UNED.Presentacion
             this.PanelArticulos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvArticulos)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvDetalle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvArticuloHotel)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).BeginInit();
             this.SuspendLayout();
@@ -244,7 +244,7 @@ namespace Resorts_UNED.Presentacion
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.DgvDetalle);
+            this.groupBox2.Controls.Add(this.DgvArticuloHotel);
             this.groupBox2.Controls.Add(this.BtnVerArticulos);
             this.groupBox2.Location = new System.Drawing.Point(17, 158);
             this.groupBox2.Name = "groupBox2";
@@ -262,19 +262,17 @@ namespace Resorts_UNED.Presentacion
             this.label3.TabIndex = 7;
             this.label3.Text = "(*) Indica que el dato es obligatorio";
             // 
-            // DgvDetalle
+            // DgvArticuloHotel
             // 
-            this.DgvDetalle.AllowUserToAddRows = false;
-            this.DgvDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvDetalle.Location = new System.Drawing.Point(25, 70);
-            this.DgvDetalle.Name = "DgvDetalle";
-            this.DgvDetalle.RowHeadersWidth = 51;
-            this.DgvDetalle.RowTemplate.Height = 24;
-            this.DgvDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvDetalle.Size = new System.Drawing.Size(890, 282);
-            this.DgvDetalle.TabIndex = 3;
-            this.DgvDetalle.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvDetalle_CellEndEdit);
-            this.DgvDetalle.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.DgvDetalle_RowsRemoved);
+            this.DgvArticuloHotel.AllowUserToAddRows = false;
+            this.DgvArticuloHotel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvArticuloHotel.Location = new System.Drawing.Point(25, 70);
+            this.DgvArticuloHotel.Name = "DgvArticuloHotel";
+            this.DgvArticuloHotel.RowHeadersWidth = 51;
+            this.DgvArticuloHotel.RowTemplate.Height = 24;
+            this.DgvArticuloHotel.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DgvArticuloHotel.Size = new System.Drawing.Size(890, 282);
+            this.DgvArticuloHotel.TabIndex = 3;
             // 
             // BtnVerArticulos
             // 
@@ -288,7 +286,7 @@ namespace Resorts_UNED.Presentacion
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.TxtId);
+            this.groupBox1.Controls.Add(this.TxtIdHotel);
             this.groupBox1.Controls.Add(this.TxtTelefono);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.TxtDireccion);
@@ -302,13 +300,13 @@ namespace Resorts_UNED.Presentacion
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Hotel";
             // 
-            // TxtId
+            // TxtIdHotel
             // 
-            this.TxtId.Location = new System.Drawing.Point(581, 75);
-            this.TxtId.Name = "TxtId";
-            this.TxtId.Size = new System.Drawing.Size(187, 22);
-            this.TxtId.TabIndex = 11;
-            this.TxtId.Visible = false;
+            this.TxtIdHotel.Location = new System.Drawing.Point(581, 75);
+            this.TxtIdHotel.Name = "TxtIdHotel";
+            this.TxtIdHotel.Size = new System.Drawing.Size(187, 22);
+            this.TxtIdHotel.TabIndex = 11;
+            this.TxtIdHotel.Visible = false;
             // 
             // TxtTelefono
             // 
@@ -403,7 +401,7 @@ namespace Resorts_UNED.Presentacion
             ((System.ComponentModel.ISupportInitialize)(this.DgvArticulos)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvDetalle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvArticuloHotel)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).EndInit();
@@ -429,7 +427,7 @@ namespace Resorts_UNED.Presentacion
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView DgvDetalle;
+        private System.Windows.Forms.DataGridView DgvArticuloHotel;
         private System.Windows.Forms.Button BtnVerArticulos;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox TxtNombre;
@@ -441,6 +439,6 @@ namespace Resorts_UNED.Presentacion
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TxtDireccion;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox TxtId;
+        private System.Windows.Forms.TextBox TxtIdHotel;
     }
 }

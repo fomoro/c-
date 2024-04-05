@@ -140,7 +140,8 @@ AS
 BEGIN
     SELECT a.IdArticulo AS Id, c.Nombre AS Categoria,
            a.Nombre AS Nombre,
-           a.Precio_Venta AS 'Precio Unidad'
+           a.Precio_Venta AS 'Precio Unidad',
+		   ah.IdAsignacion, ah.FechaAsignacion
     FROM Categoria c
     INNER JOIN Articulo a ON c.IdCategoria = a.IdCategoria
 	INNER JOIN ArticuloHotel ah ON a.IdArticulo = ah.IdArticulo

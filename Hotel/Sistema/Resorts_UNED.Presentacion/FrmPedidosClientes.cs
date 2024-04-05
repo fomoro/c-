@@ -82,11 +82,11 @@ namespace Resorts_UNED.Presentacion
         }
         private void MensajeError(string Mensaje)
         {
-            MessageBox.Show(Mensaje, "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(Mensaje, "Sistema Hoteles Resorts", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         private void MensajeOk(string Mensaje)
         {
-            MessageBox.Show(Mensaje, "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(Mensaje, "Sistema Hoteles Resorts", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void CrearTabla()
         {
@@ -362,7 +362,7 @@ namespace Resorts_UNED.Presentacion
             try
             {
                 DialogResult Opcion;
-                Opcion = MessageBox.Show("Realmente deseas anular el(los) registro(s)?", "Sistema de ventas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                Opcion = MessageBox.Show("Realmente deseas anular el(los) registro(s)?", "Sistema Hoteles Resorts", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (Opcion == DialogResult.OK)
                 {
                     int Codigo;

@@ -250,7 +250,7 @@ namespace Resorts_UNED.Presentacion
             try
             {
                 DialogResult Opcion;
-                Opcion = MessageBox.Show("Realmente deseas desactivar el(los) registro(s)?", "Sistema de ventas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                Opcion = MessageBox.Show("Realmente deseas desactivar el(los) registro(s)?", "Sistema Hoteles Resorts", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (Opcion == DialogResult.OK)
                 {
                     int Codigo;
@@ -286,7 +286,7 @@ namespace Resorts_UNED.Presentacion
             try
             {
                 DialogResult Opcion;
-                Opcion = MessageBox.Show("Realmente deseas desactivar el(los) registro(s)?", "Sistema de ventas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                Opcion = MessageBox.Show("Realmente deseas desactivar el(los) registro(s)?", "Sistema Hoteles Resorts", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (Opcion == DialogResult.OK)
                 {
                     int Codigo;
