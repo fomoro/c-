@@ -38,18 +38,18 @@ namespace Resorts_UNED.Datos
             }
         }
 
-        public void InsertarAsignacion(int idHotel, int idArticulo, DateTime fecha)
+        public void InsertarPedido(string idCliente, int idArticulo, DateTime fecha)
         {
             try
             {
                 using (SqlConnection con = conexion.CrearConexion())
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("InsertArticuloHotel", con);
+                    SqlCommand cmd = new SqlCommand("Pedido_Insertar", con); // Nombre del procedimiento almacenado para insertar un pedido
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@IdHotel", idHotel);
+                    cmd.Parameters.AddWithValue("@IdCliente", idCliente);
                     cmd.Parameters.AddWithValue("@IdArticulo", idArticulo);
-                    cmd.Parameters.AddWithValue("@Fecha", fecha);
+                    cmd.Parameters.AddWithValue("@FechaPedido", fecha);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -60,16 +60,16 @@ namespace Resorts_UNED.Datos
             }
         }
 
-        public void EliminarAsignacion(int idAsignacion)
+        public void EliminarPedidosPorCliente(string idCliente)
         {
             try
             {
                 using (SqlConnection con = conexion.CrearConexion())
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("DeleteArticuloHotel", con);
+                    SqlCommand cmd = new SqlCommand("Pedidos_BorrarPorIdCliente", con); // Nombre del procedimiento almacenado para eliminar pedidos por IdCliente
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@IdAsignacion", idAsignacion);
+                    cmd.Parameters.AddWithValue("@IdCliente", idCliente);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -79,5 +79,6 @@ namespace Resorts_UNED.Datos
                 throw ex;
             }
         }
+
     }
 }

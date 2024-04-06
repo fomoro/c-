@@ -52,11 +52,14 @@ namespace Resorts_UNED.Presentacion
             // 
             // DgvClientes
             // 
+            this.DgvClientes.AllowUserToAddRows = false;
             this.DgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvClientes.Location = new System.Drawing.Point(33, 270);
             this.DgvClientes.Name = "DgvClientes";
+            this.DgvClientes.ReadOnly = true;
             this.DgvClientes.RowHeadersWidth = 51;
             this.DgvClientes.RowTemplate.Height = 24;
+            this.DgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvClientes.Size = new System.Drawing.Size(899, 150);
             this.DgvClientes.TabIndex = 58;
             // 

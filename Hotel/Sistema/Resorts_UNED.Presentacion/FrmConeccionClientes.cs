@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -57,19 +59,31 @@ namespace Resorts_UNED.Presentacion
 
             try
             {
-                Login receivedClient = JsonConvert.DeserializeObject<Login>(message);
-                UpdateStatus($"Datos Recibidos: Id: {receivedClient.Id} clave : {receivedClient.Clave}");
-                e.ReplyLine($"Datos enviados por el servidor: Se conecto bien");
-
-                var foundClient = new NCliente().ObtenerClientePorId(receivedClient.Id);
-                if (foundClient != null)
+                if (e.MessageString.StartsWith("ClientePedidos"))
                 {
-                    SendClientDetails(e, foundClient.Identificacion);
-                    SendArticles(e);
+                    DisplayClientDetails(message);
                 }
                 else
                 {
-                    e.ReplyLine("Cliente no existe");
+
+                    Login receivedClient = JsonConvert.DeserializeObject<Login>(message);
+                    UpdateStatus($"Datos Recibidos: Id: {receivedClient.Id} clave : {receivedClient.Clave}");
+                    e.ReplyLine($"Datos enviados por el servidor: Se conecto bien");
+
+                    var foundClient = new NCliente().ObtenerClientePorId(receivedClient.Id);
+                    if (foundClient != null)
+                    {
+                        SendClientDetails(e, foundClient.Identificacion);
+                        SendArticles(e);
+                    }
+                    else if (e.MessageString.StartsWith("ClientePedidos"))
+                    {
+
+                    }
+                    else
+                    {
+                        e.ReplyLine("No existe Este Cliente inice con uno valido");
+                    }
                 }
             }
             catch (Exception ex)
@@ -77,12 +91,23 @@ namespace Resorts_UNED.Presentacion
                 e.ReplyLine("Error al deserializar el cliente: " + ex.Message);
             }
         }
+        private void DisplayClientDetails(string message)
+        {
+            string articulosJson = message.Substring("ClienteDetalles".Length);
+            List<Pedido> pedidosCliente = JsonConvert.DeserializeObject<List<Pedido>>(articulosJson);
+
+            if (pedidosCliente.Count > 0)
+            {
+                string idCliente = pedidosCliente[0].IdCliente;
+                new NPedido().ActualizarDetalle(pedidosCliente, idCliente);
+            }
+        }
         private void SendClientDetails(SimpleTCP.Message e, string id)
         {
             var pedidosDelCliente = new NPedido().ObtenerPorCliente(id);
 
             string clienteJson = JsonConvert.SerializeObject(pedidosDelCliente);
-            e.ReplyLine("Cliente" + clienteJson);
+            e.ReplyLine("ClienteDetalles" + clienteJson);
         }
         private void SendArticles(SimpleTCP.Message e)
         {
