@@ -192,6 +192,45 @@ namespace Resorts_UNED.Datos
                 if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
             }
         }
+        public Cliente ObtenerClientePorId(string idCliente)
+        {
+            SqlDataReader Resultado;
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                SqlCommand Comando = new SqlCommand("Cliente_PorId", SqlCon); 
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.AddWithValue("@IdCliente", idCliente); 
+                SqlCon.Open();
+                Resultado = Comando.ExecuteReader();
+
+                Cliente cliente = null;
+
+                if (Resultado.Read())
+                {
+                    cliente = new Cliente
+                    {
+                        Identificacion = Resultado["Identificacion"].ToString(),
+                        Nombre = Resultado["Nombre"].ToString(),
+                        PrimerApellido = Resultado["PrimerApellido"].ToString(),
+                        SegundoApellido = Resultado["SegundoApellido"].ToString(),
+                        FechaNacimiento = Convert.ToDateTime(Resultado["FechaNacimiento"]),
+                        Genero = Convert.ToChar(Resultado["Genero"])
+                    };
+                }
+
+                return cliente;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }
 
         public DataTable Login(string Email, string Clave)
         {

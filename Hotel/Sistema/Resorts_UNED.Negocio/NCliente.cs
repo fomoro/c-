@@ -74,7 +74,17 @@ namespace Resorts_UNED.Negocio
                 return ex.Message;
             }
         }
-
+        public Cliente ObtenerClientePorId(string Id)
+        {
+            try
+            {
+                return datos.ObtenerClientePorId(Id);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         public static DataTable Login(string Email, string Clave)
         {
             DCliente Datos = new DCliente();

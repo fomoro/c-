@@ -132,9 +132,6 @@ namespace Resorts_UNED.Presentacion
 
         private void servidorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmServer frm = new FrmServer();
-            frm.MdiParent = this;
-            frm.Show();
         }
     }
 }

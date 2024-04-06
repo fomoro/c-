@@ -61,13 +61,11 @@ namespace Resorts_UNED.Presentacion
                 UpdateStatus($"Datos Recibidos: Id: {receivedClient.Id} clave : {receivedClient.Clave}");
                 e.ReplyLine($"Datos enviados por el servidor: Se conecto bien");
 
-                //DgvArticuloHotel.DataSource = new NArticulo().ObtenerPorCliente(receivedClient.Id);
-                //Cliente foundClient = new NArticulo().ObtenerPorCliente(receivedClient.Id);
-                var foundClient = new NArticulo().ObtenerPorCliente(receivedClient.Id);
+                var foundClient = new NCliente().ObtenerClientePorId(receivedClient.Id);
                 if (foundClient != null)
                 {
-                    //SendClientDetails(e, foundClient);
-                    //SendArticles(e);
+                    SendClientDetails(e, foundClient.Identificacion);
+                    SendArticles(e);
                 }
                 else
                 {
@@ -79,17 +77,19 @@ namespace Resorts_UNED.Presentacion
                 e.ReplyLine("Error al deserializar el cliente: " + ex.Message);
             }
         }
-        private void SendClientDetails(SimpleTCP.Message e, Cliente cliente)
+        private void SendClientDetails(SimpleTCP.Message e, string id)
         {
-            string clienteJson = JsonConvert.SerializeObject(cliente);
+            var pedidosDelCliente = new NPedido().ObtenerPorCliente(id);
+
+            string clienteJson = JsonConvert.SerializeObject(pedidosDelCliente);
             e.ReplyLine("Cliente" + clienteJson);
         }
         private void SendArticles(SimpleTCP.Message e)
         {
-            //var articulos = new NArticulo().Listar();
+            var articulos = new NArticulo().Listar();
             //List<Articulo> articulos = data.ObtenerProductos();
-            //string articlesJson = JsonConvert.SerializeObject(articulos);
-            //e.ReplyLine("Articulos" + articlesJson);
+            string articlesJson = JsonConvert.SerializeObject(articulos);
+            e.ReplyLine("Articulos" + articlesJson);
         }        
         private void BtnStart_Click(object sender, EventArgs e)
         {
@@ -132,6 +132,6 @@ namespace Resorts_UNED.Presentacion
                 ShowInfo("El servidor no está funcionando.");
             }
         }
-        
+
     }
 }

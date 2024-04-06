@@ -57,7 +57,7 @@ namespace Resorts_UNED.Presentacion
             this.DgvClientes.Name = "DgvClientes";
             this.DgvClientes.RowHeadersWidth = 51;
             this.DgvClientes.RowTemplate.Height = 24;
-            this.DgvClientes.Size = new System.Drawing.Size(786, 150);
+            this.DgvClientes.Size = new System.Drawing.Size(899, 150);
             this.DgvClientes.TabIndex = 58;
             // 
             // TxtStatus
@@ -65,7 +65,7 @@ namespace Resorts_UNED.Presentacion
             this.TxtStatus.Location = new System.Drawing.Point(33, 78);
             this.TxtStatus.Multiline = true;
             this.TxtStatus.Name = "TxtStatus";
-            this.TxtStatus.Size = new System.Drawing.Size(786, 127);
+            this.TxtStatus.Size = new System.Drawing.Size(899, 127);
             this.TxtStatus.TabIndex = 57;
             // 
             // BtnStart
@@ -102,6 +102,7 @@ namespace Resorts_UNED.Presentacion
             this.BtnStop.TabIndex = 53;
             this.BtnStop.Text = "Stop";
             this.BtnStop.UseVisualStyleBackColor = true;
+            this.BtnStop.Click += new System.EventHandler(this.BtnStop_Click);
             // 
             // LblPort
             // 
@@ -125,7 +126,7 @@ namespace Resorts_UNED.Presentacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1299, 691);
+            this.ClientSize = new System.Drawing.Size(978, 446);
             this.Controls.Add(this.LblClientes);
             this.Controls.Add(this.DgvClientes);
             this.Controls.Add(this.TxtStatus);

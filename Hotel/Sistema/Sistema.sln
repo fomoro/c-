@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resorts_UNED.Entidades", "R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resorts_UNED.Negocio", "Resorts_UNED.Negocio\Resorts_UNED.Negocio.csproj", "{1F212068-7165-4F6F-8020-F608BC4A07BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resorts_UNED.Presentacion_Cliente", "Resorts_UNED.Presentacion_Cliente\Resorts_UNED.Presentacion_Cliente.csproj", "{B1ACC6F4-1700-47D4-A79D-B57BD8551BA0}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{1F212068-7165-4F6F-8020-F608BC4A07BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F212068-7165-4F6F-8020-F608BC4A07BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F212068-7165-4F6F-8020-F608BC4A07BF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B1ACC6F4-1700-47D4-A79D-B57BD8551BA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B1ACC6F4-1700-47D4-A79D-B57BD8551BA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B1ACC6F4-1700-47D4-A79D-B57BD8551BA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B1ACC6F4-1700-47D4-A79D-B57BD8551BA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
