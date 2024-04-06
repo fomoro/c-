@@ -42,6 +42,17 @@ namespace Resorts_UNED.Negocio
                 throw ex;
             }
         }
+        public DataTable ObtenerPorCliente(string Valor)
+        {
+            try
+            {
+                return datos.ObtenerPorCliente(Valor);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public DataTable Buscar(string Valor)
         {
             try
@@ -84,43 +95,30 @@ namespace Resorts_UNED.Negocio
                 return ex.Message;
             }
         }
-        public string Actualizar(int Id, int IdCategoria, string Codigo, string NombreAnt, string Nombre, decimal PrecioVenta, int Stock, string Descripcion, string Imagen)
+        public string Actualizar(Articulo Obj)
         {
-            Articulo Obj = new Articulo();
-
-            if (NombreAnt.Equals(Nombre))
+            if (datos.ExisteArticuloConEsteNombre(Obj.IdArticulo, Obj.Nombre))
             {
-                Obj.IdArticulo = Id;
-                Obj.IdCategoria = IdCategoria;
-                Obj.Codigo = Codigo;
-                Obj.Nombre = Nombre;
-                Obj.PrecioVenta = PrecioVenta;
-                Obj.Stock = Stock;
-                Obj.Descripcion = Descripcion;
-                Obj.Imagen = Imagen;
-                return datos.Actualizar(Obj);
+                return "Ya existe una categoría con este nombre.";
             }
             else
             {
-                string Existe = datos.Existe(Nombre);
-                if (Existe.Equals("1"))
+                // Si no hay otra categoría con el mismo nombre, actualizar la categoría
+                Articulo articulo = new Articulo()
                 {
-                    return "El artículo ya existe";
-                }
-                else
-                {
-                    Obj.IdArticulo = Id;
-                    Obj.IdCategoria = IdCategoria;
-                    Obj.Codigo = Codigo;
-                    Obj.Nombre = Nombre;
-                    Obj.PrecioVenta = PrecioVenta;
-                    Obj.Stock = Stock;
-                    Obj.Descripcion = Descripcion;
-                    Obj.Imagen = Imagen;
-                    return datos.Actualizar(Obj);
-                }
+                    IdArticulo = Obj.IdArticulo,
+                    IdCategoria = Obj.IdCategoria,
+                    Nombre = Obj.Nombre,
+                    PrecioVenta = Obj.PrecioVenta,
+                    Descripcion = Obj.Descripcion,
+                    Imagen = Obj.Imagen,
+                    Estado = Obj.Estado
+                };
+
+                return datos.Actualizar(articulo);
             }
         }
+       
         public string Eliminar(int Id)
         {
             try

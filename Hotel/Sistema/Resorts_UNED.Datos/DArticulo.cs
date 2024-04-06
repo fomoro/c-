@@ -82,6 +82,32 @@ namespace Resorts_UNED.Datos
                 if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
             }
         }
+        public DataTable ObtenerPorCliente(string Valor)
+        {
+            SqlDataReader Resultado;
+            DataTable Tabla = new DataTable();
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                SqlCommand Comando = new SqlCommand("Articulos_PorCliente", SqlCon);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.Add("@valor", SqlDbType.VarChar).Value = Valor;
+                SqlCon.Open();
+                Resultado = Comando.ExecuteReader();
+                Tabla.Load(Resultado);
+                return Tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+        }
+
         public DataTable Buscar(string Valor)
         {
             SqlDataReader Resultado;
@@ -132,6 +158,32 @@ namespace Resorts_UNED.Datos
                 if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
             }
         }
+        public bool ExisteArticuloConEsteNombre(int idArticulo, string nombre)
+        {
+            using (SqlConnection conexionSql = Conexion.getInstancia().CrearConexion())
+            {
+                try
+                {
+                    SqlCommand comando = new SqlCommand("ArticuloExisteConEsteNombre", conexionSql);
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@Nombre", nombre);
+                    comando.Parameters.AddWithValue("@IdArticulo", idArticulo); 
+                    SqlParameter parExiste = new SqlParameter("@Existe", SqlDbType.Bit)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    comando.Parameters.Add(parExiste);
+                    conexionSql.Open();
+                    comando.ExecuteNonQuery();
+                    return Convert.ToBoolean(parExiste.Value);
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
+
         public string Existe(string Valor)
         {
             string Rpta = "";
@@ -171,10 +223,8 @@ namespace Resorts_UNED.Datos
                 SqlCommand Comando = new SqlCommand("articulo_insertar", SqlCon);
                 Comando.CommandType = CommandType.StoredProcedure;
                 Comando.Parameters.Add("@idcategoria", SqlDbType.Int).Value = Obj.IdCategoria;
-                Comando.Parameters.Add("@codigo", SqlDbType.VarChar).Value = Obj.Codigo;
                 Comando.Parameters.Add("@nombre", SqlDbType.VarChar).Value = Obj.Nombre;
                 Comando.Parameters.Add("@precio_venta", SqlDbType.Decimal).Value = Obj.PrecioVenta;
-                Comando.Parameters.Add("@stock", SqlDbType.Int).Value = Obj.Stock;
                 Comando.Parameters.Add("@descripcion", SqlDbType.VarChar).Value = Obj.Descripcion;
                 Comando.Parameters.Add("@imagen", SqlDbType.VarChar).Value = Obj.Imagen;
                 SqlCon.Open();
@@ -201,10 +251,8 @@ namespace Resorts_UNED.Datos
                 Comando.CommandType = CommandType.StoredProcedure;
                 Comando.Parameters.Add("@idarticulo", SqlDbType.Int).Value = Obj.IdArticulo;
                 Comando.Parameters.Add("@idcategoria", SqlDbType.Int).Value = Obj.IdCategoria;
-                Comando.Parameters.Add("@codigo", SqlDbType.VarChar).Value = Obj.Codigo;
                 Comando.Parameters.Add("@nombre", SqlDbType.VarChar).Value = Obj.Nombre;
                 Comando.Parameters.Add("@precio_venta", SqlDbType.Decimal).Value = Obj.PrecioVenta;
-                Comando.Parameters.Add("@stock", SqlDbType.Int).Value = Obj.Stock;
                 Comando.Parameters.Add("@descripcion", SqlDbType.VarChar).Value = Obj.Descripcion;
                 Comando.Parameters.Add("@imagen", SqlDbType.VarChar).Value = Obj.Imagen;
                 SqlCon.Open();

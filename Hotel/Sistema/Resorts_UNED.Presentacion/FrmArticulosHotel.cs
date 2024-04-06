@@ -240,7 +240,6 @@ namespace Resorts_UNED.Presentacion
             FilterArticles(TxtBuscarArticulo.Text);
         }
 
-
         private void BtnInsertar_Click(object sender, EventArgs e)
         {
             try
@@ -254,6 +253,11 @@ namespace Resorts_UNED.Presentacion
             {
                 ShowErrorMessage(ex.Message + ex.StackTrace);
             }
+        }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            TabGeneral.SelectedIndex = 0;
         }
     }
 }

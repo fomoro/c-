@@ -23,7 +23,8 @@ namespace Resorts_UNED.Presentacion
         {
             try
             {
-                DgvListado.DataSource = new NArticulo().Listar();
+                var result = new NArticulo().Listar();
+                DgvListado.DataSource = result;
                 this.Formato();
                 this.Limpiar();
                 LblTotal.Text = "Total registros: " + Convert.ToString(DgvListado.Rows.Count);
@@ -69,11 +70,7 @@ namespace Resorts_UNED.Presentacion
             TxtBuscar.Clear();
             TxtNombre.Clear();
             TxtId.Clear();
-            TxtCodigo.Clear();
-            PanelCodigo.BackgroundImage = null;
-            BtnGuardarCodigo.Enabled = true;
             TxtPrecioVenta.Clear();
-            TxtStock.Clear();
             TxtImagen.Clear();
             PicImagen.Image = null;
             TxtDescripcion.Clear();
@@ -130,39 +127,18 @@ namespace Resorts_UNED.Presentacion
                 this.RutaOrigen = file.FileName;
             }
         }
-        private void BtnGenerar_Click(object sender, EventArgs e)
-        {
-            BarcodeLib.Barcode Codigo = new BarcodeLib.Barcode();
-            Codigo.IncludeLabel = true;
-            PanelCodigo.BackgroundImage = Codigo.Encode(BarcodeLib.TYPE.CODE128, TxtCodigo.Text, Color.Black, Color.White, 400, 75);
-            BtnGuardarCodigo.Enabled = true;
-        }
-        private void BtnGuardarCodigo_Click(object sender, EventArgs e)
-        {
-            Image imgFinal = (Image)PanelCodigo.BackgroundImage.Clone();
-
-            SaveFileDialog DiaologoGuardar = new SaveFileDialog();
-            DiaologoGuardar.AddExtension = true;
-            DiaologoGuardar.Filter = "Image PNG (*.png)|*.png";
-            DiaologoGuardar.ShowDialog();
-            if (!string.IsNullOrEmpty(DiaologoGuardar.FileName))
-            {
-                imgFinal.Save(DiaologoGuardar.FileName, ImageFormat.Png);
-            }
-            imgFinal.Dispose();
-        }
+        
         private void BtnInsertar_Click(object sender, EventArgs e)
         {
             try
             {
                 string Rpta = "";
-                if (CboCategoria.Text == string.Empty || TxtNombre.Text == string.Empty || TxtPrecioVenta.Text == string.Empty || TxtStock.Text == string.Empty)
+                if (CboCategoria.Text == string.Empty || TxtNombre.Text == string.Empty || TxtPrecioVenta.Text == string.Empty)
                 {
                     this.MensajeError("Falta ingresar algunos datos, serán remarcados.");
                     ErrorIcono.SetError(CboCategoria, "Seleccione una categoría.");
                     ErrorIcono.SetError(TxtNombre, "Ingrese un nombre.");
                     ErrorIcono.SetError(TxtPrecioVenta, "Ingrese un precio.");
-                    ErrorIcono.SetError(TxtStock, "Ingrese un stock inicial.");
                 }
                 else
                 {
@@ -171,8 +147,6 @@ namespace Resorts_UNED.Presentacion
                         IdCategoria = Convert.ToInt32(CboCategoria.SelectedValue),
                         Nombre = TxtNombre.Text.Trim(),
                         PrecioVenta = Convert.ToDecimal(TxtPrecioVenta.Text),
-                        Codigo = TxtCodigo.Text.Trim(),
-                        Stock = Convert.ToInt32(TxtStock.Text),
                         Descripcion = TxtDescripcion.Text.Trim(),
                         Imagen = TxtImagen.Text.Trim(),
                         Estado = true
@@ -215,12 +189,10 @@ namespace Resorts_UNED.Presentacion
                 BtnActualizar.Visible = true;
                 BtnInsertar.Visible = false;
                 TxtId.Text = Convert.ToString(DgvListado.CurrentRow.Cells["ID"].Value);
-                CboCategoria.SelectedValue = Convert.ToString(DgvListado.CurrentRow.Cells["IdCategoria"].Value);
-                TxtCodigo.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Codigo"].Value);
+                CboCategoria.SelectedValue = Convert.ToString(DgvListado.CurrentRow.Cells["idcategoria"].Value);
                 this.NombreAnt = Convert.ToString(DgvListado.CurrentRow.Cells["Nombre"].Value);
                 TxtNombre.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Nombre"].Value);
                 TxtPrecioVenta.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Precio_Venta"].Value);
-                TxtStock.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Stock"].Value);
                 TxtDescripcion.Text = Convert.ToString(DgvListado.CurrentRow.Cells["Descripcion"].Value);
                 string Imagen;
                 Imagen = Convert.ToString(DgvListado.CurrentRow.Cells["Imagen"].Value);
@@ -246,21 +218,29 @@ namespace Resorts_UNED.Presentacion
             try
             {
                 string Rpta = "";
-                if (TxtId.Text == string.Empty || CboCategoria.Text == string.Empty || TxtNombre.Text == string.Empty || TxtPrecioVenta.Text == string.Empty || TxtStock.Text == string.Empty)
+                if (TxtId.Text == string.Empty || CboCategoria.Text == string.Empty 
+                    || TxtNombre.Text == string.Empty || TxtPrecioVenta.Text == string.Empty)
                 {
                     this.MensajeError("Falta ingresar algunos datos, serán remarcados.");
                     ErrorIcono.SetError(CboCategoria, "Seleccione una categoría.");
                     ErrorIcono.SetError(TxtNombre, "Ingrese un nombre.");
                     ErrorIcono.SetError(TxtPrecioVenta, "Ingrese un precio.");
-                    ErrorIcono.SetError(TxtStock, "Ingrese un stock inicial.");
                 }
                 else
                 {
-                    Rpta = new NArticulo().Actualizar(
-                        Convert.ToInt32(TxtId.Text), Convert.ToInt32(CboCategoria.SelectedValue),
-                        TxtCodigo.Text.Trim(), this.NombreAnt, TxtNombre.Text.Trim(),
-                        Convert.ToDecimal(TxtPrecioVenta.Text), Convert.ToInt32(TxtStock.Text),
-                        TxtDescripcion.Text.Trim(), TxtImagen.Text.Trim());
+                    Articulo articulo = new Articulo
+                    {
+                        IdArticulo = Convert.ToInt32(TxtId.Text),
+                        IdCategoria = Convert.ToInt32(CboCategoria.SelectedValue),
+                        Nombre = TxtNombre.Text.Trim(),
+                        PrecioVenta = Convert.ToDecimal(TxtPrecioVenta.Text),
+                        Descripcion = TxtDescripcion.Text.Trim(),
+                        Imagen = TxtImagen.Text.Trim(),
+                        Estado = true
+                    };
+
+                    Rpta = new NArticulo().Actualizar(articulo);
+
                     if (Rpta.Equals("OK"))
                     {
                         this.MensajeOk("Se actualizó de forma correcta el registro");

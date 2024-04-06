@@ -16,7 +16,7 @@ namespace Resorts_UNED.Presentacion_Cliente
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new FrmCliente());
         }
     }
 }
