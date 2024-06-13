@@ -1,0 +1,12 @@
+* tome el archivo y como desarrollador experimentado genere la estructura del proyecto ( accesoDatos, entidades y negocio) en las clases de la Capa de Entidades incluya una clase llamada Alquiler para manejar el alquiler de películas
+
+* tome el codigo anterior y cree el modelo entidad relacional para ver en dbdiagram
+
+implementa la clase PeliculaBL
+implementa la clase EncargadoBL
+implementa la clase SucursalBL
+implementa la clase ClienteBL
+implementa la clase PeliculaxSucursalBL
+implementa la logica y los metodos AgregarAlquiler y ObtenerAlquileres de la clase AlquilerBL 
+
+

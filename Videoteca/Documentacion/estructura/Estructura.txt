@@ -1,0 +1,31 @@
+1. **Capa de Entidades**: 
+
+   - CategoriaPelicula
+   - Pelicula
+   - Encargado
+   - Sucursal
+   - Cliente
+   - PeliculaxSucursal
+   - Alquiler (la cual manejaría el alquiler de películas)
+
+2. **Capa de Acceso a Datos**:
+
+   - CategoriaPeliculaDAO
+   - PeliculaDAO
+   - EncargadoDAO
+   - SucursalDAO
+   - ClienteDAO
+   - PeliculaxSucursalDAO
+   - AlquilerDAO
+
+3. **Capa de Lógica de Negocio**: 
+
+   - CategoriaPeliculaBL
+   - PeliculaBL
+   - EncargadoBL
+   - SucursalBL
+   - ClienteBL
+   - PeliculaxSucursalBL
+   - AlquilerBL
+
+4. **Capa de Presentación (Interfaz de Usuario)**: 

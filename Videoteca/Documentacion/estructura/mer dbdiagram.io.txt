@@ -1,0 +1,74 @@
+// Define the entity for CategoriaPelicula
+Table CategoriaPelicula {
+  Id int [pk, increment] // primary key
+  Nombre varchar
+  Descripcion varchar
+}
+
+// Define the entity for Pelicula
+Table Pelicula {
+  Id int [pk, increment] // primary key
+  Titulo varchar
+  CategoriaId int // foreign key to CategoriaPelicula
+  AnoLanzamiento int
+  Idioma varchar
+}
+
+// Define the entity for Encargado
+Table Encargado {
+  Id int [pk, increment] // primary key
+  Identificacion varchar
+  Nombre varchar
+  PrimerApellido varchar
+  SegundoApellido varchar
+  FechaNacimiento datetime
+  FechaIngreso datetime
+}
+
+// Define the entity for Sucursal
+Table Sucursal {
+  Id int [pk, increment] // primary key
+  Nombre varchar
+  EncargadoId int // foreign key to Encargado
+  Direccion varchar
+  Telefono varchar
+  Activo boolean
+}
+
+// Define the entity for Cliente
+Table Cliente {
+  Id int [pk, increment] // primary key
+  Identificacion varchar
+  Nombre varchar
+  PrimerApellido varchar
+  SegundoApellido varchar
+  FechaNacimiento datetime
+  FechaRegistro datetime
+  Activo boolean
+}
+
+// Define the entity for PeliculaxSucursal
+Table PeliculaxSucursal {
+  Id int [pk, increment] // primary key
+  SucursalId int // foreign key to Sucursal
+  PeliculaId int // foreign key to Pelicula
+  Cantidad int
+}
+
+// Define the entity for Alquiler
+Table Alquiler {
+  Id int [pk, increment] // primary key
+  ClienteId int // foreign key to Cliente
+  PeliculaxSucursalId int // foreign key to PeliculaxSucursal
+  FechaAlquiler datetime
+  FechaDevolucion datetime
+  Devuelto boolean
+}
+
+// Define relationships
+Ref: Pelicula.CategoriaId > CategoriaPelicula.Id
+Ref: Sucursal.EncargadoId > Encargado.Id
+Ref: PeliculaxSucursal.SucursalId > Sucursal.Id
+Ref: PeliculaxSucursal.PeliculaId > Pelicula.Id
+Ref: Alquiler.ClienteId > Cliente.Id
+Ref: Alquiler.PeliculaxSucursalId > PeliculaxSucursal.Id

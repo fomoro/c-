@@ -1,0 +1,70 @@
+public class CategoriaPelicula
+{
+    public int Id { get; set; }
+    public string Nombre { get; set; }
+    public string Descripcion { get; set; }
+}
+
+public class Pelicula
+{
+    public int Id { get; set; }
+    public string Titulo { get; set; }
+    public CategoriaPelicula Categoria { get; set; }
+    public int AnoLanzamiento { get; set; }
+    public string Idioma { get; set; }
+}
+
+public class Encargado
+{
+    public int Id { get; set; }
+    public string Identificacion { get; set; }
+    public string Nombre { get; set; }
+    public string PrimerApellido { get; set; }
+    public string SegundoApellido { get; set; }
+    public DateTime FechaNacimiento { get; set; }
+    public DateTime FechaIngreso { get; set; }
+}
+
+public class Sucursal
+{
+    public int Id { get; set; }
+    public string Nombre { get; set; }
+    public Encargado Encargado { get; set; }
+    public string Direccion { get; set; }
+    public string Telefono { get; set; }
+    public bool Activo { get; set; }
+}
+
+public class Cliente
+{
+    public int Id { get; set; }
+    public string Identificacion { get; set; }
+    public string Nombre { get; set; }
+    public string PrimerApellido { get; set; }
+    public string SegundoApellido { get; set; }
+    public DateTime FechaNacimiento { get; set; }
+    public DateTime FechaRegistro { get; set; }
+    public bool Activo { get; set; }
+}
+
+public class PeliculaxSucursal
+{
+    public Sucursal Sucursal { get; set; }
+    public Pelicula Pelicula { get; set; }
+    public int Cantidad { get; set; }
+}
+
+public class Alquiler
+{
+    //Asumiendo que una entidad de Alquiler podría tener estas propiedades
+    public int Id { get; set; }
+    public Cliente Cliente { get; set; }
+    public PeliculaxSucursal PeliculaxSucursal { get; set; }
+    public DateTime FechaAlquiler { get; set; }
+    public DateTime FechaDevolucion { get; set; }
+    public bool Devuelto { get; set; }
+}
+
+tome el codigo anterior y cree el modelo entidad relacional para ver en dbdiagram.io
+
+
