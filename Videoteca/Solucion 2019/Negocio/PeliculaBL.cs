@@ -15,55 +15,96 @@ namespace Negocio
 
         public void AgregarPelicula(Pelicula pelicula)
         {
-            
-            if (pelicula.Id == 0)
-            {
-                throw new ArgumentException("La película no puede tener id 0");
-            }
-
-            // Comprobar si la película es nula
-            if (pelicula == null)
-            {
-                throw new ArgumentException("La película no puede ser nula.");
-            }
-
-            // Comprobar si el título de la película es nulo o está vacío
-            if (string.IsNullOrEmpty(pelicula.Titulo))
-            {
-                throw new ArgumentException("El título de la película es requerido.");
-            }
-
-            // Comprobar si la categoría de la película es nula
-            if (pelicula.Categoria == null)
-            {
-                throw new ArgumentException("La categoría de la película es requerida.");
-            }
-
-            // Comprobar si la categoría de la película existe
-            if (categoriaBusiness.ObtenerCategorias().All(c => c.Id != pelicula.Categoria.Id))
-            {
-                throw new ArgumentException("La categoría de la película no existe.");
-            }
-
-            if (pelicula.AnoLanzamiento == 0)
-            {
-                throw new ArgumentException("El año de lanzamiento de la película no es valido.");
-            }
-
-            if (string.IsNullOrEmpty(pelicula.Idioma))
-            {
-                throw new ArgumentException("Idioma de la película es requerido.");
-            }
-
+            ValidarPelicula(pelicula);
 
             // Después de todas las validaciones, agregar la película
             peliculaData.AgregarPelicula(pelicula);
         }
 
-        public Pelicula[] ObtenerPeliculas()
+        public string ActualizarPelicula(Pelicula pelicula)
+        {
+            try
+            {
+                ValidarPelicula(pelicula);
+
+                // Si todas las validaciones pasan, actualizar la película
+                peliculaData.ActualizarPelicula(pelicula);
+                return "OK";
+            }
+            catch (Exception e)
+            {
+                return "Ocurrió un error al actualizar la película: " + e.Message;
+            }
+        }
+
+        private void ValidarPelicula(Pelicula pelicula)
+        {
+            if (pelicula == null || pelicula.Id == 0 || string.IsNullOrEmpty(pelicula.Titulo) || pelicula.Categoria == null || pelicula.AnoLanzamiento == 0 || string.IsNullOrEmpty(pelicula.Idioma) || categoriaBusiness.ObtenerCategorias().All(c => c.Id != pelicula.Categoria.Id))
+            {
+                throw new ArgumentException("Las propiedades de la película no son válidas.");
+            }
+        }
+
+        public Pelicula[] ObtenerPeliculasXXXXXXXXXX()
         {
             return peliculaData.ObtenerPeliculas();
         }
-    }
 
+        public PeliculaDetalle[] ObtenerPeliculas()
+        {
+            return peliculaData.ObtenerPeliculas().Select(p => new PeliculaDetalle
+            {
+                Id = p.Id,
+                Titulo = p.Titulo,
+                AnoLanzamiento = p.AnoLanzamiento,
+                Idioma = p.Idioma,
+                Estado = p.Estado,
+                IdCategoria = p.Categoria.Id,
+                NombreCategoria = p.Categoria.Nombre
+            }).ToArray();
+        }
+        public string EliminarPelicula(int id)
+        {
+            try
+            {
+                peliculaData.EliminarPelicula(id);
+                return "OK";
+            }
+            catch (Exception e)
+            {
+                return "Ocurrió un error al eliminar la película: " + e.Message;
+            }
+        }
+
+        public string ActivarPelicula(int id)
+        {
+            try
+            {
+                peliculaData.ActivarPelicula(id);
+                return "OK";
+            }
+            catch (Exception e)
+            {
+                return "Ocurrió un error al activar la película: " + e.Message;
+            }
+        }
+
+        public string DesactivarPelicula(int id)
+        {
+            try
+            {
+                peliculaData.DesactivarPelicula(id);
+                return "OK";
+            }
+            catch (Exception e)
+            {
+                return "Ocurrió un error al desactivar la película: " + e.Message;
+            }
+        }
+
+        public Pelicula[] BuscarPeliculasPorNombre(string nombre)
+        {
+            return peliculaData.BuscarPeliculasPorNombre(nombre);
+        }
+    }
 }

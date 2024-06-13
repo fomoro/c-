@@ -32,7 +32,6 @@ namespace Presentacion
             this.components = new System.ComponentModel.Container();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.maestrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.peliculasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sucursalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,7 +67,6 @@ namespace Presentacion
             // maestrosToolStripMenuItem
             // 
             this.maestrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clientesToolStripMenuItem,
             this.categoriasToolStripMenuItem,
             this.peliculasToolStripMenuItem,
             this.sucursalesToolStripMenuItem,
@@ -76,13 +74,6 @@ namespace Presentacion
             this.maestrosToolStripMenuItem.Name = "maestrosToolStripMenuItem";
             this.maestrosToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
             this.maestrosToolStripMenuItem.Text = "Maestros";
-            // 
-            // clientesToolStripMenuItem
-            // 
-            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.clientesToolStripMenuItem.Text = "Clientes";
-            this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // categoriasToolStripMenuItem
             // 
@@ -96,6 +87,7 @@ namespace Presentacion
             this.peliculasToolStripMenuItem.Name = "peliculasToolStripMenuItem";
             this.peliculasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.peliculasToolStripMenuItem.Text = "Peliculas";
+            this.peliculasToolStripMenuItem.Click += new System.EventHandler(this.peliculasToolStripMenuItem_Click);
             // 
             // sucursalesToolStripMenuItem
             // 
@@ -202,7 +194,6 @@ namespace Presentacion
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ToolStripMenuItem maestrosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem categoriasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem peliculasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sucursalesToolStripMenuItem;

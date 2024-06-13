@@ -9,8 +9,23 @@ namespace AccesoDatos
 {
     public class PeliculaDAO
     {
-        private Pelicula[] peliculas = new Pelicula[20];
-        private int currentIndex = 0;
+        private static Pelicula[] peliculas = new Pelicula[20];
+        private static bool initialized = false;
+        private static int currentIndex = 0;
+        public PeliculaDAO()
+        {
+            if (!initialized)
+            {
+                CategoriaPeliculaDAO categoriaDAO = new CategoriaPeliculaDAO();
+                CategoriaPelicula[] categorias = categoriaDAO.ObtenerCategorias();
+                foreach (CategoriaPelicula categoria in categorias)
+                {
+                    peliculas[currentIndex++] = new Pelicula { Id = currentIndex, Titulo = "Pelicula " + currentIndex, Categoria = categoria, AnoLanzamiento = 2000, Idioma = "Español", Estado = true };
+                    peliculas[currentIndex++] = new Pelicula { Id = currentIndex, Titulo = "Pelicula " + currentIndex, Categoria = categoria, AnoLanzamiento = 2001, Idioma = "Español", Estado = true };
+                }
+                initialized = true;
+            }
+        }
 
         public void AgregarPelicula(Pelicula pelicula)
         {
@@ -37,6 +52,74 @@ namespace AccesoDatos
             Array.Copy(peliculas, peliculasActuales, currentIndex);
             return peliculasActuales;
         }
-    }
 
+
+        public void ActualizarPelicula(Pelicula pelicula)
+        {
+            for (int i = 0; i < currentIndex; i++)
+            {
+                if (peliculas[i].Id == pelicula.Id)
+                {
+                    peliculas[i] = pelicula;
+                    return;
+                }
+            }
+            throw new Exception("No se encontró la película con el ID especificado.");
+        }
+
+        public void EliminarPelicula(int id)
+        {
+            bool encontrado = false;
+
+            for (int i = 0; i < currentIndex; i++)
+            {
+                if (peliculas[i].Id == id)
+                {
+                    // Mueve todos los elementos hacia arriba en el arreglo
+                    for (int j = i; j < currentIndex - 1; j++)
+                    {
+                        peliculas[j] = peliculas[j + 1];
+                    }
+
+                    peliculas[currentIndex - 1] = null; // Limpiar la última posición
+                    currentIndex--;
+                    encontrado = true;
+                    break;
+                }
+            }
+
+            if (!encontrado)
+            {
+                throw new Exception("No se encontró la película con el ID especificado.");
+            }
+        }
+
+        public void ActivarPelicula(int id)
+        {
+            Pelicula pelicula = peliculas.FirstOrDefault(p => p != null && p.Id == id);
+
+            if (pelicula == null)
+            {
+                throw new Exception("No se encontró la película con el ID especificado.");
+            }
+
+            pelicula.Estado = true;
+        }
+
+        public void DesactivarPelicula(int id)
+        {
+            Pelicula pelicula = peliculas.FirstOrDefault(p => p != null && p.Id == id);
+
+            if (pelicula == null)
+            {
+                throw new Exception("No se encontró la película con el ID especificado.");
+            }
+
+            pelicula.Estado = false;
+        }
+        public Pelicula[] BuscarPeliculasPorNombre(string nombre)
+        {
+            return peliculas.Where(p => p != null && p.Titulo.Contains(nombre)).ToArray();
+        }
+    }
 }

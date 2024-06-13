@@ -92,18 +92,18 @@ namespace Presentacion
             {
                 childForm.Close();
             }
-        }
-
-        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmCliente frm = new FrmCliente();
-            frm.MdiParent = this;
-            frm.Show();
-        }
+        } 
 
         private void categoriasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmCategoria frm = new FrmCategoria();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void peliculasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmPelicula frm = new FrmPelicula();
             frm.MdiParent = this;
             frm.Show();
         }

@@ -52,11 +52,11 @@
     <Compile Include="FrmCategoria.Designer.cs">
       <DependentUpon>FrmCategoria.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmCliente.cs">
+    <Compile Include="FrmPelicula.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmCliente.Designer.cs">
-      <DependentUpon>FrmCliente.cs</DependentUpon>
+    <Compile Include="FrmPelicula.Designer.cs">
+      <DependentUpon>FrmPelicula.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
@@ -69,8 +69,8 @@
     <EmbeddedResource Include="FrmCategoria.resx">
       <DependentUpon>FrmCategoria.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmCliente.resx">
-      <DependentUpon>FrmCliente.cs</DependentUpon>
+    <EmbeddedResource Include="FrmPelicula.resx">
+      <DependentUpon>FrmPelicula.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>

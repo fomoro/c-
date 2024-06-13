@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Pelicula
+    public class PeliculaDetalle
     {
         public int Id { get; set; }
         public string Titulo { get; set; }
-        public CategoriaPelicula Categoria { get; set; }
+        public int IdCategoria { get; set; }
+        public string NombreCategoria { get; set; }
         public int AnoLanzamiento { get; set; }
         public string Idioma { get; set; }
-        public bool Estado { get; set; }
+        public bool Estado { get; set; }        
     }
-
 }
+
