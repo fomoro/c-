@@ -36,8 +36,8 @@ namespace Presentacion
             this.peliculasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sucursalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.encargadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alquilarPeliculaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.peliculasXSucursalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -45,7 +45,7 @@ namespace Presentacion
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.peliculasPorSucursalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -56,12 +56,12 @@ namespace Presentacion
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.maestrosToolStripMenuItem,
+            this.peliculasPorSucursalToolStripMenuItem,
             this.alquilarPeliculaToolStripMenuItem,
-            this.peliculasXSucursalToolStripMenuItem,
             this.salirToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(843, 30);
+            this.menuStrip.Size = new System.Drawing.Size(843, 28);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -80,44 +80,44 @@ namespace Presentacion
             // categoriasToolStripMenuItem
             // 
             this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
-            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
             this.categoriasToolStripMenuItem.Text = "Categorias";
             this.categoriasToolStripMenuItem.Click += new System.EventHandler(this.categoriasToolStripMenuItem_Click);
             // 
             // peliculasToolStripMenuItem
             // 
             this.peliculasToolStripMenuItem.Name = "peliculasToolStripMenuItem";
-            this.peliculasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.peliculasToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
             this.peliculasToolStripMenuItem.Text = "Peliculas";
             this.peliculasToolStripMenuItem.Click += new System.EventHandler(this.peliculasToolStripMenuItem_Click);
             // 
             // sucursalesToolStripMenuItem
             // 
             this.sucursalesToolStripMenuItem.Name = "sucursalesToolStripMenuItem";
-            this.sucursalesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.sucursalesToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
             this.sucursalesToolStripMenuItem.Text = "Sucursales";
             this.sucursalesToolStripMenuItem.Click += new System.EventHandler(this.sucursalesToolStripMenuItem_Click);
             // 
             // encargadosToolStripMenuItem
             // 
             this.encargadosToolStripMenuItem.Name = "encargadosToolStripMenuItem";
-            this.encargadosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.encargadosToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
             this.encargadosToolStripMenuItem.Text = "Encargados";
             this.encargadosToolStripMenuItem.Click += new System.EventHandler(this.encargadosToolStripMenuItem_Click);
+            // 
+            // clientesToolStripMenuItem
+            // 
+            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.clientesToolStripMenuItem.Text = "Clientes";
+            this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // alquilarPeliculaToolStripMenuItem
             // 
             this.alquilarPeliculaToolStripMenuItem.Name = "alquilarPeliculaToolStripMenuItem";
-            this.alquilarPeliculaToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
-            this.alquilarPeliculaToolStripMenuItem.Text = "Alquilar Peliculas";
+            this.alquilarPeliculaToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
+            this.alquilarPeliculaToolStripMenuItem.Text = "Alquilar ";
             this.alquilarPeliculaToolStripMenuItem.Click += new System.EventHandler(this.alquilarPeliculaToolStripMenuItem_Click);
-            // 
-            // peliculasXSucursalToolStripMenuItem
-            // 
-            this.peliculasXSucursalToolStripMenuItem.Name = "peliculasXSucursalToolStripMenuItem";
-            this.peliculasXSucursalToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
-            this.peliculasXSucursalToolStripMenuItem.Text = "Asignar Peliculas a Sucursal";
-            this.peliculasXSucursalToolStripMenuItem.Click += new System.EventHandler(this.peliculasXSucursalToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -131,9 +131,9 @@ namespace Presentacion
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSeparator1,
             this.toolStripSeparator2});
-            this.toolStrip.Location = new System.Drawing.Point(0, 30);
+            this.toolStrip.Location = new System.Drawing.Point(0, 28);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(843, 31);
+            this.toolStrip.Size = new System.Drawing.Size(843, 25);
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "ToolStrip";
             // 
@@ -165,12 +165,12 @@ namespace Presentacion
             this.toolStripStatusLabel.Size = new System.Drawing.Size(167, 20);
             this.toolStripStatusLabel.Text = "Desarrollado por Ronny";
             // 
-            // clientesToolStripMenuItem
+            // peliculasPorSucursalToolStripMenuItem
             // 
-            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.clientesToolStripMenuItem.Text = "Clientes";
-            this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
+            this.peliculasPorSucursalToolStripMenuItem.Name = "peliculasPorSucursalToolStripMenuItem";
+            this.peliculasPorSucursalToolStripMenuItem.Size = new System.Drawing.Size(162, 24);
+            this.peliculasPorSucursalToolStripMenuItem.Text = "Peliculas Por Sucursal";
+            this.peliculasPorSucursalToolStripMenuItem.Click += new System.EventHandler(this.peliculasPorSucursalToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
@@ -212,9 +212,9 @@ namespace Presentacion
         private System.Windows.Forms.ToolStripMenuItem sucursalesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem encargadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alquilarPeliculaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem peliculasXSucursalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem peliculasPorSucursalToolStripMenuItem;
     }
 }
 

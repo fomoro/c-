@@ -136,9 +136,10 @@ namespace Presentacion
             frm.Show();
         }
 
-        private void peliculasXSucursalToolStripMenuItem_Click(object sender, EventArgs e)
+        
+        private void peliculasPorSucursalToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmPeliculasSucursal frm = new FrmPeliculasSucursal();
+            FrmPeliculasxSucursal frm = new FrmPeliculasxSucursal();
             frm.MdiParent = this;
             frm.Show();
         }

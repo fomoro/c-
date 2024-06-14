@@ -76,11 +76,11 @@
     <Compile Include="FrmPelicula.Designer.cs">
       <DependentUpon>FrmPelicula.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmPeliculasSucursal.cs">
+    <Compile Include="FrmPeliculasxSucursal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmPeliculasSucursal.Designer.cs">
-      <DependentUpon>FrmPeliculasSucursal.cs</DependentUpon>
+    <Compile Include="FrmPeliculasxSucursal.Designer.cs">
+      <DependentUpon>FrmPeliculasxSucursal.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
@@ -107,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPelicula.resx">
       <DependentUpon>FrmPelicula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPeliculasxSucursal.resx">
+      <DependentUpon>FrmPeliculasxSucursal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>

@@ -11,14 +11,30 @@ namespace AccesoDatos
         private static int currentIndex = 0;
         public PeliculaxSucursalDAO()
         {
-            // Si fuera necesario inicializar datos de ejemplo en el constructor, este sería el lugar
-            // Sin embargo, por el momento, no parece haber ninguna inicialización específica necesaria en el PDF provisto
             if (!initialized)
             {
-                // Aquí podría ir la lógica de inicialización
+                PeliculaDAO peliculaDAO = new PeliculaDAO();
+                SucursalDAO sucursalDAO = new SucursalDAO();
+                Pelicula[] peliculas = peliculaDAO.ObtenerPeliculas();
+                Sucursal[] sucursales = sucursalDAO.ObtenerSucursales();
+
+                // Verificamos si existen películas y sucursales
+                if (peliculas.Length > 0 && sucursales.Length > 0)
+                {
+                    foreach (Sucursal sucursal in sucursales)
+                    {
+                        foreach (Pelicula pelicula in peliculas)
+                        {
+                            // Agregamos cada película a cada sucursal
+                            AgregarPeliculaxSucursal(new PeliculaxSucursal { Pelicula = pelicula, Sucursal = sucursal });
+                        }
+                    }
+                }
+
                 initialized = true;
             }
         }
+
         public void AgregarPeliculaxSucursal(PeliculaxSucursal nuevaPeliculaxSucursal)
         {
             if (currentIndex >= 100)
