@@ -11,18 +11,18 @@ namespace AccesoDatos
     {
         private static Pelicula[] peliculas = new Pelicula[20];
         private static bool initialized = false;
-        private static int currentIndex = 0;
+        private static int currentIndex = 0;     
+
         public PeliculaDAO()
         {
             if (!initialized)
             {
                 CategoriaPeliculaDAO categoriaDAO = new CategoriaPeliculaDAO();
                 CategoriaPelicula[] categorias = categoriaDAO.ObtenerCategorias();
-                foreach (CategoriaPelicula categoria in categorias)
-                {
-                    peliculas[currentIndex++] = new Pelicula { Id = currentIndex, Titulo = "Pelicula " + currentIndex, Categoria = categoria, AnoLanzamiento = 2000, Idioma = "Español", Estado = true };
-                    peliculas[currentIndex++] = new Pelicula { Id = currentIndex, Titulo = "Pelicula " + currentIndex, Categoria = categoria, AnoLanzamiento = 2001, Idioma = "Español", Estado = true };
-                }
+                peliculas[currentIndex++] = new Pelicula { Id = currentIndex, Titulo = "Pelicula " + currentIndex, Categoria = categorias[0], AnoLanzamiento = 2000, Idioma = "Español", Estado = true };
+                peliculas[currentIndex++] = new Pelicula { Id = currentIndex, Titulo = "Pelicula " + currentIndex, Categoria = categorias[1], AnoLanzamiento = 2012, Idioma = "Español", Estado = true };
+                peliculas[currentIndex++] = new Pelicula { Id = currentIndex, Titulo = "Pelicula " + currentIndex, Categoria = categorias[2], AnoLanzamiento = 1985, Idioma = "Español", Estado = true };
+
                 initialized = true;
             }
         }

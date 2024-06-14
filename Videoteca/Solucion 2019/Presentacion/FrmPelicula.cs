@@ -29,7 +29,7 @@ namespace Presentacion
         {
             try
             {
-                var result = new PeliculaBL().ObtenerPeliculas();
+                var result = new PeliculaBL().ObtenerPeliculasConDetalle();
                 DgvListado.DataSource = result;
                 this.Formato();
                 this.Limpiar();

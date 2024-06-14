@@ -42,7 +42,11 @@ namespace Negocio
                 throw new ArgumentException("Las propiedades de la película no son válidas.");
             }
         }
-        public PeliculaDetalle[] ObtenerPeliculas()
+        public Pelicula[] ObtenerPeliculas()
+        {
+            return peliculaData.ObtenerPeliculas();
+        }
+        public PeliculaDetalle[] ObtenerPeliculasConDetalle()
         {
             return peliculaData.ObtenerPeliculas().Select(p => new PeliculaDetalle
             {

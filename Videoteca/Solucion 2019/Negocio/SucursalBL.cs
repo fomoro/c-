@@ -12,7 +12,28 @@ namespace Negocio
     {
         private SucursalDAO sucursalData = new SucursalDAO();
         private EncargadoBL encargadoBusiness = new EncargadoBL();
-
+        
+        public Sucursal[] ObtenerSucursales()
+        {
+            return sucursalData.ObtenerSucursales();
+        }
+        public SucursalDetalle[] ObtenerSucursalesConDetalle()
+        {
+            return sucursalData.ObtenerSucursales().Select(s => new SucursalDetalle
+            {
+                Id = s.Id,
+                Nombre = s.Nombre,
+                Direccion = s.Direccion,
+                Telefono = s.Telefono,                
+                IdEncargado = s.Encargado.Id,
+                NombreEncargado = s.Encargado.Nombre,
+                Activo = s.Activo
+            }).ToArray();
+        }
+        public Sucursal[] BuscarSucursalPorNombre(string nombre)
+        {
+            return sucursalData.ObtenerSucursales().Where(s => s.Nombre.Contains(nombre)).ToArray();
+        }
         public void AgregarSucursal(Sucursal sucursal)
         {
             // Aquí puede agregar validaciones adicionales según las reglas de negocio
@@ -49,14 +70,5 @@ namespace Negocio
             // Después de todas las validaciones, agregar la sucursal
             sucursalData.AgregarSucursal(sucursal);
         }
-        public Sucursal[] ObtenerSucursales()
-        {
-            return sucursalData.ObtenerSucursales();
-        }
-        public Sucursal[] BuscarSucursalPorNombre(string nombre)
-        {
-            return sucursalData.ObtenerSucursales().Where(s => s.Nombre.Contains(nombre)).ToArray();
-        }
     }
-
 }

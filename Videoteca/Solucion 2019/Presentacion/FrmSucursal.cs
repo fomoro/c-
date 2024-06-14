@@ -29,7 +29,8 @@ namespace Presentacion
         {
             try
             {
-                var result = new SucursalBL().ObtenerSucursales();
+                //var result = new SucursalBL().ObtenerSucursales();
+                var result = new SucursalBL().ObtenerSucursalesConDetalle();
                 DgvListado.DataSource = result;
                 this.Formato();
                 this.Limpiar();
@@ -44,7 +45,7 @@ namespace Presentacion
         {
             try
             {
-                DgvListado.DataSource = new PeliculaBL().BuscarPeliculasPorNombre(TxtBuscar.Text);
+                DgvListado.DataSource = new SucursalBL().BuscarSucursalPorNombre(TxtBuscar.Text);
                 this.Formato();
                 LblTotal.Text = "Total registros: " + Convert.ToString(DgvListado.Rows.Count);
             }
@@ -55,28 +56,34 @@ namespace Presentacion
         }
         private void Formato()
         {
-            //IdArticulo
-            //DgvListado.Columns[0].Visible = false;  
-            //DgvListado.Columns[0].Width = 100;
+            DgvListado.Columns[0].Width = 50;
+            DgvListado.Columns[0].Visible = false;
 
-            //Titulo
-            DgvListado.Columns[1].Width = 50;
-            DgvListado.Columns[1].Visible = false;
+            //Id
+            DgvListado.Columns[1].Width = 30;
+            //DgvListado.Columns[1].Visible = false;
 
-            //Titulo                    
-            DgvListado.Columns[2].Width = 130;
+            //Identificacion            
+            //DgvListado.Columns[2].Width = 100;
 
-            //IdCategoria            
-            DgvListado.Columns[3].Width = 50;
-            DgvListado.Columns[3].Visible = false;
+            //Nombre                                            
+            //DgvListado.Columns[3].Width = 100;
 
-            //Categoria       
-            DgvListado.Columns[4].Width = 130;
-            DgvListado.Columns[4].HeaderText = "Categoría";
+            //Direccion                 
+            //DgvListado.Columns[4].Width = 100;
 
-            //Lanzamiento       
-            DgvListado.Columns[5].Width = 70;
-            DgvListado.Columns[5].HeaderText = "Lanzamiento";
+            //Telefono                                  
+            //DgvListado.Columns[5].Width = 100;
+            //DgvListado.Columns[4].HeaderText = "Categoría";
+
+            //IdEncargado
+            //DgvListado.Columns[6].Width = 100;
+
+            //NombreEncargado       
+            //DgvListado.Columns[7].Width = 100;
+
+            //Activo       
+            //DgvListado.Columns[8].Width = 100;
         }
         private void Limpiar()
         {

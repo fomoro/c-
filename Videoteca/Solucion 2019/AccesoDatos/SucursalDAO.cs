@@ -6,7 +6,7 @@ namespace AccesoDatos
 {
     public class SucursalDAO
     {
-        private static Sucursal[] sucursales = new Sucursal[3];
+        private static Sucursal[] sucursales = new Sucursal[5];
         private static bool initialized = false;
         private static int currentIndex = 0;
 
@@ -16,16 +16,19 @@ namespace AccesoDatos
             {
                 EncargadoDAO encargadoDAO = new EncargadoDAO();
                 Encargado[] encargados = encargadoDAO.ObtenerEncargados();
-                int index = 0;
-                foreach (Encargado encargado in encargados)
-                {
-                    sucursales[currentIndex++] = new Sucursal { Id = currentIndex, Nombre = "Sucursal " + currentIndex, Encargado = encargado, Direccion = "Direccion " + currentIndex, Telefono = "Telefono " + currentIndex, Activo = true };
-                    index++;
-                    if (index >= 3) break;
-                }
+                sucursales[currentIndex++] = new Sucursal { Id = currentIndex, Nombre = "Sucursal " + currentIndex, Encargado = encargados[0], Direccion = "Direccion " + currentIndex, Telefono = "Telefono " + currentIndex, Activo = true };
+                sucursales[currentIndex++] = new Sucursal { Id = currentIndex, Nombre = "Sucursal " + currentIndex, Encargado = encargados[1], Direccion = "Direccion " + currentIndex, Telefono = "Telefono " + currentIndex, Activo = true };
+                
                 initialized = true;
             }
+        }        
+        public Sucursal[] ObtenerSucursales()
+        {
+            Sucursal[] sucursalesActuales = new Sucursal[currentIndex];
+            Array.Copy(sucursales, sucursalesActuales, currentIndex);
+            return sucursalesActuales;
         }
+
         public void AgregarSucursal(Sucursal sucursal)
         {
             if (currentIndex >= 3)
@@ -43,12 +46,6 @@ namespace AccesoDatos
 
             sucursales[currentIndex] = sucursal;
             currentIndex++;
-        }
-        public Sucursal[] ObtenerSucursales()
-        {
-            Sucursal[] sucursalesActuales = new Sucursal[currentIndex];
-            Array.Copy(sucursales, sucursalesActuales, currentIndex);
-            return sucursalesActuales;
         }
         public void ActualizarSucursal(Sucursal sucursal)
         {

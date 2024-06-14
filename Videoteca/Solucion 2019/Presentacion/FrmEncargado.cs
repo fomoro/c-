@@ -44,7 +44,7 @@ namespace Presentacion
         {
             try
             {
-                DgvListado.DataSource = new PeliculaBL().BuscarPeliculasPorNombre(TxtBuscar.Text);
+                DgvListado.DataSource = new EncargadoBL().BuscarEncargadoPorNombre(TxtBuscar.Text);
                 this.Formato();
                 LblTotal.Text = "Total registros: " + Convert.ToString(DgvListado.Rows.Count);
             }

@@ -22,7 +22,7 @@ namespace AccesoDatos
                 encargados[currentIndex++] = new Encargado { Id = 3, Identificacion = "9987", Nombre = "Federico", PrimerApellido = "Corallo", SegundoApellido = "Morales", FechaNacimiento = new DateTime(1994, 3, 3), FechaIngreso = DateTime.Now };
                 encargados[currentIndex++] = new Encargado { Id = 4, Identificacion = "1111", Nombre = "Juan", PrimerApellido = "Sarmiento", SegundoApellido = "Alvarez", FechaNacimiento = new DateTime(1996, 4, 4), FechaIngreso = DateTime.Now };
                 encargados[currentIndex++] = new Encargado { Id = 5, Identificacion = "6554", Nombre = "Alejandra", PrimerApellido = "Beltran", SegundoApellido = "Ureña", FechaNacimiento = new DateTime(1998, 5, 5), FechaIngreso = DateTime.Now };
-                encargados[currentIndex++] = new Encargado { Id = 5, Identificacion = "1024", Nombre = "Tomas", PrimerApellido = "Moreno", SegundoApellido = "Ureña", FechaNacimiento = new DateTime(1998, 5, 5), FechaIngreso = DateTime.Now };
+                encargados[currentIndex++] = new Encargado { Id = 6, Identificacion = "1024", Nombre = "Tomas", PrimerApellido = "Moreno", SegundoApellido = "Ureña", FechaNacimiento = new DateTime(1998, 5, 5), FechaIngreso = DateTime.Now };
 
                 initialized = true;
             }
