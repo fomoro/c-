@@ -49,10 +49,13 @@ namespace Negocio
             // Después de todas las validaciones, agregar la sucursal
             sucursalData.AgregarSucursal(sucursal);
         }
-
         public Sucursal[] ObtenerSucursales()
         {
             return sucursalData.ObtenerSucursales();
+        }
+        public Sucursal[] BuscarSucursalPorNombre(string nombre)
+        {
+            return sucursalData.ObtenerSucursales().Where(s => s.Nombre.Contains(nombre)).ToArray();
         }
     }
 

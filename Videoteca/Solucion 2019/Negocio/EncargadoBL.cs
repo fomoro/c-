@@ -42,10 +42,13 @@ namespace Negocio
             // Después de todas las validaciones, agregar el encargado
             encargadoData.AgregarEncargado(encargado);
         }
-
         public Encargado[] ObtenerEncargados()
         {
             return encargadoData.ObtenerEncargados();
+        }
+        public Encargado[] BuscarEncargadoPorNombre(string nombre)
+        {
+            return encargadoData.ObtenerEncargados().Where(e => e.Nombre.Contains(nombre)).ToArray();
         }
     }
 

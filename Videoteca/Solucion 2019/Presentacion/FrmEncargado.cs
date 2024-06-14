@@ -12,14 +12,14 @@ using System.Windows.Forms;
 
 namespace Presentacion
 {
-    public partial class FrmPelicula : Form
+    public partial class FrmEncargado : Form
     {
-        public FrmPelicula()
+        public FrmEncargado()
         {
             InitializeComponent();
         }
 
-        private void FrmPelicula_Load(object sender, EventArgs e)
+        private void FrmEncargado_Load(object sender, EventArgs e)
         {
             this.Listar();
             //this.CargarCategoria();
@@ -29,7 +29,7 @@ namespace Presentacion
         {
             try
             {
-                var result = new PeliculaBL().ObtenerPeliculas();
+                var result = new EncargadoBL().ObtenerEncargados();
                 DgvListado.DataSource = result;
                 this.Formato();
                 this.Limpiar();
@@ -44,7 +44,7 @@ namespace Presentacion
         {
             try
             {
-                DgvListado.DataSource = new PeliculaBL().BuscarPeliculasPorTitulo(TxtBuscar.Text);
+                DgvListado.DataSource = new PeliculaBL().BuscarPeliculasPorNombre(TxtBuscar.Text);
                 this.Formato();
                 LblTotal.Text = "Total registros: " + Convert.ToString(DgvListado.Rows.Count);
             }
@@ -55,28 +55,34 @@ namespace Presentacion
         }
         private void Formato()
         {
-            //IdArticulo
-            //DgvListado.Columns[0].Visible = false;  
-            //DgvListado.Columns[0].Width = 100;
 
-            //Titulo
-            DgvListado.Columns[1].Width = 50;
-            DgvListado.Columns[1].Visible = false;
+            DgvListado.Columns[0].Width = 50;
+            //DgvListado.Columns[0].Visible = false;
 
-            //Titulo                    
-            DgvListado.Columns[2].Width = 130;
+            //Id
+            DgvListado.Columns[1].Width = 30;
+            //DgvListado.Columns[1].Visible = false;
 
-            //IdCategoria            
-            DgvListado.Columns[3].Width = 50;
-            DgvListado.Columns[3].Visible = false;
+            //Identificacion            
+            DgvListado.Columns[2].Width = 100;
 
-            //Categoria       
-            DgvListado.Columns[4].Width = 130;
-            DgvListado.Columns[4].HeaderText = "Categoría";
+            //Nombre                                            
+            DgvListado.Columns[3].Width = 100;
 
-            //Lanzamiento       
-            DgvListado.Columns[5].Width = 70;
-            DgvListado.Columns[5].HeaderText = "Lanzamiento";
+            //PrimerApellido                 
+            DgvListado.Columns[4].Width = 100;
+
+            //SegundoApellido                                  
+            DgvListado.Columns[5].Width = 100;
+            //DgvListado.Columns[4].HeaderText = "Categoría";
+
+            //FechaNacimiento
+            DgvListado.Columns[6].Width = 100;
+            //DgvListado.Columns[4].HeaderText = "Categoría";
+
+            //FechaIngreso       
+            DgvListado.Columns[6].Width = 100;
+            //DgvListado.Columns[5].HeaderText = "Lanzamiento";
         }
         private void Limpiar()
         {
@@ -111,6 +117,11 @@ namespace Presentacion
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             this.Buscar();
+        }
+
+        private void BtnInsertar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

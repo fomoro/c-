@@ -115,6 +115,6 @@ namespace AccesoDatos
             }
 
             categoria.Estado = false;
-        }
+        }        
     }
 }

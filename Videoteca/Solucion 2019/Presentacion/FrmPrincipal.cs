@@ -107,5 +107,40 @@ namespace Presentacion
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void sucursalesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmSucursal frm = new FrmSucursal();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void encargadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmEncargado frm = new FrmEncargado();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCliente frm = new FrmCliente();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void alquilarPeliculaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAlquiler frm = new FrmAlquiler();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void peliculasXSucursalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmPeliculasSucursal frm = new FrmPeliculasSucursal();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }

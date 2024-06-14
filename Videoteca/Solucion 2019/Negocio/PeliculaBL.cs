@@ -20,7 +20,6 @@ namespace Negocio
             // Después de todas las validaciones, agregar la película
             peliculaData.AgregarPelicula(pelicula);
         }
-
         public string ActualizarPelicula(Pelicula pelicula)
         {
             try
@@ -36,7 +35,6 @@ namespace Negocio
                 return "Ocurrió un error al actualizar la película: " + e.Message;
             }
         }
-
         private void ValidarPelicula(Pelicula pelicula)
         {
             if (pelicula == null || pelicula.Id == 0 || string.IsNullOrEmpty(pelicula.Titulo) || pelicula.Categoria == null || pelicula.AnoLanzamiento == 0 || string.IsNullOrEmpty(pelicula.Idioma) || categoriaBusiness.ObtenerCategorias().All(c => c.Id != pelicula.Categoria.Id))
@@ -44,12 +42,6 @@ namespace Negocio
                 throw new ArgumentException("Las propiedades de la película no son válidas.");
             }
         }
-
-        public Pelicula[] ObtenerPeliculasXXXXXXXXXX()
-        {
-            return peliculaData.ObtenerPeliculas();
-        }
-
         public PeliculaDetalle[] ObtenerPeliculas()
         {
             return peliculaData.ObtenerPeliculas().Select(p => new PeliculaDetalle
@@ -63,6 +55,10 @@ namespace Negocio
                 NombreCategoria = p.Categoria.Nombre
             }).ToArray();
         }
+        public Pelicula[] BuscarPeliculasPorTitulo(string titulo)
+        {
+            return peliculaData.ObtenerPeliculas().Where(p => p.Titulo.Contains(titulo)).ToArray();
+        }
         public string EliminarPelicula(int id)
         {
             try
@@ -75,7 +71,6 @@ namespace Negocio
                 return "Ocurrió un error al eliminar la película: " + e.Message;
             }
         }
-
         public string ActivarPelicula(int id)
         {
             try
@@ -88,7 +83,6 @@ namespace Negocio
                 return "Ocurrió un error al activar la película: " + e.Message;
             }
         }
-
         public string DesactivarPelicula(int id)
         {
             try
@@ -101,10 +95,6 @@ namespace Negocio
                 return "Ocurrió un error al desactivar la película: " + e.Message;
             }
         }
-
-        public Pelicula[] BuscarPeliculasPorNombre(string nombre)
-        {
-            return peliculaData.BuscarPeliculasPorNombre(nombre);
-        }
+        
     }
 }

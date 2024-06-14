@@ -7,6 +7,8 @@
    - Cliente
    - PeliculaxSucursal
    - Alquiler (la cual manejaría el alquiler de películas)
+   - PeliculaDetalle (clase personalizada que contiene las propiedades de la categoría junto con la película)
+
 
 2. **Capa de Acceso a Datos**:
 

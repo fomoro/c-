@@ -15,6 +15,7 @@ namespace Entidades
         public string SegundoApellido { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public DateTime FechaIngreso { get; set; }
+        public bool Activo { get; set; }
     }
 
 }

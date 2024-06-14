@@ -53,7 +53,6 @@ namespace AccesoDatos
             return peliculasActuales;
         }
 
-
         public void ActualizarPelicula(Pelicula pelicula)
         {
             for (int i = 0; i < currentIndex; i++)
@@ -117,9 +116,6 @@ namespace AccesoDatos
 
             pelicula.Estado = false;
         }
-        public Pelicula[] BuscarPeliculasPorNombre(string nombre)
-        {
-            return peliculas.Where(p => p != null && p.Titulo.Contains(nombre)).ToArray();
-        }
+     
     }
 }

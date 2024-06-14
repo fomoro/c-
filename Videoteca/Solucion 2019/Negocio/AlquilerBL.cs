@@ -10,7 +10,7 @@ namespace Negocio
 {
     public class AlquilerBL
     {
-        private AlquilerDAO dao = new AlquilerDAO();
+        private AlquilerDAO alquilerData = new AlquilerDAO();
 
         public void AgregarAlquiler(Alquiler alquiler)
         {
@@ -24,19 +24,17 @@ namespace Negocio
                 throw new Exception("La fecha de devolución no puede ser anterior a la fecha de alquiler.");
             }
 
-            dao.AgregarAlquiler(alquiler);
+            alquilerData.AgregarAlquiler(alquiler);
         }
-
         public Alquiler[] ObtenerAlquileres()
         {
-            Alquiler[] alquileres = dao.ObtenerAlquileres();
+            Alquiler[] alquileres = alquilerData.ObtenerAlquileres();
 
             // Ordenar los alquileres por fecha de alquiler
             Array.Sort(alquileres, (a, b) => a.FechaAlquiler.CompareTo(b.FechaAlquiler));
 
             return alquileres;
         }
-
         public void MarcarComoDevuelto(int id)
         {
             Alquiler[] alquileres = ObtenerAlquileres();
@@ -51,7 +49,14 @@ namespace Negocio
             }
             throw new Exception("No se encontró el alquiler con el ID especificado.");
         }
-
+        public Alquiler[] BuscarAlquilerPorNombreDelCliente(string nombreCliente)
+        {
+            return alquilerData.ObtenerAlquileres().Where(a => a.Cliente.Nombre.Contains(nombreCliente)).ToArray();
+        }
+        public Alquiler[] BuscarAlquilerPorNombreDeLaPelicula(string nombrePelicula)
+        {
+            return alquilerData.ObtenerAlquileres().Where(a => a.PeliculaxSucursal.Pelicula.Titulo.Contains(nombrePelicula)).ToArray();
+        }
     }
 
 }

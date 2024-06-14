@@ -13,7 +13,6 @@ namespace Negocio
         private PeliculaxSucursalDAO peliculaxSucursalData = new PeliculaxSucursalDAO();
         private SucursalBL sucursalBusiness = new SucursalBL();
         private PeliculaBL peliculaBusiness = new PeliculaBL();
-
         public void AgregarPeliculaxSucursal(PeliculaxSucursal peliculaxSucursal)
         {
             // Aquí puede agregar validaciones adicionales según las reglas de negocio
@@ -56,10 +55,9 @@ namespace Negocio
             // Después de todas las validaciones, agregar la asociación
             peliculaxSucursalData.AgregarPeliculaxSucursal(peliculaxSucursal);
         }
-
         public PeliculaxSucursal[] ObtenerPeliculasxSucursal()
         {
-            return peliculaxSucursalData.ObtenerPeliculasxSucursal();
+            return peliculaxSucursalData.ObtenerPeliculasxSucursales();
         }
     }
 

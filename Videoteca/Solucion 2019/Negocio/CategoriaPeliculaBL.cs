@@ -29,12 +29,14 @@ namespace Negocio
                 return "Ocurrió un error al agregar la categoría: " + e.Message;
             }
         }   
-
         public CategoriaPelicula[] ObtenerCategorias()
         {
             return categoriaData.ObtenerCategorias();
         }
-
+        public CategoriaPelicula[] BuscarCategoriaPorNombre(string nombre)
+        {
+            return categoriaData.ObtenerCategorias().Where(c => c.Nombre.Contains(nombre)).ToArray();
+        }
         public string ActualizarCategoria(CategoriaPelicula categoria)
         {
             try
@@ -51,22 +53,7 @@ namespace Negocio
             {
                 return "Ocurrió un error al actualizar la categoría: " + e.Message;
             }
-        }
-        public CategoriaPelicula[] BuscarCategoriaPorNombre(string nombre)
-        {
-            CategoriaPelicula[] todasLasCategorias = categoriaData.ObtenerCategorias();
-            List<CategoriaPelicula> categoriasEncontradas = new List<CategoriaPelicula>();
-
-            foreach (var categoria in todasLasCategorias)
-            {
-                if (categoria.Nombre.Contains(nombre))
-                {
-                    categoriasEncontradas.Add(categoria);
-                }
-            }
-
-            return categoriasEncontradas.ToArray();
-        }
+        }        
         public string EliminarCategoria(int id)
         {
             try
@@ -91,7 +78,6 @@ namespace Negocio
                 return "Ocurrió un error al activar la categoría: " + e.Message;
             }
         }
-
         public string DesactivarCategoria(int id)
         {
             try
@@ -104,8 +90,5 @@ namespace Negocio
                 return "Ocurrió un error al desactivar la categoría: " + e.Message;
             }
         }
-
-
     }
-
 }

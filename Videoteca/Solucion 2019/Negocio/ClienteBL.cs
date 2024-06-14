@@ -42,11 +42,13 @@ namespace Negocio
             // Después de todas las validaciones, agregar el cliente
             clienteData.AgregarCliente(cliente);
         }
-
         public Cliente[] ObtenerClientes()
         {
             return clienteData.ObtenerClientes();
         }
+        public Cliente[] BuscarClientePorNombre(string nombre)
+        {
+            return clienteData.ObtenerClientes().Where(c => c.Nombre.Contains(nombre)).ToArray();
+        }
     }
-
 }

@@ -45,6 +45,7 @@ namespace Presentacion
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -60,7 +61,7 @@ namespace Presentacion
             this.salirToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(843, 28);
+            this.menuStrip.Size = new System.Drawing.Size(843, 30);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -70,7 +71,8 @@ namespace Presentacion
             this.categoriasToolStripMenuItem,
             this.peliculasToolStripMenuItem,
             this.sucursalesToolStripMenuItem,
-            this.encargadosToolStripMenuItem});
+            this.encargadosToolStripMenuItem,
+            this.clientesToolStripMenuItem});
             this.maestrosToolStripMenuItem.Name = "maestrosToolStripMenuItem";
             this.maestrosToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
             this.maestrosToolStripMenuItem.Text = "Maestros";
@@ -94,24 +96,28 @@ namespace Presentacion
             this.sucursalesToolStripMenuItem.Name = "sucursalesToolStripMenuItem";
             this.sucursalesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.sucursalesToolStripMenuItem.Text = "Sucursales";
+            this.sucursalesToolStripMenuItem.Click += new System.EventHandler(this.sucursalesToolStripMenuItem_Click);
             // 
             // encargadosToolStripMenuItem
             // 
             this.encargadosToolStripMenuItem.Name = "encargadosToolStripMenuItem";
             this.encargadosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.encargadosToolStripMenuItem.Text = "Encargados";
+            this.encargadosToolStripMenuItem.Click += new System.EventHandler(this.encargadosToolStripMenuItem_Click);
             // 
             // alquilarPeliculaToolStripMenuItem
             // 
             this.alquilarPeliculaToolStripMenuItem.Name = "alquilarPeliculaToolStripMenuItem";
-            this.alquilarPeliculaToolStripMenuItem.Size = new System.Drawing.Size(135, 24);
+            this.alquilarPeliculaToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
             this.alquilarPeliculaToolStripMenuItem.Text = "Alquilar Peliculas";
+            this.alquilarPeliculaToolStripMenuItem.Click += new System.EventHandler(this.alquilarPeliculaToolStripMenuItem_Click);
             // 
             // peliculasXSucursalToolStripMenuItem
             // 
             this.peliculasXSucursalToolStripMenuItem.Name = "peliculasXSucursalToolStripMenuItem";
-            this.peliculasXSucursalToolStripMenuItem.Size = new System.Drawing.Size(203, 24);
+            this.peliculasXSucursalToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
             this.peliculasXSucursalToolStripMenuItem.Text = "Asignar Peliculas a Sucursal";
+            this.peliculasXSucursalToolStripMenuItem.Click += new System.EventHandler(this.peliculasXSucursalToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -125,9 +131,9 @@ namespace Presentacion
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSeparator1,
             this.toolStripSeparator2});
-            this.toolStrip.Location = new System.Drawing.Point(0, 28);
+            this.toolStrip.Location = new System.Drawing.Point(0, 30);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(843, 25);
+            this.toolStrip.Size = new System.Drawing.Size(843, 31);
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "ToolStrip";
             // 
@@ -158,6 +164,13 @@ namespace Presentacion
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(167, 20);
             this.toolStripStatusLabel.Text = "Desarrollado por Ronny";
+            // 
+            // clientesToolStripMenuItem
+            // 
+            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.clientesToolStripMenuItem.Text = "Clientes";
+            this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
@@ -201,6 +214,7 @@ namespace Presentacion
         private System.Windows.Forms.ToolStripMenuItem alquilarPeliculaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem peliculasXSucursalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
     }
 }
 

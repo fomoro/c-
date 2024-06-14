@@ -12,14 +12,14 @@ using System.Windows.Forms;
 
 namespace Presentacion
 {
-    public partial class FrmPelicula : Form
+    public partial class FrmSucursal : Form
     {
-        public FrmPelicula()
+        public FrmSucursal()
         {
             InitializeComponent();
         }
 
-        private void FrmPelicula_Load(object sender, EventArgs e)
+        private void FrmSucursal_Load(object sender, EventArgs e)
         {
             this.Listar();
             //this.CargarCategoria();
@@ -29,7 +29,7 @@ namespace Presentacion
         {
             try
             {
-                var result = new PeliculaBL().ObtenerPeliculas();
+                var result = new SucursalBL().ObtenerSucursales();
                 DgvListado.DataSource = result;
                 this.Formato();
                 this.Limpiar();
@@ -44,7 +44,7 @@ namespace Presentacion
         {
             try
             {
-                DgvListado.DataSource = new PeliculaBL().BuscarPeliculasPorTitulo(TxtBuscar.Text);
+                DgvListado.DataSource = new PeliculaBL().BuscarPeliculasPorNombre(TxtBuscar.Text);
                 this.Formato();
                 LblTotal.Text = "Total registros: " + Convert.ToString(DgvListado.Rows.Count);
             }
