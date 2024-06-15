@@ -87,12 +87,11 @@ namespace Presentacion
         private void Limpiar()
         {
             TxtBuscar.Clear();
+            TxtIdentificacion.Clear();
             TxtNombre.Clear();
-            TxtId.Clear();
-            //TxtPrecioVenta.Clear();
-            //TxtImagen.Clear();
-            //PicImagen.Image = null;
-            //TxtDescripcion.Clear();
+            TxtPrimerApellido.Clear();
+            TxtSegundoApellido.Clear();
+            
             BtnInsertar.Visible = true;
             BtnActualizar.Visible = false;
             ErrorIcono.Clear();
@@ -113,15 +112,61 @@ namespace Presentacion
         {
             MessageBox.Show(Mensaje, "Sistema Hoteles Resorts", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        
+        private void BtnInsertar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string Rpta = "";
+                if (TxtNombre.Text == string.Empty || LblIdentificacion.Text == string.Empty || TxtPrimerApellido.Text == string.Empty)
+                {
+                    this.MensajeError("Falta ingresar algunos datos, serán remarcados.");
+                    ErrorIcono.SetError(TxtNombre, "Ingrese un nombre.");
+                    ErrorIcono.SetError(LblIdentificacion, "Ingrese una identificación.");
+                    ErrorIcono.SetError(TxtPrimerApellido, "Ingrese un apellido.");
+                }
+                else
+                {
+                    Encargado encargado = new Encargado
+                    {
+                        Identificacion = TxtIdentificacion.Text.Trim(),
+                        Nombre = TxtNombre.Text.Trim(),
+                        PrimerApellido = TxtPrimerApellido.Text.Trim(),
+                        SegundoApellido = TxtSegundoApellido.Text.Trim(),
+                        FechaNacimiento = DtpFechaNacimiento.Value,
+                        FechaIngreso = DtpFechaIngreso.Value,
+                        Activo = true // 'true' por 'CheckboxActivo.Checked'
+                    };
 
+                    Rpta = new EncargadoBL().AgregarEncargado(encargado);
+
+                    if (Rpta.Equals("OK"))
+                    {
+                        this.MensajeOk("Se insertó de forma correcta el registro");
+                        this.Limpiar();
+                        this.Listar();
+                        TabGeneral.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        this.MensajeError(Rpta);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             this.Buscar();
         }
 
-        private void BtnInsertar_Click(object sender, EventArgs e)
+        private void BtnCancelar_Click(object sender, EventArgs e)
         {
-
+            this.Limpiar();
+            TabGeneral.SelectedIndex = 0;
         }
     }
 }

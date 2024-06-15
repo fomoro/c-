@@ -51,7 +51,6 @@ namespace Negocio
         {
             return peliculaxSucursalData.ObtenerPeliculasxSucursales();
         }
-
         public PeliculaxSucursalDetalle[] ObtenerPeliculasxSucursalDetalle()
         {
             return peliculaxSucursalData.ObtenerPeliculasxSucursales().Where(ps => ps != null).Select(ps => new PeliculaxSucursalDetalle
@@ -59,10 +58,11 @@ namespace Negocio
                 IdPelicula = ps.Pelicula.Id,
                 TituloPelicula = ps.Pelicula.Titulo,
                 IdSucursal = ps.Sucursal.Id,
-                NombreSucursal = ps.Sucursal.Nombre
+                NombreSucursal = ps.Sucursal.Nombre,
+                Cantidad = ps.Cantidad
+               
             }).ToArray();
         }
 
     }
-
 }

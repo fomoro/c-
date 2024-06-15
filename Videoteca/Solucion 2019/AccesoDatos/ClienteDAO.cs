@@ -34,12 +34,12 @@ namespace AccesoDatos
 
             foreach (var cli in clientes)
             {
-                if (cli != null && cli.Id == cliente.Id)
+                if (cli != null && cli.Identificacion == cliente.Identificacion)
                 {
-                    throw new Exception("Ya existe un cliente con el mismo ID.");
+                    throw new Exception("Ya existe un cliente con el mismo Identificacion.");
                 }
             }
-
+            cliente.Id = currentIndex + 1;
             clientes[currentIndex] = cliente;
             currentIndex++;
         }

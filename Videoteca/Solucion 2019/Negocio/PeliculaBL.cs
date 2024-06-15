@@ -13,31 +13,35 @@ namespace Negocio
         private PeliculaDAO peliculaData = new PeliculaDAO();
         private CategoriaPeliculaBL categoriaBusiness = new CategoriaPeliculaBL();
 
-        public void AgregarPelicula(Pelicula pelicula)
+        public string AgregarPelicula(Pelicula pelicula)
         {
-            ValidarPelicula(pelicula);
-
-            // Después de todas las validaciones, agregar la película
-            peliculaData.AgregarPelicula(pelicula);
+            try
+            {
+                ValidarPelicula(pelicula);
+                peliculaData.AgregarPelicula(pelicula);
+                return "OK";
+            }
+            catch (Exception e)
+            {
+                return "Error al agregar la película: " + e.Message;
+            }
         }
         public string ActualizarPelicula(Pelicula pelicula)
         {
             try
             {
                 ValidarPelicula(pelicula);
-
-                // Si todas las validaciones pasan, actualizar la película
                 peliculaData.ActualizarPelicula(pelicula);
                 return "OK";
             }
             catch (Exception e)
             {
-                return "Ocurrió un error al actualizar la película: " + e.Message;
+                return "Error al actualizar la película: " + e.Message;
             }
         }
         private void ValidarPelicula(Pelicula pelicula)
         {
-            if (pelicula == null || pelicula.Id == 0 || string.IsNullOrEmpty(pelicula.Titulo) || pelicula.Categoria == null || pelicula.AnoLanzamiento == 0 || string.IsNullOrEmpty(pelicula.Idioma) || categoriaBusiness.ObtenerCategorias().All(c => c.Id != pelicula.Categoria.Id))
+            if (pelicula == null || string.IsNullOrEmpty(pelicula.Titulo) || pelicula.Categoria == null || pelicula.AnoLanzamiento == 0 || string.IsNullOrEmpty(pelicula.Idioma) || categoriaBusiness.ObtenerCategorias().All(c => c.Id != pelicula.Categoria.Id))
             {
                 throw new ArgumentException("Las propiedades de la película no son válidas.");
             }

@@ -17,12 +17,12 @@ namespace AccesoDatos
         {
             if (!initialized)
             {
-                encargados[currentIndex++] = new Encargado { Id = 1, Identificacion = "3321", Nombre = "Esteban", PrimerApellido = "Garzon", SegundoApellido = "Rodriguez", FechaNacimiento = new DateTime(1990, 1, 1), FechaIngreso = DateTime.Now };
-                encargados[currentIndex++] = new Encargado { Id = 2, Identificacion = "6654", Nombre = "Deisy", PrimerApellido = "Avila", SegundoApellido = "Lopez", FechaNacimiento = new DateTime(1992, 2, 2), FechaIngreso = DateTime.Now };
-                encargados[currentIndex++] = new Encargado { Id = 3, Identificacion = "9987", Nombre = "Federico", PrimerApellido = "Corallo", SegundoApellido = "Morales", FechaNacimiento = new DateTime(1994, 3, 3), FechaIngreso = DateTime.Now };
-                encargados[currentIndex++] = new Encargado { Id = 4, Identificacion = "1111", Nombre = "Juan", PrimerApellido = "Sarmiento", SegundoApellido = "Alvarez", FechaNacimiento = new DateTime(1996, 4, 4), FechaIngreso = DateTime.Now };
-                encargados[currentIndex++] = new Encargado { Id = 5, Identificacion = "6554", Nombre = "Alejandra", PrimerApellido = "Beltran", SegundoApellido = "Ureña", FechaNacimiento = new DateTime(1998, 5, 5), FechaIngreso = DateTime.Now };
-                encargados[currentIndex++] = new Encargado { Id = 6, Identificacion = "1024", Nombre = "Tomas", PrimerApellido = "Moreno", SegundoApellido = "Ureña", FechaNacimiento = new DateTime(1998, 5, 5), FechaIngreso = DateTime.Now };
+                encargados[currentIndex++] = new Encargado { Id = 1, Identificacion = "3321", Nombre = "Esteban", PrimerApellido = "Garzon", SegundoApellido = "Rodriguez", FechaNacimiento = new DateTime(1990, 1, 1), FechaIngreso = DateTime.Now, Activo = true };
+                encargados[currentIndex++] = new Encargado { Id = 2, Identificacion = "6654", Nombre = "Deisy", PrimerApellido = "Avila", SegundoApellido = "Lopez", FechaNacimiento = new DateTime(1992, 2, 2), FechaIngreso = DateTime.Now, Activo = true };
+                encargados[currentIndex++] = new Encargado { Id = 3, Identificacion = "9987", Nombre = "Federico", PrimerApellido = "Corallo", SegundoApellido = "Morales", FechaNacimiento = new DateTime(1994, 3, 3), FechaIngreso = DateTime.Now, Activo = true };
+                encargados[currentIndex++] = new Encargado { Id = 4, Identificacion = "1111", Nombre = "Juan", PrimerApellido = "Sarmiento", SegundoApellido = "Alvarez", FechaNacimiento = new DateTime(1996, 4, 4), FechaIngreso = DateTime.Now, Activo = true };
+                encargados[currentIndex++] = new Encargado { Id = 5, Identificacion = "6554", Nombre = "Alejandra", PrimerApellido = "Beltran", SegundoApellido = "Ureña", FechaNacimiento = new DateTime(1998, 5, 5), FechaIngreso = DateTime.Now, Activo = true };
+                encargados[currentIndex++] = new Encargado { Id = 6, Identificacion = "1024", Nombre = "Tomas", PrimerApellido = "Moreno", SegundoApellido = "Ureña", FechaNacimiento = new DateTime(1998, 5, 5), FechaIngreso = DateTime.Now, Activo = true};
 
                 initialized = true;
             }
@@ -42,7 +42,7 @@ namespace AccesoDatos
                     throw new Exception("Ya existe un encargado con el mismo ID.");
                 }
             }
-
+            encargado.Id = currentIndex + 1;
             encargados[currentIndex] = encargado;
             currentIndex++;
         }
@@ -53,7 +53,6 @@ namespace AccesoDatos
             Array.Copy(encargados, encargadosActuales, currentIndex);
             return encargadosActuales;
         }
-
         public void ActualizarEncargado(Encargado encargado)
         {
             for (int i = 0; i < currentIndex; i++)
@@ -66,7 +65,6 @@ namespace AccesoDatos
             }
             throw new Exception("No se encontró el encargado con el ID especificado.");
         }
-
         public void EliminarEncargado(int id)
         {
             bool encontrado = false;
@@ -93,7 +91,6 @@ namespace AccesoDatos
                 throw new Exception("No se encontró el encargado con el ID especificado.");
             }
         }
-
         public void ActivarEncargado(int id)
         {
             Encargado encargado = encargados.FirstOrDefault(e => e != null && e.Id == id);
@@ -105,7 +102,6 @@ namespace AccesoDatos
 
             encargado.Activo = true;
         }
-
         public void DesactivarEncargado(int id)
         {
             Encargado encargado = encargados.FirstOrDefault(e => e != null && e.Id == id);

@@ -36,8 +36,11 @@ namespace Presentacion
             this.ErrorIcono = new System.Windows.Forms.ErrorProvider(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.DtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
-            this.TxtIdentificacion = new System.Windows.Forms.Label();
+            this.LblIdentificacion = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.DtpFechaIngreso = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.TxtId = new System.Windows.Forms.TextBox();
             this.LblFechaNacimiento = new System.Windows.Forms.Label();
             this.LblSegundoApellido = new System.Windows.Forms.Label();
             this.TxtSegundoApellido = new System.Windows.Forms.TextBox();
@@ -48,7 +51,7 @@ namespace Presentacion
             this.BtnInsertar = new System.Windows.Forms.Button();
             this.LblNombre = new System.Windows.Forms.Label();
             this.BtnCancelar = new System.Windows.Forms.Button();
-            this.TxtId = new System.Windows.Forms.TextBox();
+            this.TxtIdentificacion = new System.Windows.Forms.TextBox();
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TabGeneral = new System.Windows.Forms.TabControl();
@@ -59,9 +62,6 @@ namespace Presentacion
             this.ChkSeleccionar = new System.Windows.Forms.CheckBox();
             this.LblTotal = new System.Windows.Forms.Label();
             this.DgvListado = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.DtpFechaIngreso = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcono)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.TabGeneral.SuspendLayout();
@@ -78,7 +78,7 @@ namespace Presentacion
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1183, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1322, 25);
             this.toolStrip1.TabIndex = 7;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -89,22 +89,22 @@ namespace Presentacion
             this.DtpFechaNacimiento.Size = new System.Drawing.Size(436, 22);
             this.DtpFechaNacimiento.TabIndex = 10;
             // 
-            // TxtIdentificacion
+            // LblIdentificacion
             // 
-            this.TxtIdentificacion.AutoSize = true;
-            this.TxtIdentificacion.Location = new System.Drawing.Point(56, 78);
-            this.TxtIdentificacion.Name = "TxtIdentificacion";
-            this.TxtIdentificacion.Size = new System.Drawing.Size(109, 17);
-            this.TxtIdentificacion.TabIndex = 15;
-            this.TxtIdentificacion.Text = "Identificacion (*)";
+            this.LblIdentificacion.AutoSize = true;
+            this.LblIdentificacion.Location = new System.Drawing.Point(56, 78);
+            this.LblIdentificacion.Name = "LblIdentificacion";
+            this.LblIdentificacion.Size = new System.Drawing.Size(109, 17);
+            this.LblIdentificacion.TabIndex = 15;
+            this.LblIdentificacion.Text = "Identificacion (*)";
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.DtpFechaIngreso);
             this.tabPage2.Controls.Add(this.label1);
-            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.TxtId);
             this.tabPage2.Controls.Add(this.DtpFechaNacimiento);
-            this.tabPage2.Controls.Add(this.TxtIdentificacion);
+            this.tabPage2.Controls.Add(this.LblIdentificacion);
             this.tabPage2.Controls.Add(this.LblFechaNacimiento);
             this.tabPage2.Controls.Add(this.LblSegundoApellido);
             this.tabPage2.Controls.Add(this.TxtSegundoApellido);
@@ -115,7 +115,7 @@ namespace Presentacion
             this.tabPage2.Controls.Add(this.BtnInsertar);
             this.tabPage2.Controls.Add(this.LblNombre);
             this.tabPage2.Controls.Add(this.BtnCancelar);
-            this.tabPage2.Controls.Add(this.TxtId);
+            this.tabPage2.Controls.Add(this.TxtIdentificacion);
             this.tabPage2.Controls.Add(this.TxtNombre);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
@@ -125,6 +125,30 @@ namespace Presentacion
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mantenimiento";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // DtpFechaIngreso
+            // 
+            this.DtpFechaIngreso.Location = new System.Drawing.Point(218, 287);
+            this.DtpFechaIngreso.Name = "DtpFechaIngreso";
+            this.DtpFechaIngreso.Size = new System.Drawing.Size(436, 22);
+            this.DtpFechaIngreso.TabIndex = 25;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(55, 283);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 17);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Fecha Ingreso";
+            // 
+            // TxtId
+            // 
+            this.TxtId.Location = new System.Drawing.Point(467, 39);
+            this.TxtId.Name = "TxtId";
+            this.TxtId.Size = new System.Drawing.Size(187, 22);
+            this.TxtId.TabIndex = 23;
+            this.TxtId.Visible = false;
             // 
             // LblFechaNacimiento
             // 
@@ -214,13 +238,14 @@ namespace Presentacion
             this.BtnCancelar.TabIndex = 14;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = true;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
-            // TxtId
+            // TxtIdentificacion
             // 
-            this.TxtId.Location = new System.Drawing.Point(467, 76);
-            this.TxtId.Name = "TxtId";
-            this.TxtId.Size = new System.Drawing.Size(187, 22);
-            this.TxtId.TabIndex = 6;
+            this.TxtIdentificacion.Location = new System.Drawing.Point(467, 76);
+            this.TxtIdentificacion.Name = "TxtIdentificacion";
+            this.TxtIdentificacion.Size = new System.Drawing.Size(187, 22);
+            this.TxtIdentificacion.TabIndex = 6;
             // 
             // TxtNombre
             // 
@@ -245,7 +270,7 @@ namespace Presentacion
             this.TabGeneral.Margin = new System.Windows.Forms.Padding(4);
             this.TabGeneral.Name = "TabGeneral";
             this.TabGeneral.SelectedIndex = 0;
-            this.TabGeneral.Size = new System.Drawing.Size(1129, 558);
+            this.TabGeneral.Size = new System.Drawing.Size(1275, 558);
             this.TabGeneral.TabIndex = 6;
             // 
             // tabPage1
@@ -260,7 +285,7 @@ namespace Presentacion
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Size = new System.Drawing.Size(1121, 529);
+            this.tabPage1.Size = new System.Drawing.Size(1267, 529);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -274,6 +299,7 @@ namespace Presentacion
             this.BtnBuscar.TabIndex = 2;
             this.BtnBuscar.Text = "Buscar";
             this.BtnBuscar.UseVisualStyleBackColor = true;
+            this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
             // 
             // TxtBuscar
             // 
@@ -350,38 +376,14 @@ namespace Presentacion
             this.DgvListado.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DgvListado.RowHeadersWidth = 51;
             this.DgvListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvListado.Size = new System.Drawing.Size(1057, 327);
+            this.DgvListado.Size = new System.Drawing.Size(1180, 327);
             this.DgvListado.TabIndex = 0;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(467, 39);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(187, 22);
-            this.textBox1.TabIndex = 23;
-            this.textBox1.Visible = false;
-            // 
-            // DtpFechaIngreso
-            // 
-            this.DtpFechaIngreso.Location = new System.Drawing.Point(218, 287);
-            this.DtpFechaIngreso.Name = "DtpFechaIngreso";
-            this.DtpFechaIngreso.Size = new System.Drawing.Size(436, 22);
-            this.DtpFechaIngreso.TabIndex = 25;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(55, 283);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 21);
-            this.label1.TabIndex = 26;
-            this.label1.Text = "Fecha Ingreso";
             // 
             // FrmEncargado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1183, 636);
+            this.ClientSize = new System.Drawing.Size(1322, 636);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.TabGeneral);
             this.Name = "FrmEncargado";
@@ -414,7 +416,7 @@ namespace Presentacion
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DateTimePicker DtpFechaNacimiento;
-        private System.Windows.Forms.Label TxtIdentificacion;
+        private System.Windows.Forms.Label LblIdentificacion;
         private System.Windows.Forms.Label LblFechaNacimiento;
         private System.Windows.Forms.Label LblSegundoApellido;
         private System.Windows.Forms.TextBox TxtSegundoApellido;
@@ -425,9 +427,9 @@ namespace Presentacion
         private System.Windows.Forms.Button BtnInsertar;
         private System.Windows.Forms.Label LblNombre;
         private System.Windows.Forms.Button BtnCancelar;
-        private System.Windows.Forms.TextBox TxtId;
+        private System.Windows.Forms.TextBox TxtIdentificacion;
         private System.Windows.Forms.TextBox TxtNombre;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TxtId;
         private System.Windows.Forms.DateTimePicker DtpFechaIngreso;
         private System.Windows.Forms.Label label1;
     }

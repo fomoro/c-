@@ -22,9 +22,24 @@ namespace Presentacion
         private void FrmPelicula_Load(object sender, EventArgs e)
         {
             this.Listar();
-            //this.CargarCategoria();
-        }
+            this.CargarCategoria();
+            DtpLanzamiento.Format = DateTimePickerFormat.Custom;
+            DtpLanzamiento.CustomFormat = "yyyy";
 
+        }
+        private void CargarCategoria()
+        {
+            try
+            {
+                CboCategoria.DataSource = new CategoriaPeliculaBL().ObtenerCategorias();
+                CboCategoria.ValueMember = "Id";
+                CboCategoria.DisplayMember = "Nombre";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
         private void Listar()
         {
             try
@@ -83,10 +98,7 @@ namespace Presentacion
             TxtBuscar.Clear();
             TxtNombre.Clear();
             TxtId.Clear();
-            //TxtPrecioVenta.Clear();
-            //TxtImagen.Clear();
-            //PicImagen.Image = null;
-            //TxtDescripcion.Clear();
+
             BtnInsertar.Visible = true;
             BtnActualizar.Visible = false;
             ErrorIcono.Clear();
@@ -112,5 +124,53 @@ namespace Presentacion
         {
             this.Buscar();
         }
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Limpiar();
+            TabGeneral.SelectedIndex = 0;
+        }
+        private void BtnInsertar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string Rpta = "";
+                if (CboCategoria.Text == string.Empty || TxtNombre.Text == string.Empty)
+                {
+                    this.MensajeError("Falta ingresar algunos datos, serán remarcados.");
+                    ErrorIcono.SetError(CboCategoria, "Seleccione un encargado.");
+                    ErrorIcono.SetError(TxtNombre, "Ingrese un nombre.");
+                }
+                else
+                {
+                    Pelicula pelicula = new Pelicula
+                    {
+                        Categoria = (CategoriaPelicula)CboCategoria.SelectedItem,
+                        Titulo = TxtNombre.Text.Trim(),
+                        AnoLanzamiento = DtpLanzamiento.Value.Year,
+                        Idioma = CboIdioma.SelectedItem.ToString(),
+                        Estado = true
+                    };
+
+                    Rpta = new PeliculaBL().AgregarPelicula(pelicula);
+
+                    if (Rpta.Equals("OK"))
+                    {
+                        this.MensajeOk("Se insertó de forma correcta el registro");
+                        this.Limpiar();
+                        this.Listar();
+                        TabGeneral.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        this.MensajeError(Rpta);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
     }
 }

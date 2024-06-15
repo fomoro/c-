@@ -41,18 +41,15 @@ namespace Presentacion
             this.ChkSeleccionar = new System.Windows.Forms.CheckBox();
             this.LblTotal = new System.Windows.Forms.Label();
             this.DgvListado = new System.Windows.Forms.DataGridView();
-            this.DtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
-            this.TxtIdentificacion = new System.Windows.Forms.Label();
-            this.CboGenero = new System.Windows.Forms.ComboBox();
-            this.LblGenero = new System.Windows.Forms.Label();
-            this.LblFechaNacimiento = new System.Windows.Forms.Label();
-            this.LblSegundoApellido = new System.Windows.Forms.Label();
-            this.LblPrimerApellido = new System.Windows.Forms.Label();
-            this.TxtPrimerApellido = new System.Windows.Forms.TextBox();
+            this.DtpLanzamiento = new System.Windows.Forms.DateTimePicker();
+            this.CboIdioma = new System.Windows.Forms.ComboBox();
+            this.LblIdioma = new System.Windows.Forms.Label();
+            this.LblLanzamiento = new System.Windows.Forms.Label();
             this.BtnActualizar = new System.Windows.Forms.Button();
             this.TabGeneral = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.TxtSegundoApellido = new System.Windows.Forms.TextBox();
+            this.CboCategoria = new System.Windows.Forms.ComboBox();
+            this.LblCategoria = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.BtnInsertar = new System.Windows.Forms.Button();
             this.LblNombre = new System.Windows.Forms.Label();
@@ -181,76 +178,51 @@ namespace Presentacion
             this.DgvListado.Size = new System.Drawing.Size(905, 327);
             this.DgvListado.TabIndex = 0;
             // 
-            // DtpFechaNacimiento
+            // DtpLanzamiento
             // 
-            this.DtpFechaNacimiento.Location = new System.Drawing.Point(218, 189);
-            this.DtpFechaNacimiento.Name = "DtpFechaNacimiento";
-            this.DtpFechaNacimiento.Size = new System.Drawing.Size(436, 22);
-            this.DtpFechaNacimiento.TabIndex = 10;
+            this.DtpLanzamiento.Location = new System.Drawing.Point(218, 146);
+            this.DtpLanzamiento.MaxDate = new System.DateTime(2025, 12, 31, 0, 0, 0, 0);
+            this.DtpLanzamiento.MinDate = new System.DateTime(1940, 1, 1, 0, 0, 0, 0);
+            this.DtpLanzamiento.Name = "DtpLanzamiento";
+            this.DtpLanzamiento.Size = new System.Drawing.Size(436, 22);
+            this.DtpLanzamiento.TabIndex = 10;
             // 
-            // TxtIdentificacion
+            // CboIdioma
             // 
-            this.TxtIdentificacion.AutoSize = true;
-            this.TxtIdentificacion.Location = new System.Drawing.Point(56, 27);
-            this.TxtIdentificacion.Name = "TxtIdentificacion";
-            this.TxtIdentificacion.Size = new System.Drawing.Size(109, 17);
-            this.TxtIdentificacion.TabIndex = 15;
-            this.TxtIdentificacion.Text = "Identificacion (*)";
+            this.CboIdioma.FormattingEnabled = true;
+            this.CboIdioma.ItemHeight = 16;
+            this.CboIdioma.Items.AddRange(new object[] {
+            "Ingles",
+            "Español",
+            "Portugues",
+            "Frances",
+            "Aleman",
+            "Ruso",
+            "Danes",
+            "Polaco",
+            "Holandes"});
+            this.CboIdioma.Location = new System.Drawing.Point(218, 184);
+            this.CboIdioma.Name = "CboIdioma";
+            this.CboIdioma.Size = new System.Drawing.Size(436, 24);
+            this.CboIdioma.TabIndex = 11;
             // 
-            // CboGenero
+            // LblIdioma
             // 
-            this.CboGenero.FormattingEnabled = true;
-            this.CboGenero.ItemHeight = 16;
-            this.CboGenero.Items.AddRange(new object[] {
-            "F",
-            "M"});
-            this.CboGenero.Location = new System.Drawing.Point(218, 227);
-            this.CboGenero.Name = "CboGenero";
-            this.CboGenero.Size = new System.Drawing.Size(436, 24);
-            this.CboGenero.TabIndex = 11;
+            this.LblIdioma.AutoSize = true;
+            this.LblIdioma.Location = new System.Drawing.Point(54, 185);
+            this.LblIdioma.Name = "LblIdioma";
+            this.LblIdioma.Size = new System.Drawing.Size(49, 17);
+            this.LblIdioma.TabIndex = 20;
+            this.LblIdioma.Text = "Idioma";
             // 
-            // LblGenero
+            // LblLanzamiento
             // 
-            this.LblGenero.AutoSize = true;
-            this.LblGenero.Location = new System.Drawing.Point(54, 228);
-            this.LblGenero.Name = "LblGenero";
-            this.LblGenero.Size = new System.Drawing.Size(56, 17);
-            this.LblGenero.TabIndex = 20;
-            this.LblGenero.Text = "Genero";
-            // 
-            // LblFechaNacimiento
-            // 
-            this.LblFechaNacimiento.AutoSize = true;
-            this.LblFechaNacimiento.Location = new System.Drawing.Point(55, 185);
-            this.LblFechaNacimiento.Name = "LblFechaNacimiento";
-            this.LblFechaNacimiento.Size = new System.Drawing.Size(121, 17);
-            this.LblFechaNacimiento.TabIndex = 19;
-            this.LblFechaNacimiento.Text = "Fecha Nacimiento";
-            // 
-            // LblSegundoApellido
-            // 
-            this.LblSegundoApellido.AutoSize = true;
-            this.LblSegundoApellido.Location = new System.Drawing.Point(55, 146);
-            this.LblSegundoApellido.Name = "LblSegundoApellido";
-            this.LblSegundoApellido.Size = new System.Drawing.Size(119, 17);
-            this.LblSegundoApellido.TabIndex = 18;
-            this.LblSegundoApellido.Text = "Segundo Apellido";
-            // 
-            // LblPrimerApellido
-            // 
-            this.LblPrimerApellido.AutoSize = true;
-            this.LblPrimerApellido.Location = new System.Drawing.Point(55, 104);
-            this.LblPrimerApellido.Name = "LblPrimerApellido";
-            this.LblPrimerApellido.Size = new System.Drawing.Size(122, 17);
-            this.LblPrimerApellido.TabIndex = 17;
-            this.LblPrimerApellido.Text = "Primer Apellido (*)";
-            // 
-            // TxtPrimerApellido
-            // 
-            this.TxtPrimerApellido.Location = new System.Drawing.Point(219, 104);
-            this.TxtPrimerApellido.Name = "TxtPrimerApellido";
-            this.TxtPrimerApellido.Size = new System.Drawing.Size(435, 22);
-            this.TxtPrimerApellido.TabIndex = 8;
+            this.LblLanzamiento.AutoSize = true;
+            this.LblLanzamiento.Location = new System.Drawing.Point(55, 142);
+            this.LblLanzamiento.Name = "LblLanzamiento";
+            this.LblLanzamiento.Size = new System.Drawing.Size(89, 17);
+            this.LblLanzamiento.TabIndex = 19;
+            this.LblLanzamiento.Text = "Lanzamiento";
             // 
             // BtnActualizar
             // 
@@ -274,15 +246,12 @@ namespace Presentacion
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.DtpFechaNacimiento);
-            this.tabPage2.Controls.Add(this.TxtIdentificacion);
-            this.tabPage2.Controls.Add(this.CboGenero);
-            this.tabPage2.Controls.Add(this.LblGenero);
-            this.tabPage2.Controls.Add(this.LblFechaNacimiento);
-            this.tabPage2.Controls.Add(this.LblSegundoApellido);
-            this.tabPage2.Controls.Add(this.TxtSegundoApellido);
-            this.tabPage2.Controls.Add(this.LblPrimerApellido);
-            this.tabPage2.Controls.Add(this.TxtPrimerApellido);
+            this.tabPage2.Controls.Add(this.CboCategoria);
+            this.tabPage2.Controls.Add(this.LblCategoria);
+            this.tabPage2.Controls.Add(this.DtpLanzamiento);
+            this.tabPage2.Controls.Add(this.CboIdioma);
+            this.tabPage2.Controls.Add(this.LblIdioma);
+            this.tabPage2.Controls.Add(this.LblLanzamiento);
             this.tabPage2.Controls.Add(this.BtnActualizar);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.BtnInsertar);
@@ -299,17 +268,27 @@ namespace Presentacion
             this.tabPage2.Text = "Mantenimiento";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // TxtSegundoApellido
+            // CboCategoria
             // 
-            this.TxtSegundoApellido.Location = new System.Drawing.Point(219, 146);
-            this.TxtSegundoApellido.Name = "TxtSegundoApellido";
-            this.TxtSegundoApellido.Size = new System.Drawing.Size(435, 22);
-            this.TxtSegundoApellido.TabIndex = 9;
+            this.CboCategoria.FormattingEnabled = true;
+            this.CboCategoria.Location = new System.Drawing.Point(219, 60);
+            this.CboCategoria.Name = "CboCategoria";
+            this.CboCategoria.Size = new System.Drawing.Size(435, 24);
+            this.CboCategoria.TabIndex = 23;
+            // 
+            // LblCategoria
+            // 
+            this.LblCategoria.AutoSize = true;
+            this.LblCategoria.Location = new System.Drawing.Point(54, 60);
+            this.LblCategoria.Name = "LblCategoria";
+            this.LblCategoria.Size = new System.Drawing.Size(88, 17);
+            this.LblCategoria.TabIndex = 22;
+            this.LblCategoria.Text = "Categoria (*)";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(219, 280);
+            this.label3.Location = new System.Drawing.Point(219, 237);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(228, 17);
             this.label3.TabIndex = 21;
@@ -324,11 +303,12 @@ namespace Presentacion
             this.BtnInsertar.TabIndex = 12;
             this.BtnInsertar.Text = "Insertar";
             this.BtnInsertar.UseVisualStyleBackColor = true;
+            this.BtnInsertar.Click += new System.EventHandler(this.BtnInsertar_Click);
             // 
             // LblNombre
             // 
             this.LblNombre.AutoSize = true;
-            this.LblNombre.Location = new System.Drawing.Point(55, 65);
+            this.LblNombre.Location = new System.Drawing.Point(55, 99);
             this.LblNombre.Name = "LblNombre";
             this.LblNombre.Size = new System.Drawing.Size(77, 17);
             this.LblNombre.TabIndex = 16;
@@ -343,17 +323,18 @@ namespace Presentacion
             this.BtnCancelar.TabIndex = 14;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = true;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // TxtId
             // 
-            this.TxtId.Location = new System.Drawing.Point(467, 25);
+            this.TxtId.Location = new System.Drawing.Point(467, 21);
             this.TxtId.Name = "TxtId";
             this.TxtId.Size = new System.Drawing.Size(187, 22);
             this.TxtId.TabIndex = 6;
             // 
             // TxtNombre
             // 
-            this.TxtNombre.Location = new System.Drawing.Point(219, 65);
+            this.TxtNombre.Location = new System.Drawing.Point(219, 99);
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(435, 22);
             this.TxtNombre.TabIndex = 7;
@@ -403,18 +384,13 @@ namespace Presentacion
         private System.Windows.Forms.CheckBox ChkSeleccionar;
         private System.Windows.Forms.Label LblTotal;
         private System.Windows.Forms.DataGridView DgvListado;
-        private System.Windows.Forms.DateTimePicker DtpFechaNacimiento;
-        private System.Windows.Forms.Label TxtIdentificacion;
-        private System.Windows.Forms.ComboBox CboGenero;
-        private System.Windows.Forms.Label LblGenero;
-        private System.Windows.Forms.Label LblFechaNacimiento;
-        private System.Windows.Forms.Label LblSegundoApellido;
-        private System.Windows.Forms.Label LblPrimerApellido;
-        private System.Windows.Forms.TextBox TxtPrimerApellido;
+        private System.Windows.Forms.DateTimePicker DtpLanzamiento;
+        private System.Windows.Forms.ComboBox CboIdioma;
+        private System.Windows.Forms.Label LblIdioma;
+        private System.Windows.Forms.Label LblLanzamiento;
         private System.Windows.Forms.Button BtnActualizar;
         private System.Windows.Forms.TabControl TabGeneral;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TextBox TxtSegundoApellido;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button BtnInsertar;
         private System.Windows.Forms.Label LblNombre;
@@ -423,5 +399,7 @@ namespace Presentacion
         private System.Windows.Forms.TextBox TxtNombre;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ErrorProvider ErrorIcono;
+        private System.Windows.Forms.ComboBox CboCategoria;
+        private System.Windows.Forms.Label LblCategoria;
     }
 }

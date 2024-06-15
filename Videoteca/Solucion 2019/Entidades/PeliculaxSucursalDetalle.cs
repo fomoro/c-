@@ -12,6 +12,8 @@ namespace Entidades
         public string TituloPelicula { get; set; }
         public int IdSucursal { get; set; }
         public string NombreSucursal { get; set; }
-    }
+        public int Cantidad { get; set; }
 
+
+    }
 }

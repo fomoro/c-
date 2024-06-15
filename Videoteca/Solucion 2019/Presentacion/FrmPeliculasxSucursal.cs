@@ -22,9 +22,23 @@ namespace Presentacion
         private void FrmPeliculasxSucursal_Load(object sender, EventArgs e)
         {
             this.Listar();
-            //this.CargarCategoria();
+            this.ListarPeliculas();
+            this.CargarSucursales();
         }
 
+        private void CargarSucursales()
+        {
+            try
+            {
+                CboSucursal.DataSource = new SucursalBL().ObtenerSucursales();
+                CboSucursal.ValueMember = "Id";
+                CboSucursal.DisplayMember = "Nombre";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
         private void Listar()
         {
             try
@@ -34,6 +48,21 @@ namespace Presentacion
                 this.Formato();
                 this.Limpiar();
                 LblTotal.Text = "Total registros: " + Convert.ToString(DgvListado.Rows.Count);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+        private void ListarPeliculas()
+        {
+            try
+            {
+                var result = new PeliculaBL().ObtenerPeliculas();
+                DgvListadoPeliculas.DataSource = result;
+                //this.FormatoListadoPeliculas();
+                //this.Limpiar();
+                //LblTotal.Text = "Total registros: " + Convert.ToString(DgvListado.Rows.Count);
             }
             catch (Exception ex)
             {
@@ -85,18 +114,10 @@ namespace Presentacion
         private void Limpiar()
         {
             TxtBuscar.Clear();
-            TxtNombre.Clear();
-            TxtId.Clear();
-            //TxtPrecioVenta.Clear();
-            //TxtImagen.Clear();
-            //PicImagen.Image = null;
-            //TxtDescripcion.Clear();
             BtnInsertar.Visible = true;
             BtnActualizar.Visible = false;
             ErrorIcono.Clear();
-            //this.RutaDestino = "";
-            //this.RutaOrigen = "";
-
+         
             DgvListado.Columns[0].Visible = false;
             //BtnActivar.Visible = false;
             //BtnDesactivar.Visible = false;
@@ -111,7 +132,6 @@ namespace Presentacion
         {
             MessageBox.Show(Mensaje, "Sistema Hoteles Resorts", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             this.Buscar();

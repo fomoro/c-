@@ -34,41 +34,66 @@ namespace Negocio
         {
             return sucursalData.ObtenerSucursales().Where(s => s.Nombre.Contains(nombre)).ToArray();
         }
-        public void AgregarSucursal(Sucursal sucursal)
+        public string AgregarSucursal(Sucursal sucursal)
         {
-            // Aquí puede agregar validaciones adicionales según las reglas de negocio
+            try
+            {
+                ValidarSucursal(sucursal);
+                sucursalData.AgregarSucursal(sucursal);
+                return "OK";
+            }
+            catch (Exception e)
+            {
+                return "Error al agregar la sucursal: " + e.Message;
+            }
+        }
 
-            // Comprobar si la sucursal es nula
+        public string ActualizarSucursal(Sucursal sucursal)
+        {
+            try
+            {
+                ValidarSucursal(sucursal);
+                sucursalData.ActualizarSucursal(sucursal);
+                return "OK";
+            }
+            catch (Exception e)
+            {
+                return "Error al actualizar la sucursal: " + e.Message;
+            }
+        }
+
+        private void ValidarSucursal(Sucursal sucursal)
+        {
             if (sucursal == null)
             {
                 throw new ArgumentException("La sucursal no puede ser nula.");
             }
 
-            // Comprobar si el nombre de la sucursal es nulo o está vacío
             if (string.IsNullOrEmpty(sucursal.Nombre))
             {
                 throw new ArgumentException("El nombre de la sucursal es requerido.");
             }
 
-            // Comprobar si el encargado de la sucursal es nulo
             if (sucursal.Encargado == null)
             {
                 throw new ArgumentException("El encargado de la sucursal es requerido.");
             }
 
-            // Comprobar si el encargado de la sucursal existe
-            if (encargadoBusiness.ObtenerEncargados().All(e => e.Id != sucursal.Encargado.Id))
+            if (string.IsNullOrEmpty(sucursal.Direccion))
+            {
+                throw new ArgumentException("La dirección de la sucursal es requerida.");
+            }
+
+            if (string.IsNullOrEmpty(sucursal.Telefono))
+            {
+                throw new ArgumentException("El teléfono de la sucursal es requerido.");
+            }
+
+            /*if (encargadoBusiness.ObtenerEncargados().All(e => e.Id != sucursal.Encargado.Id))
             {
                 throw new ArgumentException("El encargado de la sucursal no existe.");
-            }
-
-            if (sucursal.Id == 0 || sucursal.Encargado == null || string.IsNullOrEmpty(sucursal.Direccion) || string.IsNullOrEmpty(sucursal.Telefono))
-            {
-                throw new Exception("La sucursal debe tener un ID, encargado, dirección y teléfono válidos.");
-            }
-
-            // Después de todas las validaciones, agregar la sucursal
-            sucursalData.AgregarSucursal(sucursal);
+            }*/
         }
     }
 }
+

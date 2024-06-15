@@ -22,7 +22,20 @@ namespace Presentacion
         private void FrmSucursal_Load(object sender, EventArgs e)
         {
             this.Listar();
-            //this.CargarCategoria();
+            this.CargarEncargado();
+        }
+        private void CargarEncargado()
+        {
+            try
+            {
+                CboEncargado.DataSource = new EncargadoBL().ObtenerEncargados();
+                CboEncargado.ValueMember = "Id";
+                CboEncargado.DisplayMember = "Nombre";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
         }
 
         private void Listar()
@@ -90,10 +103,9 @@ namespace Presentacion
             TxtBuscar.Clear();
             TxtNombre.Clear();
             TxtId.Clear();
-            //TxtPrecioVenta.Clear();
-            //TxtImagen.Clear();
-            //PicImagen.Image = null;
-            //TxtDescripcion.Clear();
+            TxtDireccion.Clear();
+            TxtTelefono.Clear();
+
             BtnInsertar.Visible = true;
             BtnActualizar.Visible = false;
             ErrorIcono.Clear();
@@ -114,10 +126,58 @@ namespace Presentacion
         {
             MessageBox.Show(Mensaje, "Sistema Hoteles Resorts", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             this.Buscar();
         }
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Limpiar();
+            TabGeneral.SelectedIndex = 0;
+        }
+        private void BtnInsertar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string Rpta = "";
+                if (CboEncargado.Text == string.Empty || TxtNombre.Text == string.Empty || TxtDireccion.Text == string.Empty)
+                {
+                    this.MensajeError("Falta ingresar algunos datos, serán remarcados.");
+                    ErrorIcono.SetError(CboEncargado, "Seleccione un encargado.");
+                    ErrorIcono.SetError(TxtNombre, "Ingrese un nombre.");
+                    ErrorIcono.SetError(TxtDireccion, "Ingrese una dirección.");
+                }
+                else
+                {
+                    Sucursal sucursal = new Sucursal
+                    {
+                        Encargado = (Encargado)CboEncargado.SelectedItem,
+                        Nombre = TxtNombre.Text.Trim(),
+                        Direccion = TxtDireccion.Text.Trim(),
+                        Telefono = TxtTelefono.Text.Trim(),
+                        Activo = true
+                    };
+
+                    Rpta = new SucursalBL().AgregarSucursal(sucursal);
+
+                    if (Rpta.Equals("OK"))
+                    {
+                        this.MensajeOk("Se insertó de forma correcta el registro");
+                        this.Limpiar();
+                        this.Listar();
+                        TabGeneral.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        this.MensajeError(Rpta);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
     }
 }

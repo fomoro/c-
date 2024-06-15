@@ -31,7 +31,7 @@ namespace AccesoDatos
 
         public void AgregarSucursal(Sucursal sucursal)
         {
-            if (currentIndex >= 3)
+            if (currentIndex >= 5)
             {
                 throw new Exception("No se pueden agregar más sucursales. Límite alcanzado.");
             }
@@ -43,7 +43,7 @@ namespace AccesoDatos
                     throw new Exception("Ya existe una sucursal con el mismo ID.");
                 }
             }
-
+            sucursal.Id = currentIndex + 1;
             sucursales[currentIndex] = sucursal;
             currentIndex++;
         }

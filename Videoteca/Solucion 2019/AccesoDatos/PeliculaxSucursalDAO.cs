@@ -13,23 +13,14 @@ namespace AccesoDatos
         {
             if (!initialized)
             {
+
                 PeliculaDAO peliculaDAO = new PeliculaDAO();
                 SucursalDAO sucursalDAO = new SucursalDAO();
                 Pelicula[] peliculas = peliculaDAO.ObtenerPeliculas();
                 Sucursal[] sucursales = sucursalDAO.ObtenerSucursales();
 
-                // Verificamos si existen películas y sucursales
-                if (peliculas.Length > 0 && sucursales.Length > 0)
-                {
-                    foreach (Sucursal sucursal in sucursales)
-                    {
-                        foreach (Pelicula pelicula in peliculas)
-                        {
-                            // Agregamos cada película a cada sucursal
-                            AgregarPeliculaxSucursal(new PeliculaxSucursal { Pelicula = pelicula, Sucursal = sucursal });
-                        }
-                    }
-                }
+                peliculasxSucursales[currentIndex++] = new PeliculaxSucursal { Sucursal = sucursales[0], Pelicula = peliculas[0], Cantidad = 5 };
+                peliculasxSucursales[currentIndex++] = new PeliculaxSucursal { Sucursal = sucursales[0], Pelicula = peliculas[1], Cantidad = 3 };
 
                 initialized = true;
             }
