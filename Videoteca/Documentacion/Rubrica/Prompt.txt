@@ -1,6 +1,19 @@
-* tome el archivo y como desarrollador experimentado genere la estructura del proyecto ( accesoDatos, entidades y negocio) en las clases de la Capa de Entidades incluya una clase llamada Alquiler para manejar el alquiler de películas
+* genere la estructura de clases para las capas (entidades, acceso a datos, negocio y presentacion) incluya una clase llamada Alquiler para manejar el alquiler de películas
+
+* creee los metodos AgregarCliente, ActualizarCliente, ValidarCliente, AgregarEncargado, ActualizarEncargado y ValidarEncargado a tomando como ejemplo los métodos 
+
 
 * tome el codigo anterior y cree el modelo entidad relacional para ver en dbdiagram
+
+* escriba las clases de la capa entidades 
+
+* tome la clase Sucursal y cree la clase de la capa de acceso a datos SucursalDAO usuando arreglos y no listas, queme además 5 sucursales en el constructor
+	private Sucursal[] sucursales = new Sucursal[5];
+
+* a partir de la clase anterior PeliculaDAO escriba la clase SucursalDAO donde cree 3 sucursales donde se asocien los encargados creados en el constructor EncargadoDAO
+
+* escriba Los demás métodos (ActualizarEncargado, EliminarEncargado, ActivarEncargado, DesactivarEncargado)
+
 
 implementa la clase PeliculaBL
 implementa la clase EncargadoBL

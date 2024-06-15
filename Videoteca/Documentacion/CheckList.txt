@@ -1,97 +1,18 @@
-La videoteca de la Universidad Estatal a Distancia quiere promover el préstamo de algunas películas, documentales, podcast, etc. en distintas sucursales a los clientes (estudiantes, profesores, pasantes, etc.), dicho material se encuentra en formatos “antiguos” (cintas, vhs, etc.) que no han sido digitalizados aun a formatos más modernos pero que tienen mucha demanda por su valor histórico y su contenido de gran valor, por lo cual se le ha solicitado diseñar y programar un sistema en C# haciendo uso de una interfaz gráfica (Windows form) y que cuente con las siguientes funcionalidades:
-• Registrar y consultar Categoría de Película.
-• Registrar y consultar Película.
-• Registrar y consultar Encargado.
-• Registrar y consultar Sucursal.
-• Registrar y consultar Película por Sucursal.
-• Registrar y consultar Cliente.
+Estatus	Actividad
 
-Registrar Categoría Película: Está opción le permitirá a la persona usuaria registrar o agregar los datos de la categoría a la que puede pertenecer una película, por ejemplo: podcast, documental, acción, etc. Se debe poder registrar la siguiente información: 
-➢ Id de categoría (int), este valor debe ser único por lo que se debe validar en el sistema que no existan valores repetidos.
-➢ Nombre de la categoría(string) 
-➢ Descripción (string) 
-Una vez capturada la información se debe agregar a un arreglo de objetos de tipo “CategoriaPelicula”. El arreglo debe ser de 20 posiciones
+*65%*	Registrar y consultar Película por Sucursal.
+*30%*	Implementar una funcionalidad que permita al usuario registrar (asociar) las películas que estarán disponibles en cada Sucursal.
 
-Registrar Película: Está opción le permitirá a la persona usuaria registrar o agregar los datos de una película. Se debe poder registrar la siguiente información: 
-➢ Id de película (int), este valor debe ser único por lo que se debe validar en el sistema que no existan valores repetidos.
-➢ Título(string) 
-➢ Categoría película (Objeto Categoría Película) Debe validar que por lo menos exista registrado una categoría de película.
-➢ Año de lanzamiento (int)
-➢ Idioma (string)
-Una vez capturada la información se debe agregar a un arreglo de objetos de tipo “Pelicula”. El arreglo debe ser de 20 posiciones
-
-Registrar Encargado: Está opción le permitirá a la persona usuaria registrar o agregar los datos de una persona encargada de administrar una sucursal. Se debe poder registrar la siguiente información: 
-➢ Id Encargado (int) este valor debe ser único por lo que se debe validar en el sistema que no existan valores repetidos.
-➢ Identificación(string), este valor debe ser único por lo que se debe validar en el sistema que no se vaya a registrar un cliente con la misma identificación y distinto Id Encargado.
-➢ Nombre(string) 
-➢ Primer apellido(string)
-➢ Segundo apellido(string)
-➢ Fecha de nacimiento (Datetime)
-➢ Fecha de ingreso (Datetime)
-Una vez capturada la información se debe agregar a un arreglo de objetos de tipo “Encargado”. El arreglo debe ser de 20 posiciones
-
-Registrar Sucursal: Está opción le permitirá a la persona usuaria registrar o agregar los datos de una sucursal. Se debe poder registrar la siguiente información: 
-➢ Id de sucursal (int), este valor debe ser único por lo que se debe validar en el sistema que no existan valores repetidos.
-➢ Nombre(string) 
-➢ Encargado (Objeto Encargado) Debe validar que por lo menos exista registrado un Encargado.
-➢ Dirección (string)
-➢ Teléfono (string)
-➢ Activo (bool), sí o no, (mostrar en “Combobox”) 
-Una vez capturada la información se debe agregar a un arreglo de objetos de tipo “Sucursal”. El arreglo debe ser de 5 posiciones
-
-Registrar Cliente: Está opción le permitirá a la persona usuaria registrar o agregar los datos de una persona cliente. Se debe poder registrar la siguiente información: 
-➢ Id Cliente (int) este valor debe ser único por lo que se debe validar en el sistema que no existan valores repetidos.
-➢ Identificación(string), este valor debe ser único por lo que se debe validar en el sistema que no se vaya a registrar un cliente con la misma identificación .
-➢ Nombre(string).
-➢ Primer apellido(string).
-➢ Segundo apellido(string).
-➢ Fecha de nacimiento (Datetime).
-➢ Fecha de registro. (Datetime).
-➢ Activo (bool), Sí o No, (mostrar en “Combobox”) 
-Una vez capturada la información se debe agregar a un arreglo de objetos de tipo “Cliente”. El arreglo debe ser de 20 posiciones.
-
-Registrar Película por Sucursal: Funcionalidad que debe permitir al usuario registrar (asociar) las películas que estarán disponibles en cada Sucursal. Para ello se de crear una clase “PeliculaxSucursal”. Para esta opción se debe poder registrar la siguiente información para Película por Sucursal: 
-➢ Sucursal (Objeto Sucursal), este valor en combinación con Película debe ser únicos por lo que se debe validar en el sistema que no existan valores repetidos.
-➢ Película (Objeto Película), este valor en combinación con Sucursal debe ser únicos por lo que se debe validar en el sistema que no existan valores repetidos.
-➢ Cantidad (int)
-La asociación de películas a sucursal se debe almacenar en un arreglo de objetos tipo PeliculaxSucursal de 100 posiciones.
-
-Para esto se debe realizar lo siguiente: 
-➢ Mostrar en pantalla en un “ComboBox” las sucursales disponibles. (Se debe validar que al menos exista una sucursal registrada para realizarle asociación. Para cada sucursal registrada debe mostrar los siguientes datos: Nombre. Solo debe mostrar las sucursales que se encuentran activas.)
-➢ Permitir a la persona usuaria seleccionar desde “ComboBox” la sucursal.
-➢ Mostrar en un control “DataGridView” las películas disponibles para asignar a la sucursal. (Se debe validar que al menos exista una película registrada para ser asociada. Para cada película de la lista se debe mostrar toda la información de los objetos: Id, título, categoría, año de lanzamiento, idioma.)
-➢ La persona usuaria puede seleccionar uno o más películas del control “DataGridView” para asociar a la sucursal.
-➢ La persona usuaria debe contar con un control de entrada de datos “TextBox”, donde podrá definir la cantidad de inventario que contará de una película. (Se debe validar que la cantidad ingresada sea mayor a cero. Si se selecciona varias películas a asociar a todas se les asignará la misma cantidad de inventario.)
-➢ Al momento de realizar la asociación deberá validar que no se haya ingresado en el arreglo anteriormente la “combinación” de una sucursal y una película.
-
-Consultar Categoría Película: Está opción le permitirá a la persona usuaria visualizar en pantalla todas las categorías de películas registradas, para tal fin debe hacer uso del control “DataGridView”, se debe mostrar todos los atributos. 
-
-Consultar Película: Está opción le permitirá a la persona usuaria visualizar en pantalla todas las películas registradas, para tal fin debe hacer uso del control “DataGridView”, se debe mostrar todos los atributos incluso los datos 
-de la categoría a la que pertenece. 
-
-Consultar Encargado: Está opción le permitirá a la persona usuaria visualizar en pantalla todos los encargados registrados, para tal fin debe hacer uso del control “DataGridView”, se debe mostrar todos los atributos.
-
-Consultar Sucursal: Está opción le permitirá a la persona usuaria visualizar en pantalla todas las sucursales registradas, para tal fin debe hacer uso del control “DataGridView”, se debe mostrar todos los atributos incluso los datos 
-del encargado asignado.
-
-Consultar Cliente: Está opción le permitirá a la persona usuaria mostrar en pantalla todos los clientes registrados, para tal fin debe hacer uso del control “DataGridView”, se debe mostrar todos los atributos.
-
-Consultar Película por Sucursal: Está opción le permitirá a la persona usuaria visualizar en pantalla todas las asociaciones registradas, para tal fin debe hacer uso del control “DataGridView”, se debe mostrar todos los atributos de la sucursal y las películas.
-
-Consideraciones técnicas:
-Debe utilizar POO (Programación orientada a objetos) para resolver el problema. 
-➢ Las clases de objetos que usted considere como entidades (Categoría Película, Película, Encargado, Sucursal, Cliente, Película por Sucursal, etc.) no deben contener lógica para solicitar información a la persona usuaria, solo debe tener la estructura de la clase y sus propiedades. 
-➢ Implementar en la Solución proyectos independientes con el fin de tener las distintas capas que usted considere: Capa de Entidades, Capa de Acceso a Datos, Capa de Lógica Negocio, 
-Capa de Presentación (Interfaz del Usuario) etc. 
-➢ Cada clase debe ser creada en archivo por separado 
-➢ Las clases no deben tener métodos vacíos y recuerde utilizar nombres significativos a sus variables. 
-
-Uso de arreglos 
-➢ No deben ser arreglos de tipo “string” ni “int”, deben ser arreglos de objetos de las clases definidas. 
-➢ Cada vez que se agrega un objeto al arreglo se debe preguntar al usuario si desea agregar otro y no obligar al usuario a ingresar todos los registros de una vez. 
-➢ No debe utilizar colecciones, solo se permite el uso de arreglos para esta tarea. Debe implementar el manejo de excepciones 
-➢ Si ocurre una excepción, el sistema no debe cerrarse, se debe mostrar un mensaje al usuario y manejar la excepción de forma apropiada. 
-
-Interfaz de usuario 
-➢ Debe usar interfaz de usuario con formularios GUI (Proyecto Windows Form). 
-
+100%	Registrar y consultar Categoría de Película.
+100%	Registrar y consultar Película.
+100%	Registrar y consultar Encargado.
+100%	Registrar y consultar Sucursal.
+100%	Registrar y consultar Cliente.
+100%	Diseñar y programar un sistema en C# utilizando una interfaz gráfica.
+100%	Diseñar las clases de objetos que representan las entidades del sistema (Categoría Película, Película, Encargado, Sucursal, Cliente, Película por Sucursal).
+100%	Desarrollar la lógica para agregar y consultar información en los arreglos de objetos.
+100%	Implementar validaciones.
+100%	Implementar la funcionalidad para visualizar en pantalla todas las asociaciones registradas.
+100%	Implementar el manejo de excepciones para prevenir el cierre del sistema en caso de un error y mostrar un mensaje al usuario.
+100%	Usar Programación Orientada a Objetos (POO) para resolver el problema.
+100%	Crear proyectos independientes en la solución para las diferentes capas del sistema (Entidades, Acceso a Datos, Lógica de Negocio, Presentación).
